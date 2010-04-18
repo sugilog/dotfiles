@@ -1,0 +1,18 @@
+[user]
+        name = sugilog
+        email = sugilog@gmail.com
+[color]
+        ui = auto
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+[alias]
+        co = checkout
+        a = add
+        s = status
+        l = log
+        c = commit
+[github]
+        user = sugilog
+        token = 21ad67ba14c32ae8e2348d7ba6829294
