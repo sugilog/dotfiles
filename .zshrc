@@ -40,24 +40,11 @@ case ${UID} in
  ;;
 esac
 
-RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%}"
+RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%} "
 SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
 
-if [ -f ~/.dir_colors ]; then
-  eval `dircolors -b ~/.dir_colors`
-fi
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-
-## 補完候補のカーソル選択を有効に
-zstyle ':completion:*:default' menu select=1
-
-## 補完候補の色づけ
-#eval `dircolors`
-export LSCOLORS=ExFxCxdxBxegedabagacad
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export ZLS_COLORS=$LS_COLORS
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors di=34 fi=0
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 ## history
 
@@ -120,17 +107,7 @@ bindkey "^R" history-incremental-search-backward
 
 ## function
 
-function cd() {builtin cd $@ && ls -al}
-
-function chpwd() { ls -l -A }
-
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup
+function chpwd() { ll --color=auto }
 
 ## env
 
