@@ -43,8 +43,18 @@ esac
 RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%} "
 SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
 
+case "${OSTYPE}" in
+freebsd*|darwin*)
+export LSCOLORS=ExFxCxdxBxegedabagacad
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+;;
+linux*)
 zstyle ':completion:*' list-colors di=34 fi=0
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+;;
+esac
 
 ## history
 
@@ -65,7 +75,15 @@ setopt hist_save_no_dups
 ## alias
 setopt complete_aliases
 
-alias ls='ls -v -F --color=auto'
+case "${OSTYPE}" in
+freebsd*|darwin*)
+alias ls="ls -G -w"
+;;
+linux*)
+alias ls="ls -v -F --color"
+;;
+esac
+
 alias ll='ls -al'
 alias la='ls -A'
 alias cp="cp -i"
@@ -107,8 +125,16 @@ bindkey "^R" history-incremental-search-backward
 
 ## function
 
-function chpwd() { ll --color=auto }
+function chpwd() { ll }
 
 ## env
 
 export SVN_EDITOR=vim
+
+case "${TERM}" in
+kterm*|xterm*)
+  precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+  }
+;;
+esac
