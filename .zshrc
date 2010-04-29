@@ -111,4 +111,4 @@ function chpwd() { ll --color=auto }
 
 ## env
 
-export SVN_EDITOR=vi
+export SVN_EDITOR=vim
