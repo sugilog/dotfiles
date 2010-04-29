@@ -130,3 +130,11 @@ function chpwd() { ll }
 ## env
 
 export SVN_EDITOR=vi
+
+case "${TERM}" in
+kterm*|xterm*)
+  precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+  }
+;;
+esac
