@@ -100,7 +100,6 @@ alias screen="nocorrect screen"
 alias sr="screen"
 alias rak="nocorrect rak"
 alias g="git"
-alias s="svn"
 
 alias cdrails="cd ~/apps/__rails_1.2.3__"
 alias rs='/bin/sh /home/admin/ruby_server.sh'
@@ -139,3 +138,7 @@ kterm*|xterm*)
   }
 ;;
 esac
+
+## mysql
+alias mysql="mysql --auto-rehash"
+export MYSQL_PS1='\u@\h[\d]> '
