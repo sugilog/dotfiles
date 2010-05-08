@@ -104,7 +104,6 @@ alias g="git"
 alias cdrails="cd ~/apps/__rails_1.2.3__"
 alias rs='/bin/sh /home/admin/ruby_server.sh'
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
-alias viall="svn st | grep '^M' | awk '{print \$2}' | xargs vim"
 
 ## key_bind
 
