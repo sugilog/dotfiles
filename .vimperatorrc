@@ -1,0 +1,22 @@
+"" set path
+set runtimepath=~/.vimperator
+
+"" set gui options
+set titlestring="Firefox"
+set guioptions=B
+
+"" set auto complete
+set wildoptions=auto
+set complete=sl
+set ignorecase
+set showtabline=1
+
+"" require migemo_hint.js
+set hintmatching=custom
+
+"" require ime_controller.js
+let g:ex_ime_mode = "inactive"
+let g:textarea_ime_mode = "inactive"
+
+"" require copy.js
+map C :copy blogURL<CR>
