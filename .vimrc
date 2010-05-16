@@ -40,6 +40,16 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
 
+"settings for search result highlight
+"http://blog.appling.jp/archives/140
+nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
+nnoremap n :<C-u>set hlsearch<CR>n
+nnoremap N :<C-u>set hlsearch<CR>N
+nnoremap / :<C-u>set hlsearch<CR>/
+nnoremap ? :<C-u>set hlsearch<CR>?
+nnoremap * :<C-u>set hlsearch<CR>*
+nnoremap # :<C-u>set hlsearch<CR>#
+
 "settings for highlight
 function! SOLSpaceHilight()
   syntax match SOLSpace "^\s\+" display containedin=ALL

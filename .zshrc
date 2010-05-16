@@ -138,6 +138,10 @@ kterm*|xterm*)
 ;;
 esac
 
+if [ $TERM != "screen" ]; then
+  exec screen
+fi
+
 ## mysql
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
