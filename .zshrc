@@ -78,6 +78,7 @@ setopt complete_aliases
 case "${OSTYPE}" in
 freebsd*|darwin*)
 alias ls="ls -G -w"
+alias screen="tscreen"
 ;;
 linux*)
 alias ls="ls -v -F --color"
@@ -140,7 +141,14 @@ kterm*|xterm*)
 esac
 
 if [ $TERM != "screen" ]; then
+  case "${OSTYPE}" in
+  freebsd*|darwin*)
+  exec tscreen
+  ;;
+  linux*)
   exec screen
+  ;;
+  esac
 fi
 
 ## mysql
