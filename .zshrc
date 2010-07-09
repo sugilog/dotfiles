@@ -82,6 +82,7 @@ alias screen="tscreen"
 ;;
 linux*)
 alias ls="ls -v -F --color"
+alias less='/usr/local/share/vim/vim72/macros/less.sh'
 ;;
 esac
 
@@ -101,11 +102,13 @@ alias screen="nocorrect screen"
 alias sr="screen"
 alias rak="nocorrect rak"
 alias g="git"
+alias s="svn"
 alias wget="nocorrect wget"
 
 alias cdrails="cd ~/apps/__rails_1.2.3__"
 alias rs='/bin/sh /home/admin/ruby_server.sh'
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
+
 
 ## key_bind
 
