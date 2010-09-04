@@ -79,6 +79,7 @@ case "${OSTYPE}" in
 freebsd*|darwin*)
 alias ls="ls -G -w"
 alias screen="tscreen"
+alias irb="irb -Ku"
 ;;
 linux*)
 alias ls="ls -v -F --color"

@@ -30,4 +30,4 @@ bind -c REGION 2 split
 bind -c REGION 3 split -v
 bind -c REGION } resize +2
 bind -c REGION { resize -2
-bind ^x command -c REGION
+bind w command -c REGION
