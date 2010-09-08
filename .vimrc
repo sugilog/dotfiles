@@ -29,6 +29,8 @@ set nocompatible
 set nobackup
 set writebackup
 
+set foldmethod=manual
+
 syntax on
 filetype on
 filetype indent on
