@@ -1,15 +1,17 @@
 [user]
-        name = sugilog
-        email = sugilog@gmail.com
+  name = sugilog
+  email = sugilog@gmail.com
 [color]
-        ui = auto
-        diff = auto
-        status = auto
-        branch = auto
-        interactive = auto
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
 [alias]
-        co = checkout
-        a = add
-        s = status
-        l = log
-        c = commit
+  co = checkout
+  a = add
+  s = status
+  l = log
+  c = commit
+[core]
+	editor = vim

@@ -83,7 +83,7 @@ alias irb="irb -Ku"
 ;;
 linux*)
 alias ls="ls -v -F --color"
-alias less='/usr/local/share/vim/vim72/macros/less.sh'
+alias less='/usr/local/share/vim/vim73/macros/less.sh'
 ;;
 esac
 
@@ -110,6 +110,7 @@ alias cdrails="cd ~/apps/__rails_1.2.3__"
 alias rs='/bin/sh /home/admin/ruby_server.sh'
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 
+alias sudo="sudo PATH=$PATH"
 
 ## key_bind
 
