@@ -31,3 +31,6 @@ bind -c REGION 3 split -v
 bind -c REGION } resize +2
 bind -c REGION { resize -2
 bind w command -c REGION
+
+bind u encoding utf8
+bind e encoding euc
