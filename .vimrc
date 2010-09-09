@@ -43,8 +43,8 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
 
-"settings for search result highlight
-"http://blog.appling.jp/archives/140
+" settings for search result highlight
+" http://blog.appling.jp/archives/140
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
 nnoremap n :<C-u>set hlsearch<CR>n
 nnoremap N :<C-u>set hlsearch<CR>N
@@ -52,6 +52,24 @@ nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
+
+" neocomplcache settings
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 "settings for highlight
 function! SOLSpaceHilight()
