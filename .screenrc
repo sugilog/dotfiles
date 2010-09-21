@@ -15,21 +15,23 @@ hardstatus alwayslastline "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=
 
 # escape ^Aa
 bind n screen
-bind h prev
-bind j next
+# bind h prev
+# bind j next
 bind l windowlist
 
 screen 1
 screen 0
 
-bind -c REGION o focus down
-bind -c REGION p focus up
+bind j focus down
+bind k focus up
+# bind -c REGION j focus down
+# bind -c REGION k focus up
 bind -c REGION 0 remove
 bind -c REGION 1 only
 bind -c REGION 2 split
 bind -c REGION 3 split -v
-bind -c REGION } resize +2
-bind -c REGION { resize -2
+# bind -c REGION } resize +2
+# bind -c REGION { resize -2
 bind w command -c REGION
 
 bind u encoding utf8
