@@ -1,18 +1,86 @@
-set runtimepath=/Users/sugita/.vimperator
+" require plugins
+"" ime_controller.js
+"" migemo_find.js
+"" migemo_hint.js
+"" feedsmonkey_2.js
+" other plugins
+"" _smooziee.js
+"" copy.js
+"" char_hints_mod2.js
+" fx plugins
+"" xul/migemo
+"" hatena bookmark
 
-"" set gui options
+set runtimepath=/Users/sugitatakayuki/.vimperator
+
+" set gui options
 set titlestring="Firefox"
 set guioptions=B
 
-"" set auto complete
+" set auto complete
 set wildoptions=auto
 set complete=sl
 set showtabline=1
 set ignorecase
 
-"" require ime_controller.js
+" ime_controller.js
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
 
-"" require migemo_hint.js
+" migemo_find/hint.js
 set hintmatching=custom
+
+" http://hyamada.ddo.jp/hiki/hiki.cgi?vimperator
+"" feedsmonkey_2.js
+autocmd LocationChange .* :fmapc
+" for Gmail
+autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
+" for google reader
+autocmd LocationChange 'www\.google\.co\.jp/reader' :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+
+" hatena_bookmark
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+set complete+=H
+
+javascript <<EOF
+// キーボードショートカットの指定
+// 空(null)を指定すれば hints や nnoremap を上書きしなくなる
+//    (注: 現バージョンではデフォルト値で上書きされてます。将来修正予定です)
+liberator.globalVariables.hBookmark_shortcuts = {
+  hintsAdd     : 'c',
+  hintsComment : 'C',
+  add          : ['c'],
+  comment      : ['C'],
+};
+
+// コマンドの設定
+// ここから下の設定は、はてなブックマーク拡張のバージョン 1.2.4a1 以降で有効です。
+liberator.globalVariables.hBookmark_commands = {
+  hbsearch             : 'hb[search]',
+  hbsearch_tab         : 'hbt[absearch]',
+  hbsearch_comment     : 'hbc[omment]',
+  hbsearch_comment_tab : 'hbtc[omment]',
+  hbsearch_url         : 'hbu[rl]',
+  hbsearch_url_tab     : 'hbtu[rl]',
+  hbsearch_title       : 'hbti[tle]',
+  hbsearch_title_tab   : 'hbtti[tle]',
+};
+
+// :hb! url 等の bang(!) 付きで開いた場合の挙動。
+// 標準ははてブエントリーページを開く entryPage が設定されている。
+// 他に新規タブで開く openNewTab がある。
+// また、文字列ではなく自分で定義した関数をセットすることもできる。
+liberator.globalVariables.hBookmark_bangFunction = 'entryPage';
+
+// 検索時の wait(ms)
+liberator.globalVariables.hBookmark_search_interval = 1000;
+// 一度に検索する limit
+liberator.globalVariables.hBookmark_search_limit = 10;
+// 検索時の表示の最大件数。この件数に達するまで検索し続ける。
+liberator.globalVariables.hBookmark_search_max_limit = 100;
+EOF
+
+" next link "" http://zshscreenvimvimpwget.blog27.fc2.com/blog-category-5.html
+set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
+set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
+
