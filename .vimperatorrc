@@ -10,9 +10,6 @@ set complete=sl
 set showtabline=1
 set ignorecase
 
-"" require migemo_hint.js
-set hintmatching=custom
-
 "" require ime_controller.js
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
