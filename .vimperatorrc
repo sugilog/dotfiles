@@ -2,7 +2,7 @@
 "" ime_controller.js
 "" migemo_find.js
 "" migemo_hint.js
-"" feedsmonkey_2.js
+"" feedsomekey_2.js
 " other plugins
 "" _smooziee.js
 "" copy.js
@@ -11,7 +11,7 @@
 "" xul/migemo
 "" hatena bookmark
 
-set runtimepath=/Users/sugitatakayuki/.vimperator
+set runtimepath=/Users/sugita/.vimperator
 
 " set gui options
 set titlestring="Firefox"
@@ -30,13 +30,18 @@ let g:textarea_ime_mode = "inactive"
 " migemo_find/hint.js
 set hintmatching=custom
 
-" http://hyamada.ddo.jp/hiki/hiki.cgi?vimperator
-"" feedsmonkey_2.js
+"" feedsomekey_2.js
 autocmd LocationChange .* :fmapc
 " for Gmail
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
 " for google reader
 autocmd LocationChange 'www\.google\.co\.jp/reader' :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+
+
+" next link
+set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
+set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
+
 
 " hatena_bookmark
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
@@ -79,8 +84,4 @@ liberator.globalVariables.hBookmark_search_limit = 10;
 // 検索時の表示の最大件数。この件数に達するまで検索し続ける。
 liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
-
-" next link "" http://zshscreenvimvimpwget.blog27.fc2.com/blog-category-5.html
-set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
-set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
