@@ -16,11 +16,12 @@ set runtimepath=/Users/sugita/.vimperator
 " set gui options
 set titlestring="Firefox"
 set guioptions=B
+set showtabline=2
+set focuscontent
 
 " set auto complete
 set wildoptions=auto
 set complete=sl
-set showtabline=1
 set ignorecase
 
 " ime_controller.js
@@ -35,8 +36,7 @@ autocmd LocationChange .* :fmapc
 " for Gmail
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
 " for google reader
-autocmd LocationChange 'www\.google\.co\.jp/reader' :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
-
+autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a A r S N P X O gh ga gs gt gu u / ?
 
 " next link
 set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
@@ -84,4 +84,6 @@ liberator.globalVariables.hBookmark_search_limit = 10;
 // 検索時の表示の最大件数。この件数に達するまで検索し続ける。
 liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
+
+map <C-b> :bmarks!
 
