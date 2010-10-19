@@ -6,6 +6,7 @@
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
+source ~/dotfiles/cdd
 
 setopt auto_cd
 setopt auto_pushd
@@ -131,7 +132,10 @@ bindkey "^R" history-incremental-search-backward
 
 ## function
 
-function chpwd() { ll }
+function chpwd() {
+  ll
+  _reg_pwd_screennum
+}
 
 ## env
 
@@ -151,11 +155,12 @@ if [ $TERM != "screen" ]; then
   exec tscreen
   ;;
   linux*)
-  exec screen
+#   exec screen
+  exec tscreen
   ;;
   esac
 fi
 
-## mysql
+# ## mysql
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '

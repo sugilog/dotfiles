@@ -92,3 +92,8 @@ if has("syntax")
   autocmd BufNew,BufRead * call JISX0208SpaceHilight()
   augroup END
 endif
+
+" yanktmp
+map <silent> sy :call YanktmpYank()<CR>
+map <silent> sp :call YanktmpPaste_p()<CR>
+map <silent> sP :call YanktmpPaste_P()<CR>

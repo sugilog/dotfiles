@@ -11,7 +11,7 @@
 "" xul/migemo
 "" hatena bookmark
 
-set runtimepath=/Users/sugita/.vimperator
+set runtimepath=~/.vimperator
 
 " set gui options
 set titlestring="Firefox"
