@@ -152,10 +152,10 @@ esac
 if [ $TERM != "screen" ]; then
   case "${OSTYPE}" in
   freebsd*|darwin*)
-  exec tscreen
+##  do nothing on the mac
+#   exec tscreen
   ;;
   linux*)
-#   exec screen
   exec tscreen
   ;;
   esac
