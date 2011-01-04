@@ -7,6 +7,7 @@ zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
 source ~/dotfiles/cdd
+source ~/.zshrc.local
 
 setopt auto_cd
 setopt auto_pushd
@@ -79,7 +80,6 @@ setopt complete_aliases
 case "${OSTYPE}" in
 freebsd*|darwin*)
 alias ls="ls -G -w"
-alias screen="tscreen"
 alias irb="irb -Ku"
 ;;
 linux*)
@@ -99,16 +99,14 @@ alias du="du -h"
 alias df="df -h"
 alias vi="vim"
 
+alias screen="tscreen"
 alias sc="ruby script/console"
-alias screen="nocorrect screen"
-alias sr="screen"
-alias rak="nocorrect rak"
 alias g="git"
 alias s="svn"
-alias wget="nocorrect wget"
+# alias screen="nocorrect screen"
+# alias rak="nocorrect rak"
+# alias wget="nocorrect wget"
 
-alias cdrails="cd ~/apps/__rails_1.2.3__"
-alias rs='/bin/sh /home/admin/ruby_server.sh'
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 
 alias sudo="sudo PATH=$PATH"
