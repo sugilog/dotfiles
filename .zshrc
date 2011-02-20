@@ -80,7 +80,6 @@ setopt complete_aliases
 case "${OSTYPE}" in
 freebsd*|darwin*)
 alias ls="ls -G -w"
-alias irb="irb -Ku"
 ;;
 linux*)
 alias ls="ls -v -F --color"
@@ -103,13 +102,8 @@ alias screen="tscreen"
 alias sc="ruby script/console"
 alias g="git"
 alias s="svn"
-# alias screen="nocorrect screen"
-# alias rak="nocorrect rak"
-# alias wget="nocorrect wget"
 
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
-
-alias sudo="sudo PATH=$PATH"
 
 ## key_bind
 
