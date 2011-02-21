@@ -43,13 +43,6 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
 
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
-
 " settings for search result highlight
 " http://blog.appling.jp/archives/140
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
