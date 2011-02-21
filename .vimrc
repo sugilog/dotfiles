@@ -1,7 +1,13 @@
-"file settings
-set fileformat=unix
-set encoding=euc-jp
-set fileencoding=euc-jp
+""plugin list
+"EnhancedCommentify.vim
+"fuf.vim
+"l9.vim
+"matchit.vim
+"neocomplcache.vim
+"supertab.vim
+"yanktmp.vim
+"rails.vim
+"svn.vim
 
 "basic settings
 set textwidth=0
@@ -64,6 +70,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 "Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "settings for highlight
 function! SOLSpaceHilight()
@@ -94,3 +101,5 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 
 "yank from cursol to the end of line
 nnoremap Y y$
+
+source ~/.vimrc.local
