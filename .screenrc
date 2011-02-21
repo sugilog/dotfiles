@@ -3,10 +3,10 @@ autodetach on
 crlf off
 startup_message off
 vbell off
-defutf8 on
-defkanji utf-8
-defencoding utf-8
-encoding utf-8 utf-8
+# defutf8 on
+defkanji euc
+defencoding euc
+encoding euc euc
 
 defscrollback 10000
 
@@ -15,8 +15,6 @@ hardstatus alwayslastline "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=
 
 # escape ^Aa
 bind n screen
-# bind h prev
-# bind j next
 bind l windowlist
 
 screen 1

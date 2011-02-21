@@ -1,7 +1,7 @@
 "file settings
 set fileformat=unix
-set encoding=utf-8
-set fileencoding=utf-8
+set encoding=euc-jp
+set fileencoding=euc-jp
 
 "basic settings
 set textwidth=0
@@ -43,15 +43,8 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
 
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
-
-" settings for search result highlight
-" http://blog.appling.jp/archives/140
+"settings for search result highlight
+"http://blog.appling.jp/archives/140
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
 nnoremap n :<C-u>set hlsearch<CR>n
 nnoremap N :<C-u>set hlsearch<CR>N
@@ -60,15 +53,15 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 
-" neocomplcache settings
+"neocomplcache settings
 let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
+"Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
+"Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
+"Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
+"Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
@@ -94,10 +87,10 @@ if has("syntax")
   augroup END
 endif
 
-" yanktmp
+"yanktmp
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
-" yank from cursol to the end of line
+"yank from cursol to the end of line
 nnoremap Y y$

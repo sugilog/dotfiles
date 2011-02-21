@@ -84,7 +84,7 @@ alias irb="irb -Ku"
 ;;
 linux*)
 alias ls="ls -v -F --color"
-alias less='/usr/local/share/vim/vim73/macros/less.sh'
+# alias less='/usr/local/share/vim/vim73/macros/less.sh'
 ;;
 esac
 
