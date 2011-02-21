@@ -1,0 +1,10 @@
+"file settings
+set fileformat=unix
+set encoding=utf-8
+set fileencoding=utf-8
+
+" setting for fuzzyfinder.vim
+" http://colonelpanic.net/2010/05/textmate-go-to-file-in-vim/
+nmap <leader>ff :FufFile ./src/*/*/*/<CR>
+nmap <leader>F  :FufFile ./<CR>
+

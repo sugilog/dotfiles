@@ -1,8 +1,3 @@
-"file settings
-set fileformat=unix
-set encoding=utf-8
-set fileencoding=utf-8
-
 "basic settings
 set textwidth=0
 set autoindent
@@ -42,13 +37,6 @@ imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
-
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
 
 " settings for search result highlight
 " http://blog.appling.jp/archives/140
@@ -101,3 +89,5 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 
 " yank from cursol to the end of line
 nnoremap Y y$
+
+source ~/.vimrc.local
