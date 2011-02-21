@@ -1,3 +1,14 @@
+""plugin list
+"EnhancedCommentify.vim
+"fuf.vim
+"l9.vim
+"matchit.vim
+"neocomplcache.vim
+"supertab.vim
+"yanktmp.vim
+"rails.vim
+"svn.vim
+
 "basic settings
 set textwidth=0
 set autoindent
