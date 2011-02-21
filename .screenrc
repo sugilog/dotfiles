@@ -3,10 +3,14 @@ autodetach on
 crlf off
 startup_message off
 vbell off
-# defutf8 on
-defkanji euc
-defencoding euc
-encoding euc euc
+defutf8 on
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+# # defutf8 on
+# defkanji euc
+# defencoding euc
+# encoding euc euc
 
 defscrollback 10000
 
