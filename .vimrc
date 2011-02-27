@@ -59,6 +59,10 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 
+" setting for fuzzyfinder.vim
+nmap <leader>f  :FufFile ./<CR>
+imap <C-f> */
+
 "neocomplcache settings
 let g:neocomplcache_enable_at_startup = 1
 "Use smartcase.
