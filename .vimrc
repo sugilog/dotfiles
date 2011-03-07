@@ -59,9 +59,25 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 
+" Tabs
+nnoremap <Space>t t
+nnoremap <Space>T T
+nnoremap t <Nop>
+nnoremap <silent> tc :<C-u>tabnew<CR>:tabmove<CR>
+nnoremap <silent> tk :<C-u>tabclose<CR>
+nnoremap <silent> tn :<C-u>tabnext<CR>
+nnoremap <silent> tp :<C-u>tabprevious<CR>
+
 " setting for fuzzyfinder.vim
-nmap <leader>f  :FufFile ./<CR>
-imap <C-f> */
+nnoremap <Space>f f
+nnoremap <Space>F F
+nnoremap f <Nop>
+nnoremap <silent> fb :<C-u>FufBuffer!<CR>
+nnoremap <silent> ff :<C-u>FufFile! <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+"nnoremap <silent> fm :<C-u>FuzzyFinderMruFile!<CR>
+nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
+nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile! <C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
+"nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FuzzyFinderMruFile!<CR>
 
 "neocomplcache settings
 let g:neocomplcache_enable_at_startup = 1
