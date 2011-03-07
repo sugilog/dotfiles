@@ -144,9 +144,10 @@ esac
 if [ $TERM != "screen" ]; then
   case "${OSTYPE}" in
   freebsd*|darwin*)
-    if [ $TERM = "xterm" ]; then
-      exec tscreen
-    fi
+# do nothing
+#     if [ $TERM = "xterm" ]; then
+#       exec tscreen
+#     fi
   ;;
   linux*)
   exec tscreen
