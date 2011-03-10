@@ -83,7 +83,6 @@ alias ls="ls -G -w"
 ;;
 linux*)
 alias ls="ls -v -F --color"
-alias less='/usr/local/share/vim/vim73/macros/less.sh'
 ;;
 esac
 
@@ -102,8 +101,12 @@ alias screen="tscreen"
 alias sc="ruby script/console"
 alias g="git"
 alias s="svn"
-
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
+# need to install colordiff
+# http://colordiff.sourceforge.net/
+# just do: sudo make install
+alias diff="colordiff"
+alias sd='svn diff | colordiff | less'
 
 ## key_bind
 
@@ -130,7 +133,7 @@ function chpwd() {
 }
 
 ## env
-
+export LESS=R
 export SVN_EDITOR=vim
 
 case "${TERM}" in

@@ -2,16 +2,16 @@ require 'rubygems'
 require 'irb/completion'
 require 'pp'
 
-# view sql when script/consle
-# require "active_record"
-# ActiveRecord::Base.logger = Logger.new(STDOUT)
-
 # http://irb-history.rubyforge.org/rdoc/
-# require 'irb/history'
-# IRB::History.start_client
+IRB.conf[:SAVE_HISTORY] = 1000
 
 require 'wirble'
 Wirble.init
 Wirble.colorize
 
 IRB.conf[:AUTO_INDENT] = true
+
+def log_to(stream = STDOUT)
+  ActiveRecord::Base.logger = Logger.new(stream)
+  ActiveRecord::Base.clear_active_connections!
+end
