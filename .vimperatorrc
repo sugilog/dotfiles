@@ -85,6 +85,3 @@ liberator.globalVariables.hBookmark_search_limit = 10;
 // 検索時の表示の最大件数。この件数に達するまで検索し続ける。
 liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
-
-map <C-b> :bmarks!
-
