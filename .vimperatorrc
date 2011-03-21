@@ -85,3 +85,54 @@ liberator.globalVariables.hBookmark_search_limit = 10;
 // 検索時の表示の最大件数。この件数に達するまで検索し続ける。
 liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
+
+javascript <<EOF
+// copy.js expand template with goo.gl
+// see: http://code.google.com/apis/urlshortener/v1/getting_started.html
+// this script required google api key
+// see: https://code.google.com/apis/console
+liberator.globalVariables.copy_templates = [
+  {
+    label: 'goo.gl',
+    value: 'copy url with goo.gl',
+    custom: function() {
+      return getShortUrl();
+    }
+  },
+  {
+    label: 'goo.gl with title',
+    value: 'copy title&url with goo.gl',
+    custom: function() {
+      var title = content.document.title;
+      return title + "\n" + getShortUrl();
+    }
+  },
+  {
+    label: 'goo.gl4hatena',
+    value: 'copy title&url with goo.gl for hatena syntax',
+    custom: function() {
+      var title = content.document.title;
+      return "[" + getShortUrl() + ":title=" + title + "]";
+    }
+  }
+];
+
+var getShortUrl = function() {
+  var longUrl = content.document.location.href;
+
+  var googl = {
+    'url' : 'https://www.googleapis.com/urlshortener/v1/url?key=',
+    'key' : 'AIzaSyCORobP0P0kONa63b4FFuJGqlPlo9pHkjs',
+    'method' : 'POST',
+    'contentType' : 'application/json',
+    'longJson' : '{ "longUrl" : "' + longUrl + '" }'
+  };
+
+  var request = new XMLHttpRequest();
+  request.open(googl.method, googl.url + googl.key, false);
+  request.setRequestHeader('Content-Type', googl.contentType);
+  request.send(googl.longJson);
+
+  return JSON.parse(request.responseText).id;
+};
+EOF
