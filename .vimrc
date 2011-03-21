@@ -1,14 +1,3 @@
-""plugin list
-"EnhancedCommentify.vim
-"fuf.vim
-"l9.vim
-"matchit.vim
-"neocomplcache.vim
-"supertab.vim
-"yanktmp.vim
-"rails.vim
-"svn.vim
-
 "basic settings
 set textwidth=0
 set autoindent
@@ -41,6 +30,9 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
+
+"settings for pathogen.vim
+call pathogen#runtime_append_all_bundles()
 
 "settings for insert mode
 imap <C-j> <Down>
