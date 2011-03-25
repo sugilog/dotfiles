@@ -3,11 +3,8 @@
 "" migemo_find.js
 "" migemo_hint.js
 "" feedsomekey_2.js
-" other plugins
 "" _smooziee.js
 "" copy.js
-"" char_hints_mod2.js
-"" bookmarktoolbar-hint.js
 " fx plugins
 "" xul/migemo
 "" hatena bookmark
@@ -16,15 +13,30 @@ set runtimepath=~/.vimperator
 
 " set gui options
 set titlestring="Firefox"
-set guioptions=B
-set showtabline=2
+"""set guioptions=B
+set toolbars=addons,bookmarks,tabs,nomenu,nonavigation
+""" changed
+"""set showtabline=2
 set focuscontent
 
+" set hint settings
+""" no need to add char_hints_mod2
+"set hintchars=hjklasdfg
+set hintchars=HJKLASDFG
+set hintinputs=label,name,value
+
 " set auto complete
-set wildoptions=auto
+""" removed
+"""set wildoptions=auto
 set complete=sl
 set ignorecase
 
+" set keymap
+map <C-b> :bmarks!
+map <C-h> :history!
+
+
+"" plugin settings
 " ime_controller.js
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
@@ -44,7 +56,7 @@ set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,�
 set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
 
-" hatena_bookmark
+"" hatena_bookmark
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 set complete+=H
 
