@@ -10,6 +10,7 @@
 "" hatena bookmark
 
 set runtimepath=~/.vimperator
+source ~/.vimperatorrc.local
 
 " set gui options
 set titlestring="Firefox"
@@ -35,11 +36,13 @@ set ignorecase
 map <C-b> :bmarks!
 map <C-h> :history!
 
+style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
 "" plugin settings
-" ime_controller.js
-let g:ex_ime_mode = "inactive"
-let g:textarea_ime_mode = "inactive"
+" use style
+""" ime_controller.js
+""" let g:ex_ime_mode = "inactive"
+""" let g:textarea_ime_mode = "inactive"
 
 " migemo_find/hint.js
 set hintmatching=custom
