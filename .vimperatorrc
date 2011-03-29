@@ -11,6 +11,10 @@
 
 set runtimepath=~/.vimperator
 
+" set bell options
+set noerrorbells
+set novisualbell
+
 " set gui options
 set titlestring="Firefox"
 """set guioptions=B
@@ -52,8 +56,8 @@ autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u 
 autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a A r S N P X O gh ga gs gt gu u / ?
 
 " next link
-set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
-set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
+set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$,Older.Entries
+set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$,Newer.Entries
 
 
 "" hatena_bookmark
