@@ -26,7 +26,7 @@ set writebackup
 
 set foldmethod=manual
 
-syntax on
+syntax enable
 filetype on
 filetype indent on
 filetype plugin on
@@ -42,7 +42,6 @@ imap <C-l> <Right>
 imap <C-d> <Delete>
 
 "settings for search result highlight
-"http://blog.appling.jp/archives/140
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
 nnoremap n :<C-u>set hlsearch<CR>n
 nnoremap N :<C-u>set hlsearch<CR>N
@@ -86,6 +85,7 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "settings for highlight
+"http://blog.appling.jp/archives/140
 function! SOLSpaceHilight()
   syntax match SOLSpace "^\s\+" display containedin=ALL
   highlight SOLSpace term=underline ctermbg=darkblue

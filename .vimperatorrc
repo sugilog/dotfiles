@@ -71,6 +71,11 @@ autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a 
 " see: http://d.hatena.ne.jp/sugilog/20110328/1301326210
 source ~/.vimperatorrc.local
 
+javascript <<EOF
+liberator.globalVariables.webSearchTemplates = [
+  { names: ['gems'], description: 'search rubygems.org', url: 'http://rubygems.org/search?utf8=%E2%9C%93&query=%KEYWORD%' }
+];
+EOF
 
 "" copy.js custom templates with goo.gl
 " see: http://d.hatena.ne.jp/sugilog/20110321/1300721545
