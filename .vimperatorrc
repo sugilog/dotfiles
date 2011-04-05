@@ -1,36 +1,63 @@
-" require plugins
-"" ime_controller.js
-"" migemo_find.js
-"" migemo_hint.js
-"" feedsomekey_2.js
-" other plugins
-"" _smooziee.js
-"" copy.js
-"" char_hints_mod2.js
-"" bookmarktoolbar-hint.js
-" fx plugins
-"" xul/migemo
-"" hatena bookmark
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" require plugins and addons
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"" plugins
+" migemo_find.js
+" migemo_hint.js
+" feedsomekey_2.js
+" _smooziee.js
+" copy.js
+" websearch.js => https://github.com/sugilog/websearch.vimpr
+"" fx addons
+" xul/migemo
+" hatena bookmark
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" basic settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set runtimepath=~/.vimperator
 
+" set bell options
+set noerrorbells
+set novisualbell
+
 " set gui options
 set titlestring="Firefox"
-set guioptions=B
-set showtabline=2
+set toolbars=addons,bookmarks,tabs,nomenu,nonavigation
 set focuscontent
 
+" set hint settings
+set hintchars=HJKLASDFG
+set hintinputs=label,name,value
+
 " set auto complete
-set wildoptions=auto
 set complete=sl
 set ignorecase
 
-" ime_controller.js
-let g:ex_ime_mode = "inactive"
-let g:textarea_ime_mode = "inactive"
+" set keymap
+map <C-b> :bmarks!
+map <C-h> :history!
 
-" migemo_find/hint.js
+" next link
+set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
+set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
+
+" ime controll
+style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plugin settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" migemo_find/hint.js
 set hintmatching=custom
+
 
 "" feedsomekey_2.js
 autocmd LocationChange .* :fmapc
@@ -39,58 +66,21 @@ autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u 
 " for google reader
 autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a A r S N P X O gh ga gs gt gu u / ?
 
-" next link
-set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
-set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
-
-" hatena_bookmark
-javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-set complete+=H
+"" websearch.js custom templates
+" see: http://d.hatena.ne.jp/sugilog/20110328/1301326210
+source ~/.vimperatorrc.local
 
 javascript <<EOF
-// キーボードショートカットの指定
-// 空(null)を指定すれば hints や nnoremap を上書きしなくなる
-//    (注: 現バージョンではデフォルト値で上書きされてます。将来修正予定です)
-liberator.globalVariables.hBookmark_shortcuts = {
-  hintsAdd     : 'c',
-  hintsComment : 'C',
-  add          : ['c'],
-  comment      : ['C'],
-};
-
-// コマンドの設定
-// ここから下の設定は、はてなブックマーク拡張のバージョン 1.2.4a1 以降で有効です。
-liberator.globalVariables.hBookmark_commands = {
-  hbsearch             : 'hb[search]',
-  hbsearch_tab         : 'hbt[absearch]',
-  hbsearch_comment     : 'hbc[omment]',
-  hbsearch_comment_tab : 'hbtc[omment]',
-  hbsearch_url         : 'hbu[rl]',
-  hbsearch_url_tab     : 'hbtu[rl]',
-  hbsearch_title       : 'hbti[tle]',
-  hbsearch_title_tab   : 'hbtti[tle]',
-};
-
-// :hb! url 等の bang(!) 付きで開いた場合の挙動。
-// 標準ははてブエントリーページを開く entryPage が設定されている。
-// 他に新規タブで開く openNewTab がある。
-// また、文字列ではなく自分で定義した関数をセットすることもできる。
-liberator.globalVariables.hBookmark_bangFunction = 'entryPage';
-
-// 検索時の wait(ms)
-liberator.globalVariables.hBookmark_search_interval = 1000;
-// 一度に検索する limit
-liberator.globalVariables.hBookmark_search_limit = 10;
-// 検索時の表示の最大件数。この件数に達するまで検索し続ける。
-liberator.globalVariables.hBookmark_search_max_limit = 100;
+liberator.globalVariables.webSearchTemplates = [
+  { names: ['gems'], description: 'search rubygems.org', url: 'http://rubygems.org/search?utf8=%E2%9C%93&query=%KEYWORD%' }
+];
 EOF
 
+"" copy.js custom templates with goo.gl
+" see: http://d.hatena.ne.jp/sugilog/20110321/1300721545
+" see: http://code.google.com/apis/urlshortener/v1/getting_started.html
 javascript <<EOF
-// copy.js expand template with goo.gl
-// see: http://code.google.com/apis/urlshortener/v1/getting_started.html
-// this script required google api key
-// see: https://code.google.com/apis/console
 liberator.globalVariables.copy_templates = [
   {
     label: 'goo.gl',
@@ -136,3 +126,52 @@ var getShortUrl = function() {
   return JSON.parse(request.responseText).id;
 };
 EOF
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" addons setting
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" hatena_bookmark
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+set complete+=H
+
+javascript <<EOF
+// キーボードショートカットの指定
+// 空(null)を指定すれば hints や nnoremap を上書きしなくなる
+//    (注: 現バージョンではデフォルト値で上書きされてます。将来修正予定です)
+liberator.globalVariables.hBookmark_shortcuts = {
+  hintsAdd     : 'c',
+  hintsComment : 'C',
+  add          : ['c'],
+  comment      : ['C'],
+};
+
+// コマンドの設定
+// ここから下の設定は、はてなブックマーク拡張のバージョン 1.2.4a1 以降で有効です。
+liberator.globalVariables.hBookmark_commands = {
+  hbsearch             : 'hb[search]',
+  hbsearch_tab         : 'hbt[absearch]',
+  hbsearch_comment     : 'hbc[omment]',
+  hbsearch_comment_tab : 'hbtc[omment]',
+  hbsearch_url         : 'hbu[rl]',
+  hbsearch_url_tab     : 'hbtu[rl]',
+  hbsearch_title       : 'hbti[tle]',
+  hbsearch_title_tab   : 'hbtti[tle]',
+};
+
+// :hb! url 等の bang(!) 付きで開いた場合の挙動。
+// 標準ははてブエントリーページを開く entryPage が設定されている。
+// 他に新規タブで開く openNewTab がある。
+// また、文字列ではなく自分で定義した関数をセットすることもできる。
+liberator.globalVariables.hBookmark_bangFunction = 'entryPage';
+
+// 検索時の wait(ms)
+liberator.globalVariables.hBookmark_search_interval = 1000;
+// 一度に検索する limit
+liberator.globalVariables.hBookmark_search_limit = 10;
+// 検索時の表示の最大件数。この件数に達するまで検索し続ける。
+liberator.globalVariables.hBookmark_search_max_limit = 100;
+EOF
+
