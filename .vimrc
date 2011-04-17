@@ -1,4 +1,6 @@
-"basic settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" basics
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set textwidth=0
 set autoindent
 set wrap
@@ -31,17 +33,18 @@ filetype on
 filetype indent on
 filetype plugin on
 
-"settings for pathogen.vim
-call pathogen#runtime_append_all_bundles()
-
-"settings for insert mode
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" insert mode
+""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-d> <Delete>
 
-"settings for search result highlight
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" search result highlight
+""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
 nnoremap n :<C-u>set hlsearch<CR>n
 nnoremap N :<C-u>set hlsearch<CR>N
@@ -50,7 +53,9 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 
-" Tabs
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Tabs
+""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Space>t t
 nnoremap <Space>T T
 nnoremap t <Nop>
@@ -59,33 +64,11 @@ nnoremap <silent> tk :<C-u>tabclose<CR>
 nnoremap <silent> tn :<C-u>tabnext<CR>
 nnoremap <silent> tp :<C-u>tabprevious<CR>
 
-" setting for fuzzyfinder.vim
-nnoremap <Space>f f
-nnoremap <Space>F F
-nnoremap f <Nop>
-nnoremap <silent> fb :<C-u>FufBuffer!<CR>
-nnoremap <silent> ff :<C-u>FufFile! <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-"nnoremap <silent> fm :<C-u>FuzzyFinderMruFile!<CR>
-nnoremap <silent> tb :<C-u>tabnew<CR>:tabmove<CR>:FufBuffer!<CR>
-nnoremap <silent> tf :<C-u>tabnew<CR>:tabmove<CR>:FufFile! <C-r>=expand('#:~:.')[:-1-len(expand('#:~:.:t'))]<CR><CR>
-"nnoremap <silent> tm :<C-u>tabnew<CR>:tabmove<CR>:FuzzyFinderMruFile!<CR>
-imap <C-f> */
 
-"neocomplcache settings
-let g:neocomplcache_enable_at_startup = 1
-"Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-"Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-"Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-"Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-"settings for highlight
-"http://blog.appling.jp/archives/140
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" highlight
+""" http://blog.appling.jp/archives/140
+""""""""""""""""""""""""""""""""""""""""""""""""""
 function! SOLSpaceHilight()
   syntax match SOLSpace "^\s\+" display containedin=ALL
   highlight SOLSpace term=underline ctermbg=darkblue
@@ -107,12 +90,55 @@ if has("syntax")
   augroup END
 endif
 
-"yanktmp
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Others
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" yank from cursol to the end of line
+nnoremap Y y$
+
+source ~/.vimrc.local
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" pathogen.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+call pathogen#runtime_append_all_bundles()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" neocomplcache settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" unite.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_enable_start_insert=1
+nnoremap <silent> Ub :<C-u>Unite buffer<CR>
+nnoremap <silent> Uf :<C-u>Unite file<CR>
+nnoremap <silent> Um :<C-u>Unite file_mru<CR>
+nnoremap <silent> Uu :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> Ur :<C-u>Unite -buffer-name=register register<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" yanktmp
+""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
-"yank from cursol to the end of line
-nnoremap Y y$
-
-source ~/.vimrc.local

@@ -1,7 +1,3 @@
-## refs: special thanx
-## http://memo.officebrook.net/20090205.html
-## http://d.hatena.ne.jp/j7400157/20080723/1216827182
-
 ## auto complete: enable compsys
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
@@ -32,14 +28,14 @@ colors
 setopt prompt_subst
 
 case ${UID} in
- 0)
- PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
- PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
- ;;
- *)
- PROMPT="%{$fg_bold[cyan]%}%m%{$fg_bold[white]%}%%%{$reset_color%} "
- PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
- ;;
+  0)
+  PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
+  PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
+  ;;
+  *)
+  PROMPT="%{$fg_bold[cyan]%}%m%{$fg_bold[white]%}%%%{$reset_color%} "
+  PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
+  ;;
 esac
 
 RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%} "
@@ -65,8 +61,8 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 if [ $UID = 0 ]; then
- unset HISTFILE
- SAVEHIST=0
+  unset HISTFILE
+  SAVEHIST=0
 fi
 
 setopt share_history

@@ -34,7 +34,7 @@ set hintchars=HJKLASDFG
 set hintinputs=label,name,value
 
 " set auto complete
-set complete=sl
+set complete=slt
 set ignorecase
 
 " set keymap
