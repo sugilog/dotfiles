@@ -1,4 +1,6 @@
-## auto complete: enable compsys
+##################################################
+### basic options
+##################################################
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
@@ -22,7 +24,9 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:default' menu select
 
-## prompt color settings
+##################################################
+### prompt color settings
+##################################################
 autoload -Uz colors
 colors
 
@@ -55,8 +59,10 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 ;;
 esac
 
-## history
 
+##################################################
+### history
+##################################################
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -71,7 +77,9 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_save_no_dups
 
-## alias
+##################################################
+### alias
+##################################################
 setopt complete_aliases
 
 case "${OSTYPE}" in
@@ -105,8 +113,10 @@ alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 alias diff="colordiff"
 alias sd='svn diff | colordiff | less'
 
-## key_bind
 
+##################################################
+### key bind
+##################################################
 bindkey -v
 
 zmodload zsh/complist
@@ -122,16 +132,14 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-search-backward
 
-## function
 
+##################################################
+### functional
+##################################################
 function chpwd() {
   ll
   _reg_pwd_screennum
 }
-
-## env
-export LESS=R
-export SVN_EDITOR=vim
 
 case "${TERM}" in
 kterm*|xterm*)
@@ -155,6 +163,12 @@ if [ $TERM != "screen" ]; then
   esac
 fi
 
-# ## mysql
+
+##################################################
+### env
+##################################################
+export LESS=R
+export SVN_EDITOR=vim
+
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
