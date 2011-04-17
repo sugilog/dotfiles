@@ -3,6 +3,7 @@ zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
 source ~/dotfiles/cdd
+source ~/dotfiles/cdgem
 source ~/.zshrc.local
 
 setopt auto_cd

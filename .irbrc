@@ -11,7 +11,8 @@ Wirble.colorize
 
 IRB.conf[:AUTO_INDENT] = true
 
-def log_to(stream = STDOUT)
-  ActiveRecord::Base.logger = Logger.new(stream)
-  ActiveRecord::Base.clear_active_connections!
-end
+# def log_to(stream = STDOUT, colorize = true)
+#   ActiveRecord::Base.logger = Logger.new(stream)
+#   ActiveRecord::Base.clear_active_connections!
+#   ActiveRecord::Base.colorize_logging = colorize
+# end
