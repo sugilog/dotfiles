@@ -19,6 +19,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 set runtimepath=~/.vimperator
+source ~/.vimperatorrc.local
 
 " set bell options
 set noerrorbells
@@ -69,12 +70,16 @@ autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a 
 
 "" websearch.js custom templates
 " see: http://d.hatena.ne.jp/sugilog/20110328/1301326210
-source ~/.vimperatorrc.local
-
 javascript <<EOF
-liberator.globalVariables.webSearchTemplates = [
+var templates = [
   { names: ['gems'], description: 'search rubygems.org', url: 'http://rubygems.org/search?utf8=%E2%9C%93&query=%KEYWORD%' }
 ];
+if (liberator.globalVariables.webSearchTemplates) {
+  liberator.globalVariables.webSearchTemplates = liberator.globalVariables.webSearchTemplates.concat(templates);
+}
+else {
+  liberator.globalVariables.webSearchTemplates = templates;
+}
 EOF
 
 "" copy.js custom templates with goo.gl
