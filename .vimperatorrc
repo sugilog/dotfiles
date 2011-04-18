@@ -1,44 +1,41 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" require plugins and addons
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"" plugins
-" migemo_find.js
-" migemo_hint.js
-" feedsomekey_2.js
-" _smooziee.js
-" copy.js
-" websearch.js => https://github.com/sugilog/websearch.vimpr
-"" fx addons
-" xul/migemo
-" hatena bookmark
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 """ basic settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
 set runtimepath=~/.vimperator
 source ~/.vimperatorrc.local
 
-" set bell options
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" bell options
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set noerrorbells
 set novisualbell
 
-" set gui options
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gui options
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set titlestring="Firefox"
 set toolbars=addons,bookmarks,tabs,nomenu,nonavigation
 set focuscontent
 
-" set hint settings
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" hint options
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set hintchars=HJKLASDFG
 set hintinputs=label,name,value
 
-" set auto complete
-set complete=sl
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" auto complete
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set complete=slt
 set ignorecase
 
-" set keymap
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" keymap
+""""""""""""""""""""""""""""""""""""""""""""""""""
+style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 map <C-b> :bmarks!
 map <C-h> :history!
 
@@ -46,30 +43,37 @@ map <C-h> :history!
 set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
 set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
-" ime controll
-style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
-
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin settings
+"" migemo_find.js
+"" migemo_hint.js
+"" feedsomekey_2.js
+"" _smooziee.js
+"" copy.js
+"" websearch.js => https://github.com/sugilog/websearch.vimpr
+"" opener.js
+"" _libly.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 "" migemo_find/hint.js
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set hintmatching=custom
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
 "" feedsomekey_2.js
+""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd LocationChange .* :fmapc
-" for Gmail
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
-" for google reader
 autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a A r S N P X O gh ga gs gt gu u / ?
 
 
-"" websearch.js custom templates
-" see: http://d.hatena.ne.jp/sugilog/20110328/1301326210
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" websearch.js custom templates
+"" see: http://d.hatena.ne.jp/sugilog/20110328/1301326210
+""""""""""""""""""""""""""""""""""""""""""""""""""
 javascript <<EOF
 var templates = [
   { names: ['gems'], description: 'search rubygems.org', url: 'http://rubygems.org/search?utf8=%E2%9C%93&query=%KEYWORD%' }
@@ -82,9 +86,12 @@ else {
 }
 EOF
 
-"" copy.js custom templates with goo.gl
-" see: http://d.hatena.ne.jp/sugilog/20110321/1300721545
-" see: http://code.google.com/apis/urlshortener/v1/getting_started.html
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" copy.js custom templates with goo.gl
+"" see: http://d.hatena.ne.jp/sugilog/20110321/1300721545
+"" see: http://code.google.com/apis/urlshortener/v1/getting_started.html
+""""""""""""""""""""""""""""""""""""""""""""""""""
 javascript <<EOF
 liberator.globalVariables.copy_templates = [
   {
@@ -136,16 +143,17 @@ EOF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ addons setting
+"" xul/migemo
+"" hatena bookmark
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-"" hatena_bookmark
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" hatena_bookmark
+""""""""""""""""""""""""""""""""""""""""""""""""""
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 set complete+=H
 
 javascript <<EOF
-// キーボードショートカットの指定
-// 空(null)を指定すれば hints や nnoremap を上書きしなくなる
-//    (注: 現バージョンではデフォルト値で上書きされてます。将来修正予定です)
 liberator.globalVariables.hBookmark_shortcuts = {
   hintsAdd     : 'c',
   hintsComment : 'C',
@@ -153,8 +161,6 @@ liberator.globalVariables.hBookmark_shortcuts = {
   comment      : ['C'],
 };
 
-// コマンドの設定
-// ここから下の設定は、はてなブックマーク拡張のバージョン 1.2.4a1 以降で有効です。
 liberator.globalVariables.hBookmark_commands = {
   hbsearch             : 'hb[search]',
   hbsearch_tab         : 'hbt[absearch]',
@@ -166,17 +172,10 @@ liberator.globalVariables.hBookmark_commands = {
   hbsearch_title_tab   : 'hbtti[tle]',
 };
 
-// :hb! url 等の bang(!) 付きで開いた場合の挙動。
-// 標準ははてブエントリーページを開く entryPage が設定されている。
-// 他に新規タブで開く openNewTab がある。
-// また、文字列ではなく自分で定義した関数をセットすることもできる。
 liberator.globalVariables.hBookmark_bangFunction = 'entryPage';
 
-// 検索時の wait(ms)
 liberator.globalVariables.hBookmark_search_interval = 1000;
-// 一度に検索する limit
 liberator.globalVariables.hBookmark_search_limit = 10;
-// 検索時の表示の最大件数。この件数に達するまで検索し続ける。
 liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
 
