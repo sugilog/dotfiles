@@ -10,3 +10,14 @@ Wirble.init
 Wirble.colorize
 
 IRB.conf[:AUTO_INDENT] = true
+
+# if defined? Rails::Console
+  require 'active_record'
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+#   ActiveResource::Base.logger = Logger.new(STDOUT)
+
+#   if defined? Hirb
+#     Hirb.enable
+#   end
+# end
+
