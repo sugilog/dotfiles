@@ -67,7 +67,6 @@ nnoremap <silent> tp :<C-u>tabprevious<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
-""" http://blog.appling.jp/archives/140
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function! SOLSpaceHilight()
   syntax match SOLSpace "^\s\+" display containedin=ALL
