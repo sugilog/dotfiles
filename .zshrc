@@ -149,18 +149,21 @@ kterm*|xterm*)
 ;;
 esac
 
-if [ $TERM != "screen" ]; then
-  case "${OSTYPE}" in
-  freebsd*|darwin*)
-# do nothing
-#     if [ $TERM = "xterm" ]; then
-#       exec tscreen
-#     fi
-  ;;
-  linux*)
-  exec tscreen
-  ;;
+_ask_use() {
+  echo "use '$1'?"
+
+  read _ask
+  case ${_ask} in
+  y|Y|yes)
+    `$1`
+    ;;
+  *)
+    ;;
   esac
+}
+
+if [ $TERM != "screen" ]; then
+  _ask_use 'tscreen'
 fi
 
 
