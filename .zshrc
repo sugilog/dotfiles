@@ -5,7 +5,6 @@ zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
 source ~/dotfiles/cdd
-source ~/dotfiles/cdgem
 source ~/.zshrc.local
 
 setopt auto_cd
@@ -102,7 +101,6 @@ alias du="du -h"
 alias df="df -h"
 alias vi="vim"
 
-alias screen="tscreen"
 alias sc="ruby script/console"
 alias g="git"
 alias s="svn"
@@ -149,18 +147,21 @@ kterm*|xterm*)
 ;;
 esac
 
-if [ $TERM != "screen" ]; then
-  case "${OSTYPE}" in
-  freebsd*|darwin*)
-# do nothing
-#     if [ $TERM = "xterm" ]; then
-#       exec tscreen
-#     fi
-  ;;
-  linux*)
-  exec tscreen
-  ;;
+_ask_use() {
+  echo "use '$1'?"
+
+  read _ask
+  case ${_ask} in
+  y|Y|yes)
+    `$1`
+    ;;
+  *)
+    ;;
   esac
+}
+
+if [ $TERM != "screen" ]; then
+  _ask_use 'screen'
 fi
 
 
