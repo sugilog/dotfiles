@@ -1,22 +1,39 @@
-# basic settings
+##################################################
+### basic settings
+##################################################
 autodetach on
 crlf off
 startup_message off
 vbell off
-defutf8 on
-defkanji utf-8
-defencoding utf-8
-encoding utf-8 utf-8
-# # defutf8 on
-# defkanji euc
-# defencoding euc
-# encoding euc euc
 
-defscrollback 10000
+## env for utf8
+# defutf8 on
+# defkanji utf-8
+# defencoding utf-8
+# encoding utf-8 utf-8
+## env for euc
+defkanji euc
+defencoding euc
+encoding euc euc
 
-# status line
+
+##################################################
+### status line settings
+##################################################
 hardstatus alwayslastline "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=b wb}%y/%m/%d %{=b wm}%c"
 
+##################################################
+### scroll settings
+##################################################
+defscrollback 10000
+
+# enable to scroll by mouse or keyboard
+termcapinfo xterm* ti@:te@
+
+
+##################################################
+### keybind settings
+##################################################
 # escape ^Aa
 bind n screen
 bind l windowlist
@@ -24,20 +41,14 @@ bind l windowlist
 screen 1
 screen 0
 
-bind j focus down
-bind k focus up
-# bind -c REGION j focus down
-# bind -c REGION k focus up
+bind j focus next
+bind k focus prev
 bind -c REGION 0 remove
 bind -c REGION 1 only
 bind -c REGION 2 split
 bind -c REGION 3 split -v
-# bind -c REGION } resize +2
-# bind -c REGION { resize -2
 bind w command -c REGION
 
 bind u encoding utf8
 bind e encoding euc
 
-# XXX: ignore window resize
-termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
