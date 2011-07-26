@@ -102,7 +102,6 @@ alias du="du -h"
 alias df="df -h"
 alias vi="vim"
 
-alias screen="tscreen"
 alias sc="ruby script/console"
 alias g="git"
 alias s="svn"
@@ -163,7 +162,7 @@ _ask_use() {
 }
 
 if [ $TERM != "screen" ]; then
-  _ask_use 'tscreen'
+  _ask_use 'screen'
 fi
 
 
