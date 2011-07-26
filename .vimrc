@@ -98,6 +98,9 @@ nnoremap Y y$
 
 source ~/.vimrc.local
 
+" rename opened file: http://vim-users.jp/2009/05/hack17/
+"   usage: :Rename newfilename.txt
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
@@ -125,7 +128,7 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert=0
 nnoremap <silent> Ub :<C-u>Unite buffer<CR>
 nnoremap <silent> Uf :<C-u>Unite file<CR>
 nnoremap <silent> Um :<C-u>Unite file_mru<CR>
