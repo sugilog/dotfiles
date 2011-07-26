@@ -7,14 +7,14 @@ startup_message off
 vbell off
 
 ## env for utf8
-# defutf8 on
-# defkanji utf-8
-# defencoding utf-8
-# encoding utf-8 utf-8
+defutf8 on
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
 ## env for euc
-defkanji euc
-defencoding euc
-encoding euc euc
+# defkanji euc
+# defencoding euc
+# encoding euc euc
 
 
 ##################################################
