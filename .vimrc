@@ -115,26 +115,33 @@ call pathogen#runtime_append_all_bundles()
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplcache settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" auto-start neocomplcache withtout :NeoCompleCasheEnable
 let g:neocomplcache_enable_at_startup = 1
+" smartcase setting ignore case till capped input
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
+" not good for performance, but efficienct for java
+"   example: NeoCompleCache can complete NCC (N*C*C*)
+autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
+" enable completion words include underbar ( _ )
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" completion menimum lentgh for cache, default: 4
+let g:neocomplcache_min_syntax_length = 4
+" auto lock buffer pattern for bad compatibility with neocomplcache
+" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" emmulate SuperTab behavior
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_enable_start_insert=0
-nnoremap <silent> Ub :<C-u>Unite buffer<CR>
-nnoremap <silent> Uf :<C-u>Unite file<CR>
-nnoremap <silent> Um :<C-u>Unite file_mru<CR>
-nnoremap <silent> Uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> Ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> :ua :<C-u>Unite buffer<CR>
+nnoremap <silent> :uf :<C-u>Unite file<CR>
+nnoremap <silent> :um :<C-u>Unite file_mru<CR>
+nnoremap <silent> :uu :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> :ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> :ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> :ur :<C-u>Unite -buffer-name=register register<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
