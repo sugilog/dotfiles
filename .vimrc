@@ -21,17 +21,12 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set nocompatible
 
 set nobackup
 set writebackup
 
 set foldmethod=manual
-
 syntax enable
-filetype on
-filetype indent on
-filetype plugin on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
@@ -107,13 +102,27 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" pathogen.vim
+""" vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""
-call pathogen#runtime_append_all_bundles()
+set nocompatible
+filetype off
+set rtp+=~/dotfiles/.vim/vundle.git/
+call vundle#rc()
 
+Bundle 'Shougo/neocomplcache'
+Bundle 'hrp/EnhancedCommentify'
+Bundle 'vim-scripts/yanktmp.vim'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/svn-diff.vim'
+Bundle 'tsaleh/vim-align'
+Bundle 'janx/vim-rubytest'
+Bundle 'Shougo/unite.vim'
+
+filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" neocomplcache settings
+""" neocomplcache
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " auto-start neocomplcache withtout :NeoCompleCasheEnable
 let g:neocomplcache_enable_at_startup = 1
