@@ -147,21 +147,12 @@ kterm*|xterm*)
 ;;
 esac
 
-_ask_use() {
-  echo "use '$1'?"
-
-  read _ask
-  case ${_ask} in
-  y|Y|yes)
-    `$1`
-    ;;
-  *)
-    ;;
-  esac
-}
-
 if [ $TERM != "screen" ]; then
-  _ask_use 'screen'
+  which screen
+
+  if [ "$?" -eq 0 ]; then
+    screen
+  fi
 fi
 
 

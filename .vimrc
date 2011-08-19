@@ -140,17 +140,19 @@ let g:neocomplcache_min_syntax_length = 4
 " emmulate SuperTab behavior
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
+nnoremap Ns <Plug>(neocomplcache_snippets_expand)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_enable_start_insert=0
-nnoremap <silent> :ua :<C-u>Unite buffer<CR>
-nnoremap <silent> :uf :<C-u>Unite file<CR>
-nnoremap <silent> :um :<C-u>Unite file_mru<CR>
-nnoremap <silent> :uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> :ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> :ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> :ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap Ua :<C-u>Unite buffer<CR>
+nnoremap Uf :<C-u>Unite file<CR>
+nnoremap Um :<C-u>Unite file_mru<CR>
+nnoremap Uu :<C-u>Unite buffer file_mru<CR>
+nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
