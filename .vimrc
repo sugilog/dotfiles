@@ -155,6 +155,8 @@ nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
 
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
