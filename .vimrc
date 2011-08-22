@@ -118,6 +118,7 @@ Bundle 'vim-scripts/svn-diff.vim'
 Bundle 'tsaleh/vim-align'
 Bundle 'janx/vim-rubytest'
 Bundle 'Shougo/unite.vim'
+Bundle 'othree/eregex.vim'
 
 filetype plugin indent on
 
@@ -156,9 +157,16 @@ nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" yanktmp
+""" yanktmp.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" eregex.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap / :M/
+nnoremap ? :M?
+nnoremap ,/ /
+nnoremap ,? ?
