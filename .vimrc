@@ -63,26 +63,14 @@ nnoremap <silent> tp :<C-u>tabprevious<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
-function! SOLSpaceHilight()
-  syntax match SOLSpace "^\s\+" display containedin=ALL
-  highlight SOLSpace term=underline ctermbg=darkblue
-endf
-function! SOLSpaceHilightEnd()
-  syntax match SOLSpace "\s\+$" display containedin=ALL
-  highlight SOLSpace term=underline ctermbg=darkblue
-endf
-function! JISX0208SpaceHilight()
-  syntax match JISX0208Space "　" display containedin=ALL
-  highlight JISX0208Space term=underline ctermbg=darkblue
-endf
-if has("syntax")
-  augroup invisible
-  autocmd! invisible
-  autocmd BufNew,BufRead * call SOLSpaceHilight()
-  autocmd BufNew,BufRead * call SOLSpaceHilightEnd()
-  autocmd BufNew,BufRead * call JISX0208SpaceHilight()
-  augroup END
-endif
+  highlight WhitespaceEOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+  au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+
+  highlight WhitespaceBOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+  au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
+
+highlight ZenkakuSpace cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+au BufWinEnter,VimEnter,WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
@@ -120,6 +108,7 @@ Bundle 'janx/vim-rubytest'
 Bundle 'Shougo/unite.vim'
 Bundle 'othree/eregex.vim'
 Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-haml'
 
 filetype plugin indent on
 
@@ -177,3 +166,14 @@ nnoremap / :M/
 nnoremap ? :M?
 nnoremap ,/ /
 nnoremap ,? ?
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" rails.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
+autocmd User Rails Rnavcommand sfixtures spec/fixtures -suffix=_spec.rb
+autocmd User Rails Rnavcommand smodel spec/models -suffix=_spec.rb
+autocmd User Rails Rnavcommand slib spec/libs -suffix=_spec.rb
+autocmd User Rails Rnavcommand cfeature features -suffix=.feature
+autocmd User Rails Rnavcommand cstep features/step_definitions -suffix=.rb
+autocmd User Rails Rnavcommand config config
