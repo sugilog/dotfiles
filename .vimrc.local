@@ -5,4 +5,4 @@ set fileencoding=utf-8
 "set encoding=euc-jp
 "set fileencoding=euc-jp
 
-set rtp+=$HOME/.vim/vim-rubytest
+set rtp+=$HOME/.vim/bundle/vim-rubytest
