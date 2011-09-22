@@ -27,10 +27,19 @@ set writebackup
 
 syntax enable
 
-set foldmethod=manual
-autocmd FileType ruby :set foldmethod=indent
-autocmd FileType ruby :set foldlevel=1
-autocmd FileType ruby :set foldnestmax=2
+set foldmethod=syntax
+set foldlevel=1
+set foldnestmax=2
+" ref: http://d.hatena.ne.jp/thinca/20110523/1306080318
+augroup foldmethod-syntax
+  autocmd!
+  autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
+  \                   |   setlocal foldmethod=manual
+  \                   | endif
+  autocmd InsertLeave * if &l:foldmethod ==# 'manual'
+  \                   |   setlocal foldmethod=syntax
+  \                   | endif
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
