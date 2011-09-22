@@ -110,6 +110,7 @@ alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 # just do: sudo make install
 alias diff="colordiff"
 alias sd='svn diff | colordiff | less'
+alias sudo="sudo env PATH=$PATH"
 
 
 ##################################################
@@ -149,12 +150,12 @@ esac
 
 if [ $TERM != "screen" ]; then
   which screen
-
   if [ "$?" -eq 0 ]; then
-    screen
+    if [ $TERM != "linux" ]; then
+      screen
+    fi
   fi
 fi
-
 
 # http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
 case "${OSTYPE}" in

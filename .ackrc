@@ -1,0 +1,5 @@
+--smart-case
+--type-set=rails
+--type-add=rails=.haml
+--type-add=rails=.feature
+--type-add=rails=.sass

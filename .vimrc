@@ -25,8 +25,12 @@ set expandtab
 set nobackup
 set writebackup
 
-set foldmethod=manual
 syntax enable
+
+set foldmethod=manual
+autocmd FileType ruby :set foldmethod=indent
+autocmd FileType ruby :set foldlevel=1
+autocmd FileType ruby :set foldnestmax=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
@@ -63,11 +67,11 @@ nnoremap <silent> tp :<C-u>tabprevious<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
-  highlight WhitespaceEOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
-  au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+highlight WhitespaceEOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
 
-  highlight WhitespaceBOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
-  au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
+highlight WhitespaceBOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
 
 highlight ZenkakuSpace cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
 au BufWinEnter,VimEnter,WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
@@ -115,7 +119,7 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplcache
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" auto-start neocomplcache withtout :NeoCompleCasheEnable
+" auto-start neocomplcache withtout :NeoCompleCacheEnable
 let g:neocomplcache_enable_at_startup = 1
 " smartcase setting ignore case till capped input
 let g:neocomplcache_enable_smart_case = 1
@@ -125,13 +129,13 @@ autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
 " enable completion words include underbar ( _ )
 let g:neocomplcache_enable_underbar_completion = 1
 " completion menimum lentgh for cache, default: 4
-let g:neocomplcache_min_syntax_length = 4
-" auto lock buffer pattern for bad compatibility with neocomplcache
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_min_syntax_length = 6
 " emmulate SuperTab behavior
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 nnoremap Ns <Plug>(neocomplcache_snippets_expand)
+nnoremap Ne <C-u>:NeoComplCacheEnable<CR>
+nnoremap Nd <C-u>:NeoComplCacheDisable<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
@@ -177,3 +181,4 @@ autocmd User Rails Rnavcommand slib spec/libs -suffix=_spec.rb
 autocmd User Rails Rnavcommand cfeature features -suffix=.feature
 autocmd User Rails Rnavcommand cstep features/step_definitions -suffix=.rb
 autocmd User Rails Rnavcommand config config
+autocmd User Rails Rnavcommand locale config/locales -suffix=.yml
