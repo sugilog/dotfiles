@@ -76,13 +76,13 @@ nnoremap <silent> tp :<C-u>tabprevious<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
-highlight WhitespaceEOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+highlight WhitespaceEOL ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
 
-highlight WhitespaceBOL cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+highlight WhitespaceBOL ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
 
-highlight ZenkakuSpace cterm=underline ctermfg=DarkBlue ctermbg=DarkBlue guibg=DarkBlue
+highlight ZenkakuSpace ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,6 +122,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'othree/eregex.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-haml'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on
 
@@ -186,7 +187,7 @@ nnoremap ,? ?
 autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
 autocmd User Rails Rnavcommand sfixtures spec/fixtures -suffix=_spec.rb
 autocmd User Rails Rnavcommand smodel spec/models -suffix=_spec.rb
-autocmd User Rails Rnavcommand slib spec/libs -suffix=_spec.rb
+autocmd User Rails Rnavcommand slib spec/lib -suffix=_spec.rb
 autocmd User Rails Rnavcommand cfeature features -suffix=.feature
 autocmd User Rails Rnavcommand cstep features/step_definitions -suffix=.rb
 autocmd User Rails Rnavcommand config config
