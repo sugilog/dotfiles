@@ -1,4 +1,28 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
+""" vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
+set rtp+=~/dotfiles/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'hrp/EnhancedCommentify'
+Bundle 'vim-scripts/yanktmp.vim'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/svn-diff.vim'
+Bundle 'tsaleh/vim-align'
+Bundle 'janx/vim-rubytest'
+Bundle 'Shougo/unite.vim'
+Bundle 'othree/eregex.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-haml'
+Bundle 'vim-ruby/vim-ruby'
+
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 """ basics
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set textwidth=0
@@ -21,6 +45,7 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
+autocmd FileType * setlocal formatoptions-=ro
 
 set nobackup
 set writebackup
@@ -97,34 +122,10 @@ source ~/.vimrc.local
 "   usage: :Rename newfilename.txt
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-set rtp+=~/dotfiles/.vim/vundle.git/
-call vundle#rc()
-
-Bundle 'Shougo/neocomplcache'
-Bundle 'hrp/EnhancedCommentify'
-Bundle 'vim-scripts/yanktmp.vim'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/svn-diff.vim'
-Bundle 'tsaleh/vim-align'
-Bundle 'janx/vim-rubytest'
-Bundle 'Shougo/unite.vim'
-Bundle 'othree/eregex.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-haml'
-Bundle 'vim-ruby/vim-ruby'
-
-filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplcache
