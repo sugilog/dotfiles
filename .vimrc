@@ -185,11 +185,4 @@ nnoremap ,? ?
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ rails.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
-autocmd User Rails Rnavcommand sfixtures spec/fixtures -suffix=_spec.rb
-autocmd User Rails Rnavcommand smodel spec/models -suffix=_spec.rb
-autocmd User Rails Rnavcommand slib spec/lib -suffix=_spec.rb
-autocmd User Rails Rnavcommand cfeature features -suffix=.feature
-autocmd User Rails Rnavcommand cstep features/step_definitions -suffix=.rb
-autocmd User Rails Rnavcommand config config
-autocmd User Rails Rnavcommand locale config/locales -suffix=.yml
+autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=controller()
