@@ -25,6 +25,8 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ basics
 """"""""""""""""""""""""""""""""""""""""""""""""""
+language mes C
+
 set textwidth=0
 set autoindent
 set wrap
