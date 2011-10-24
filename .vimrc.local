@@ -2,6 +2,6 @@
 set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,euc-jp
+set fileencodings=utf-8,euc-jp,cp932
 "set encoding=euc-jp
 "set fileencoding=euc-jp

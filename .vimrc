@@ -157,6 +157,7 @@ let g:unite_enable_start_insert=0
 nnoremap Ua :<C-u>Unite buffer<CR>
 nnoremap Uf :<C-u>Unite file<CR>
 nnoremap Um :<C-u>Unite file_mru<CR>
+nnoremap Ub :<C-u>Unite buffer<CR>
 nnoremap Uu :<C-u>Unite buffer file_mru<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
