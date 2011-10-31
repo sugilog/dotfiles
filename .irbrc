@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'irb/completion'
-require 'pp'
 
 # http://irb-history.rubyforge.org/rdoc/
 IRB.conf[:SAVE_HISTORY] = 1000

@@ -56,7 +56,7 @@ syntax enable
 
 set foldmethod=syntax
 set foldlevel=1
-set foldnestmax=2
+set foldnestmax=3
 " ref: http://d.hatena.ne.jp/thinca/20110523/1306080318
 augroup foldmethod-syntax
   autocmd!
@@ -124,6 +124,9 @@ source ~/.vimrc.local
 "   usage: :Rename newfilename.txt
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
+" temp file
+command! Tmpfile :edit `=tempname()`
+map <leader>s :Tmpfile<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
@@ -189,3 +192,4 @@ nnoremap ,? ?
 """ rails.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=controller()
+
