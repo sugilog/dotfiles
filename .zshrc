@@ -112,7 +112,7 @@ alias diff="colordiff"
 alias sd='svn diff | colordiff | less'
 alias sudo="sudo env PATH=$PATH"
 
-alias -g M="\`svn st | grep '^M' | awk '{print \$2}'\`"
+alias -g M="\`svn st | egrep '^(M|A)' | awk '{print \$2}'\`"
 
 
 ##################################################
