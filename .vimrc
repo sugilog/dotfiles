@@ -3,22 +3,26 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
-set rtp+=~/dotfiles/.vim/vundle.git/
-call vundle#rc()
+set rtp+=~/dotfiles/neobundle.vim
 
-Bundle 'Shougo/neocomplcache'
-Bundle 'hrp/EnhancedCommentify'
-Bundle 'vim-scripts/yanktmp.vim'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/svn-diff.vim'
-Bundle 'tsaleh/vim-align'
-Bundle 'janx/vim-rubytest'
-Bundle 'Shougo/unite.vim'
-Bundle 'othree/eregex.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-haml'
-Bundle 'vim-ruby/vim-ruby'
+if has('vim_starting')
+  set runtimepath+=~/dotfiles/neobundle.vim
+  call neobundle#rc(expand('~/.vim/'))
+endif
+
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'hrp/EnhancedCommentify'
+NeoBundle 'vim-scripts/yanktmp.vim'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'vim-scripts/svn-diff.vim'
+NeoBundle 'tsaleh/vim-align'
+NeoBundle 'janx/vim-rubytest'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on
 
