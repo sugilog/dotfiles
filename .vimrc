@@ -193,6 +193,9 @@ nnoremap ? :M?
 nnoremap ,/ /
 nnoremap ,? ?
 
+" map E to file explorer, not for E2v
+command! E :e .
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ rails.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
