@@ -11,6 +11,8 @@ if has('vim_starting')
 endif
 
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
@@ -18,7 +20,6 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-scripts/svn-diff.vim'
 NeoBundle 'tsaleh/vim-align'
 NeoBundle 'janx/vim-rubytest'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-haml'
