@@ -133,6 +133,8 @@ command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 command! Tmpfile :edit `=tempname()`
 map <leader>s :Tmpfile<CR>
 
+au FileType sql command! -nargs=1 Mysql :! mysql -u root -D <args> < % -t
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
