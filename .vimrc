@@ -24,6 +24,7 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'chrismetcalf/vim-yankring '
 
 filetype plugin indent on
 
