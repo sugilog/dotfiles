@@ -24,6 +24,7 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/sudo.vim'
 
 filetype plugin indent on
 
@@ -170,10 +171,6 @@ nnoremap Uu :<C-u>Unite buffer file_mru<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
-" required to reference from http://doc.okkez.net/archives/
-" and add its directory to PATH
-" ref: http://d.hatena.ne.jp/arcright/20110814/1313331345
-nnoremap Ru :<C-u>Unite ref/refe<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
@@ -194,7 +191,8 @@ nnoremap ,/ /
 nnoremap ,? ?
 
 " map E to file explorer, not for E2v
-command! E :e %:h
+" DO NOT use following setting, comment out E2v commands define line
+" command! E :e %:h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ rails.vim
