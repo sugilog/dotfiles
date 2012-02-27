@@ -18,7 +18,9 @@ if has('gui_macvim')
     autocmd!
     if has('mac')
       autocmd FocusGained * set transparency=20
-      autocmd FocusLost * set transparency=60
+      autocmd FocusLost * set transparency=40
     endif
   augroup END
+
+  autocmd NeoComplCacheDisable
 endif

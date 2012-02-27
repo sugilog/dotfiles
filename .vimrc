@@ -26,6 +26,8 @@ NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'chrismetcalf/vim-yankring '
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'mattn/zencoding-vim'
+"NeoBundle 'kakkyz81/evervim'
 
 filetype plugin indent on
 
@@ -193,12 +195,12 @@ nnoremap ? :M?
 nnoremap ,/ /
 nnoremap ,? ?
 
-" map E to file explorer, not for E2v
-" DO NOT use following setting, comment out E2v commands define line
-" command! E :e %:h
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ rails.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=controller()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" zencoding.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
