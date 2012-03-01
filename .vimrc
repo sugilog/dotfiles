@@ -13,6 +13,7 @@ endif
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
@@ -156,7 +157,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 " completion menimum lentgh for cache, default: 4
 let g:neocomplcache_min_syntax_length = 6
 " emmulate SuperTab behavior
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?  "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 nnoremap Ns <Plug>(neocomplcache_snippets_expand)
 nnoremap Ne <C-u>:NeoComplCacheEnable<CR>
