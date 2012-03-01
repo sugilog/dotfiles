@@ -28,7 +28,6 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'chrismetcalf/vim-yankring '
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
-"NeoBundle 'kakkyz81/evervim'
 
 filetype plugin indent on
 
