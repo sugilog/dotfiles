@@ -63,8 +63,6 @@ esac
 ### history
 ##################################################
 HISTFILE=~/.zsh_histfile
-HISTSIZE=10000
-SAVEHIST=10000
 
 if [ $UID = 0 ]; then
   unset HISTFILE
