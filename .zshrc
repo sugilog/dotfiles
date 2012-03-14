@@ -149,12 +149,17 @@ kterm*|xterm*)
 esac
 
 if [ $TERM != "screen" ]; then
-  which screen
-  if [ "$?" -eq 0 ]; then
-    if [ $TERM != "linux" ]; then
-      screen
+  case "${OSTYPE}" in
+  freebsd*|darwin*)
+    ;;
+  *)
+    which screen
+    if [ "$?" -eq 0 ]; then
+      if [ $TERM != "linux" ]; then
+        screen
+      fi
     fi
-  fi
+  esac
 fi
 
 # http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
