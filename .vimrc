@@ -24,7 +24,6 @@ NeoBundle 'janx/vim-rubytest'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'chrismetcalf/vim-yankring '
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 
@@ -55,7 +54,7 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-autocmd FileType * setlocal formatoptions-=ro
+"autocmd FileType * setlocal formatoptions-=ro
 
 set nobackup
 set writebackup
