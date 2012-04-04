@@ -61,19 +61,19 @@ set writebackup
 
 syntax enable
 
-set foldmethod=syntax
-set foldlevel=1
-set foldnestmax=3
+" set foldmethod=syntax
+" set foldlevel=1
+" set foldnestmax=3
 " ref: http://d.hatena.ne.jp/thinca/20110523/1306080318
-augroup foldmethod-syntax
-  autocmd!
-  autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
-  \                   |   setlocal foldmethod=manual
-  \                   | endif
-  autocmd InsertLeave * if &l:foldmethod ==# 'manual'
-  \                   |   setlocal foldmethod=syntax
-  \                   | endif
-augroup END
+" augroup foldmethod-syntax
+"   autocmd!
+"   autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
+"   \                   |   setlocal foldmethod=manual
+"   \                   | endif
+"   autocmd InsertLeave * if &l:foldmethod ==# 'manual'
+"   \                   |   setlocal foldmethod=syntax
+"   \                   | endif
+" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
@@ -156,7 +156,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 " completion menimum lentgh for cache, default: 4
 let g:neocomplcache_min_syntax_length = 6
 " emmulate SuperTab behavior
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "<C-n>" : "<TAB>"
 
 nnoremap Ns <Plug>(neocomplcache_snippets_expand)
 nnoremap Ne <C-u>:NeoComplCacheEnable<CR>
