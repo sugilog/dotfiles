@@ -2,3 +2,8 @@ set wildmode=list:full
 set followhints=1
 set toolbars=folderlist,mail,nostatus,nomenu
 set focuscontent
+
+" Keymap for search folder behavior
+" http://code.google.com/p/vimperator-labs/issues/detail?id=696
+noremap j :javascript<Space>goDoCommand("cmd_nextMsg")<Return>
+noremap k :javascript<Space>goDoCommand("cmd_previousMsg")<Return>
