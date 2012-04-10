@@ -111,6 +111,8 @@ alias sd='svn diff | colordiff | less'
 alias sudo="sudo env PATH=$PATH"
 
 alias -g M="\`svn st | egrep '^(M|A)' | awk '{print \$2}'\`"
+# for rails test with failfast runner
+alias -g FF="-r failfast"
 
 
 ##################################################
@@ -137,18 +139,15 @@ bindkey "^R" history-incremental-search-backward
 ##################################################
 function chpwd() {
   ll
+
+  if [ -d ".svn" ]; then
+    echo "\nsvn info\n`svn info`"
+  fi
+
   _reg_pwd_screennum
 }
 
-case "${TERM}" in
-kterm*|xterm*)
-  precmd() {
-    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-  }
-;;
-esac
-
-if [ $TERM != "screen" ]; then
+if [ ${TERM} != "screen" ]; then
   case "${OSTYPE}" in
   freebsd*|darwin*)
     ;;

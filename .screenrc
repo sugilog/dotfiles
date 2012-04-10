@@ -4,6 +4,7 @@
 autodetach on
 crlf off
 startup_message off
+defmonitor on
 vbell off
 
 defutf8 on
