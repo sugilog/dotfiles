@@ -4,18 +4,13 @@
 autodetach on
 crlf off
 startup_message off
+defmonitor on
 vbell off
 
-## env for utf8
 defutf8 on
 defkanji utf-8
 defencoding utf-8
 encoding utf-8 utf-8
-## env for euc
-# defkanji euc
-# defencoding euc
-# encoding euc euc
-
 
 ##################################################
 ### status line settings
@@ -38,6 +33,7 @@ termcapinfo xterm* ti@:te@
 bind n screen
 bind l windowlist
 
+chdir
 screen 1
 screen 0
 

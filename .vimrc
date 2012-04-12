@@ -24,7 +24,6 @@ NeoBundle 'janx/vim-rubytest'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'chrismetcalf/vim-yankring '
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 
@@ -55,26 +54,26 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-autocmd FileType * setlocal formatoptions-=ro
+"autocmd FileType * setlocal formatoptions-=ro
 
 set nobackup
 set writebackup
 
 syntax enable
 
-set foldmethod=syntax
-set foldlevel=1
-set foldnestmax=3
+" set foldmethod=syntax
+" set foldlevel=1
+" set foldnestmax=3
 " ref: http://d.hatena.ne.jp/thinca/20110523/1306080318
-augroup foldmethod-syntax
-  autocmd!
-  autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
-  \                   |   setlocal foldmethod=manual
-  \                   | endif
-  autocmd InsertLeave * if &l:foldmethod ==# 'manual'
-  \                   |   setlocal foldmethod=syntax
-  \                   | endif
-augroup END
+" augroup foldmethod-syntax
+"   autocmd!
+"   autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
+"   \                   |   setlocal foldmethod=manual
+"   \                   | endif
+"   autocmd InsertLeave * if &l:foldmethod ==# 'manual'
+"   \                   |   setlocal foldmethod=syntax
+"   \                   | endif
+" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
@@ -157,8 +156,6 @@ autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " completion menimum lentgh for cache, default: 4
 let g:neocomplcache_min_syntax_length = 6
-" emmulate SuperTab behavior
-" imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " tab complete
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
 function! s:check_back_space()"{{{
