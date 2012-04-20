@@ -32,8 +32,6 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ basics
 """"""""""""""""""""""""""""""""""""""""""""""""""
-language mes C
-
 set textwidth=0
 set autoindent
 set wrap
@@ -54,26 +52,10 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-"autocmd FileType * setlocal formatoptions-=ro
 
 set nobackup
-set writebackup
 
 syntax enable
-
-" set foldmethod=syntax
-" set foldlevel=1
-" set foldnestmax=3
-" ref: http://d.hatena.ne.jp/thinca/20110523/1306080318
-" augroup foldmethod-syntax
-"   autocmd!
-"   autocmd InsertEnter * if &l:foldmethod ==# 'syntax'
-"   \                   |   setlocal foldmethod=manual
-"   \                   | endif
-"   autocmd InsertLeave * if &l:foldmethod ==# 'manual'
-"   \                   |   setlocal foldmethod=syntax
-"   \                   | endif
-" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
@@ -85,8 +67,9 @@ imap <C-l> <Right>
 imap <C-d> <Delete>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" search result highlight
+""" search setting
 """"""""""""""""""""""""""""""""""""""""""""""""""
+set incsearch
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
 nnoremap n :<C-u>set hlsearch<CR>n
 nnoremap N :<C-u>set hlsearch<CR>N
@@ -96,18 +79,6 @@ nnoremap * :<C-u>set hlsearch<CR>*
 nnoremap # :<C-u>set hlsearch<CR>#
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" Tabs
-""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <Space>t t
-nnoremap <Space>T T
-nnoremap t <Nop>
-nnoremap <silent> tc :<C-u>tabnew<CR>:tabmove<CR>
-nnoremap <silent> tk :<C-u>tabclose<CR>
-nnoremap <silent> tn :<C-u>tabnext<CR>
-nnoremap <silent> tp :<C-u>tabprevious<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
 highlight WhitespaceEOL ctermfg=Red ctermbg=Red guibg=Red
@@ -115,9 +86,6 @@ au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
 
 highlight WhitespaceBOL ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
-
-highlight ZenkakuSpace ctermfg=Red ctermbg=Red guibg=Red
-au BufWinEnter,VimEnter,WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
@@ -144,23 +112,20 @@ au FileType sql command! -nargs=1 Mysql :! mysql -u root -D <args> < % -t
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplcache
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" auto-start neocomplcache withtout :NeoCompleCacheEnable
 let g:neocomplcache_enable_at_startup = 1
-" smartcase setting ignore case till capped input
 let g:neocomplcache_enable_smart_case = 1
-" not good for performance, but efficienct for java
-"   example: NeoCompleCache can complete NCC (N*C*C*)
 autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
-" enable completion words include underbar ( _ )
 let g:neocomplcache_enable_underbar_completion = 1
-" completion menimum lentgh for cache, default: 4
-let g:neocomplcache_min_syntax_length = 6
-" emmulate SuperTab behavior
-imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "<C-n>" : "<TAB>"
+let g:neocomplcache_min_syntax_length = 3
 
-nnoremap Ns <Plug>(neocomplcache_snippets_expand)
-nnoremap Ne <C-u>:NeoComplCacheEnable<CR>
-nnoremap Nd <C-u>:NeoComplCacheDisable<CR>
+imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><S-TAB> neocomplcache#cancel_popup()."\<C-n>"
+
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
@@ -188,10 +153,10 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ eregex.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap / :M/
-nnoremap ? :M?
-nnoremap ,/ /
-nnoremap ,? ?
+nnoremap ,/ :M/
+nnoremap ,? :M?
+"" call Explore only E; to prevent ambiguous command with E2v
+command! E :Explore
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ rails.vim
