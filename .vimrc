@@ -111,12 +111,12 @@ au FileType sql command! -nargs=1 Mysql :! mysql -u root -D <args> < % -t
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplcache
+""" https://github.com/Shougo/neocomplcache/wiki/neocomplcache-tips
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
 
 imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <expr><S-TAB> neocomplcache#cancel_popup()."\<C-n>"
