@@ -71,12 +71,12 @@ imap <C-d> <Delete>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set incsearch
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
-nnoremap n :<C-u>set hlsearch<CR>n
-nnoremap N :<C-u>set hlsearch<CR>N
+nnoremap n :<C-u>set hlsearch<CR>nzz
+nnoremap N :<C-u>set hlsearch<CR>Nzz
 nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
-nnoremap * :<C-u>set hlsearch<CR>*
-nnoremap # :<C-u>set hlsearch<CR>#
+nnoremap * :<C-u>set hlsearch<CR>*zz
+nnoremap # :<C-u>set hlsearch<CR>#zz
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
