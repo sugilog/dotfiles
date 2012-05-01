@@ -46,14 +46,14 @@ set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin settings
-"" migemo_find.js
-"" migemo_hint.js
-"" feedsomekey_2.js
+""" git://github.com/vimpr/vimperator-plugins.git
+"" feedsomekey_3.js
 "" _smooziee.js
 "" copy.js
-"" websearch.js => https://github.com/sugilog/websearch.vimpr
-"" opener.js
 "" _libly.js
+"" websearch.js => https://github.com/sugilog/websearch.vimpr
+"" migemo_find.js
+"" migemo_hint.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
