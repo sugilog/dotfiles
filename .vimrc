@@ -57,6 +57,11 @@ set nobackup
 
 syntax enable
 
+set fileformat=unix
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,euc-jp,cp932
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ insert mode
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,8 +97,6 @@ au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " yank from cursol to the end of line
 nnoremap Y y$
-
-source ~/.vimrc.local
 
 " rename opened file: http://vim-users.jp/2009/05/hack17/
 "   usage: :Rename newfilename.txt
