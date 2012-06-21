@@ -33,18 +33,16 @@ filetype plugin indent on
 """ basics
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set textwidth=0
-set autoindent
-set wrap
+"set autoindent
+"set wrap
 set wrapscan
 set wildmenu
 
-set noignorecase
 set smartcase
 
 set showcmd
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set ruler
 
 set number
 set title
@@ -61,15 +59,6 @@ set fileformat=unix
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" insert mode
-""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-h> <Left>
-imap <C-l> <Right>
-imap <C-d> <Delete>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search setting
@@ -98,16 +87,6 @@ au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
 " yank from cursol to the end of line
 nnoremap Y y$
 
-" rename opened file: http://vim-users.jp/2009/05/hack17/
-"   usage: :Rename newfilename.txt
-command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
-
-" temp file
-command! Tmpfile :edit `=tempname()`
-map <leader>s :Tmpfile<CR>
-
-au FileType sql command! -nargs=1 Mysql :! mysql -u root -D <args> < % -t
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,21 +103,19 @@ let g:neocomplcache_enable_underbar_completion = 1
 imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <expr><S-TAB> neocomplcache#cancel_popup()."\<C-n>"
 
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+"if !exists('g:neocomplcache_omni_patterns')
+"  let g:neocomplcache_omni_patterns = {}
+"endif
+"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_enable_start_insert=0
-nnoremap Ua :<C-u>Unite buffer<CR>
-nnoremap Uf :<C-u>Unite file<CR>
-nnoremap Um :<C-u>Unite file_mru<CR>
+let g:unite_enable_start_insert=1
 nnoremap Ub :<C-u>Unite buffer<CR>
-nnoremap Uu :<C-u>Unite buffer file_mru<CR>
+nnoremap Uf :<C-u>Unite file<CR>
+nnoremap Uu :<C-u>Unite file_mru<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
@@ -160,13 +137,4 @@ nnoremap ,/ :M/
 nnoremap ,? :M?
 "" call Explore only E; to prevent ambiguous command with E2v
 command! E :Explore
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" rails.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=controller()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" zencoding.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""
 
