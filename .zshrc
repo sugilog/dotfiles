@@ -99,6 +99,7 @@ alias df="df -h"
 alias vi="vim"
 
 alias sc="ruby script/console"
+alias ss="ruby script/console --sandbox"
 alias g="git"
 alias s="svn"
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
