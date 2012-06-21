@@ -1,6 +1,6 @@
 set wildmode=list:full
 set followhints=1
-set toolbars=folderlist,nomail,nostatus,nomenu
+set toolbars=folderlist,mail,nostatus,menu
 set focuscontent
 
 " Keymap for search folder behavior
