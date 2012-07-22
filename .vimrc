@@ -72,6 +72,8 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*zz
 nnoremap # :<C-u>set hlsearch<CR>#zz
 
+au QuickfixCmdPost vimgrep cw
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,3 +140,8 @@ nnoremap ,? :M?
 "" call Explore only E; to prevent ambiguous command with E2v
 command! E :Explore
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" zencoding.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_zen_settings = { 'indentation' : '  ' }
