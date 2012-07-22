@@ -60,6 +60,10 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932
 
+" setting for ambiguous characters
+" on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
+set ambiwidth=double
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search setting
 """"""""""""""""""""""""""""""""""""""""""""""""""
