@@ -26,6 +26,7 @@ NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'jeroenbourgois/vim-actionscript'
 
 filetype plugin indent on
 
@@ -137,4 +138,24 @@ nnoremap ,/ :M/
 nnoremap ,? :M?
 "" call Explore only E; to prevent ambiguous command with E2v
 command! E :Explore
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" actionscript.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.as set filetype=actionscript
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" EnhancedCommentify
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EnhCommentifyRespectIndent = 'Yes'
+let g:EnhCommentifyUseSyntax = 'Yes'
+
+function EnhCommentifyCallback(ft)
+  if a:ft == 'actionscript'
+    let b:ECcommentOpen = '//'
+  endif
+endfunction
+let g:EnhCommentifyCallbackExists = 'Yes'
 
