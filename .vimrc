@@ -72,6 +72,8 @@ nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*zz
 nnoremap # :<C-u>set hlsearch<CR>#zz
 
+nnoremap mc /\(<\\|=\\|>\)\{6\}<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,4 +139,11 @@ nnoremap ,/ :M/
 nnoremap ,? :M?
 "" call Explore only E; to prevent ambiguous command with E2v
 command! E :Explore
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" eregex.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+vmap <leader>a :Align =><CR>
+
 
