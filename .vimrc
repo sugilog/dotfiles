@@ -73,6 +73,7 @@ nnoremap * :<C-u>set hlsearch<CR>*zz
 nnoremap # :<C-u>set hlsearch<CR>#zz
 
 nnoremap mc /\(<\\|=\\|>\)\{6\}<CR>
+au QuickfixCmdPost vimgrep cw
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
@@ -141,9 +142,12 @@ nnoremap ,? :M?
 command! E :Explore
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" eregex.vim
+""" zencoding.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_zen_settings = { 'indentation' : '  ' }
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" align.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap <leader>a :Align =><CR>
-
-
