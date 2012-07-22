@@ -61,6 +61,10 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932
 
+" setting for ambiguous characters
+" on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
+set ambiwidth=double
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search setting
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -72,6 +76,9 @@ nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
 nnoremap * :<C-u>set hlsearch<CR>*zz
 nnoremap # :<C-u>set hlsearch<CR>#zz
+
+nnoremap mc /\(<\\|=\\|>\)\{6\}<CR>
+au QuickfixCmdPost vimgrep cw
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
@@ -139,7 +146,6 @@ nnoremap ,? :M?
 "" call Explore only E; to prevent ambiguous command with E2v
 command! E :Explore
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ actionscript.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,3 +165,13 @@ function EnhCommentifyCallback(ft)
 endfunction
 let g:EnhCommentifyCallbackExists = 'Yes'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" zencoding.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_zen_settings = { 'indentation' : '  ' }
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" align.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+vmap <leader>a :Align =><CR>
