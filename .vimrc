@@ -23,7 +23,8 @@ NeoBundle 'tsaleh/vim-align'
 NeoBundle 'janx/vim-rubytest'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-ruby/vim-ruby'
+"NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'm2ym/rsense'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
@@ -89,6 +90,10 @@ au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
 highlight WhitespaceBOL ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
 
+" disable highlight parenthesis
+" enable on file editing do :DoMatchParen
+let loaded_matchparen = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,11 +116,22 @@ let g:neocomplcache_enable_underbar_completion = 1
 imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <expr><S-TAB> neocomplcache#cancel_popup()."\<C-n>"
 
+"if !exists('g:neocomplcache_omni_patterns')
+  "let g:neocomplcache_omni_patterns = {}
+"endif
+"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:rsenseUseOmniFunc = 1
+if filereadable(expand('~/git/rsense/bin/rsense'))
+  let g:rsenseHome = expand('~/git/rsense')
+
+  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
@@ -162,6 +178,11 @@ function EnhCommentifyCallback(ft)
   if a:ft == 'actionscript'
     let b:ECcommentOpen = '//'
   endif
+  if a:ft == 'eruby'
+    let b:ECcommentOpen = '<%#'
+    let b:ECcommentMiddle = ''
+    let b:ECcommentClose = '%>'
+  endif
 endfunction
 let g:EnhCommentifyCallbackExists = 'Yes'
 
@@ -175,3 +196,5 @@ let g:user_zen_settings = { 'indentation' : '  ' }
 """ align.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 vmap <leader>a :Align =><CR>
+
+
