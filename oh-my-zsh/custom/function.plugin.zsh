@@ -1,5 +1,5 @@
 function chpwd() {
-  ll
+  ls -la
 
   if [ -d ".svn" ]; then
     echo "\nsvn info\n`svn info`"
