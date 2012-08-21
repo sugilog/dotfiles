@@ -1,9 +1,6 @@
 HISTFILE=~/.zsh_histfile
-
-if [ $UID = 0 ]; then
-  unset HISTFILE
-  SAVEHIST=0
-fi
+HISTSIZE=100
+SAVEHIST=0
 
 setopt share_history
 setopt hist_ignore_all_dups
