@@ -13,7 +13,7 @@ endif
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
