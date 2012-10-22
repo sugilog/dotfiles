@@ -13,7 +13,7 @@ endif
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
@@ -23,7 +23,6 @@ NeoBundle 'tsaleh/vim-align'
 NeoBundle 'janx/vim-rubytest'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tpope/vim-haml'
-"NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'm2ym/rsense'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
@@ -191,3 +190,7 @@ let g:user_zen_settings = { 'indentation' : '  ' }
 vmap <leader>a :Align =><CR>
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" sudo.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>s :e sudo:%<CR>
