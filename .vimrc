@@ -27,6 +27,7 @@ NeoBundle 'm2ym/rsense'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
+NeoBundle 'tpope/vim-markdown'
 
 filetype plugin indent on
 
