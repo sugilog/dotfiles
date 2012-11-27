@@ -25,8 +25,8 @@ if ENV.include?("RAILS_ENV")
   end
 
   begin
-    require 'hirb'
-    Hirb.enable
+    #require 'hirb'
+    #Hirb.enable
   rescue LoadError => ex
     puts ex.message
   end

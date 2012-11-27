@@ -28,6 +28,8 @@ NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
 
 filetype plugin indent on
 
