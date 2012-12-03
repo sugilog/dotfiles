@@ -40,3 +40,7 @@ viack() {
 sd() {
   svn diff $@ | colordiff | less
 }
+
+vij() {
+  vim `date +%Y%m.md`
+}
