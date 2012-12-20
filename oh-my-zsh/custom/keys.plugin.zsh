@@ -28,7 +28,7 @@ alias g="git"
 alias s="svn"
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 # need to install colordiff
-# http://colordiff.sourceforge.net/
+# http://www.colordiff.org/
 # just do: sudo make install
 alias diff="colordiff"
 alias sudo="sudo env PATH=$PATH"
