@@ -8,16 +8,12 @@ function chpwd() {
   _reg_pwd_screennum
 }
 
-if [ ${TERM} != "screen" ]; then
+if [ ${TERM} = "xterm-color" ]; then
   case "${OSTYPE}" in
   freebsd*|darwin*)
-    ;;
-  *)
-    which screen
+    which tmux
     if [ "$?" -eq 0 ]; then
-      if [ $TERM != "linux" ]; then
-        screen
-      fi
+      tmux
     fi
   esac
 fi

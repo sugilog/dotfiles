@@ -68,7 +68,9 @@ set fileencodings=utf-8,euc-jp,cp932
 " on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
 set ambiwidth=double
 
-set clipboard=unnamed
+if $TERM != "screen"
+  set clipboard=unnamed
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search setting
