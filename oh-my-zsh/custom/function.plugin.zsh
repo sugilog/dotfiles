@@ -13,7 +13,7 @@ if [ ${TERM} = "xterm-color" ]; then
   freebsd*|darwin*)
     which tmux
     if [ "$?" -eq 0 ]; then
-      tmux
+      tmux -u
     fi
   esac
 fi
