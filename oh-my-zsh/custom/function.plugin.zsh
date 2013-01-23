@@ -26,6 +26,10 @@ freebsd*|darwin*)
     diskutil repairPermissions /
     purge
   }
+
+  mi() {
+    open $@ -a /Applications/mi.app
+  }
   ;;
 esac
 
@@ -40,3 +44,4 @@ sd() {
 vij() {
   vim `date +%Y%m.md`
 }
+
