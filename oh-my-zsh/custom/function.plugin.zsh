@@ -18,9 +18,9 @@ if [ ${TERM} = "xterm-color" ]; then
   esac
 fi
 
-# http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
 case "${OSTYPE}" in
 freebsd*|darwin*)
+  # http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
   libera_memory() {
     du -sx / >& /dev/null & sleep 5 && kill $!
     diskutil repairPermissions /
@@ -29,6 +29,10 @@ freebsd*|darwin*)
 
   mi() {
     open $@ -a /Applications/mi.app
+  }
+
+  vij() {
+    vim `date +%Y%m.md`
   }
   ;;
 esac
@@ -39,9 +43,5 @@ viack() {
 
 sd() {
   svn diff $@ | colordiff | less
-}
-
-vij() {
-  vim `date +%Y%m.md`
 }
 
