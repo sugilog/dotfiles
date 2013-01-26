@@ -1,0 +1,9 @@
+project_name: advertise
+project_root: ~/
+tabs:
+  - editor:
+      layout: 5c46,364x97,0,0[364x73,0,0{182x73,0,0,181x73,183,0},364x23,0,74]
+      panes:
+        - ssh advertise_development
+        - ssh advertise_development
+        - ssh advertise_development
