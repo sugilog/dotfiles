@@ -7,3 +7,4 @@ tabs:
         - ssh advertise_development
         - ssh advertise_development
         - ssh advertise_development
+  - other: ~/tmp
