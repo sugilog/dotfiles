@@ -30,6 +30,7 @@ NeoBundle 'jeroenbourgois/vim-actionscript'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'vim-scripts/tracwiki'
 
 filetype plugin indent on
 
