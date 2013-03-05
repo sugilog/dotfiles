@@ -1,0 +1,15 @@
+# ~/.tmuxinator/deploy.yml
+# you can make as many tabs as you wish...
+
+project_name: deploy
+project_root: ~/
+tabs:
+  - editor:
+      layout: ca3b,364x97,0,0{227x97,0,0,0,136x97,228,0[136x48,228,0,1,136x48,228,49,2]}
+      panes:
+        - ssh advertise_development
+        - ssh util01
+        - |-
+          tmux send-keys -t 0 "cdd trunk" C-m &&
+          tmux kill-pane
+  - other: ~/tmp
