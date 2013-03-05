@@ -150,9 +150,9 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> sy :call YanktmpYank()<CR>
-map <silent> sp :call YanktmpPaste_p()<CR>
-map <silent> sP :call YanktmpPaste_P()<CR>
+map <silent> ty :call YanktmpYank()<CR>
+map <silent> tp :call YanktmpPaste_p()<CR>
+map <silent> tP :call YanktmpPaste_P()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ eregex.vim
