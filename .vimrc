@@ -31,6 +31,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'vim-scripts/tracwiki'
+NeoBundle 'rking/ag.vim'
 
 filetype plugin indent on
 
@@ -150,9 +151,9 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> sy :call YanktmpYank()<CR>
-map <silent> sp :call YanktmpPaste_p()<CR>
-map <silent> sP :call YanktmpPaste_P()<CR>
+map <silent> ty :call YanktmpYank()<CR>
+map <silent> tp :call YanktmpPaste_p()<CR>
+map <silent> tP :call YanktmpPaste_P()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ eregex.vim
