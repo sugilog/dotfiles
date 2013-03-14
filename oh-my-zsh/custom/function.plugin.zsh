@@ -41,6 +41,9 @@ esac
 viack() {
   vim `ack $@ -l`
 }
+viag() {
+  vim `ag $@ -l`
+}
 
 sd() {
   svn diff $@ | colordiff | less
