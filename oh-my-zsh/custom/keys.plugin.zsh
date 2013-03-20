@@ -38,6 +38,8 @@ alias -g M="\`svn st | egrep '^(M|A)' | awk '{print \$2}'\`"
 # for rails test with failfast runner
 alias -g FF="-r failfast"
 
+alias mongod="mongod --dbpath $HOME/.mongo/data/ --port 27017"
+
 
 # key binds
 
