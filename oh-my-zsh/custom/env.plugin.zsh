@@ -6,8 +6,13 @@ alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
 
 #if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [[ -s $HOME/.rbenv ]]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # check tmuxinator env: tmuxinator doctor
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+if [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] ; then
+  source $HOME/.tmuxinator/scripts/tmuxinator;
+fi
+
