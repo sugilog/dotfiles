@@ -14,16 +14,14 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'hrp/EnhancedCommentify'
+NeoBundle 'Shougo/neocomplcache-rsense'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'vim-scripts/svn-diff.vim'
-NeoBundle 'tsaleh/vim-align'
 NeoBundle 'janx/vim-rubytest'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'm2ym/rsense'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
@@ -32,6 +30,15 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'vim-scripts/tracwiki'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'tomtom/tcomment_vim'
+"" :Unite outline
+NeoBundle 'h1mesuke/unite-outline'
+"" :Unite scriptnames
+NeoBundle 'zhaocai/unite-scriptnames'
+
 
 filetype plugin indent on
 
@@ -138,15 +145,27 @@ endif
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_enable_start_insert=1
-nnoremap Ub :<C-u>Unite buffer<CR>
-nnoremap Uf :<C-u>Unite file<CR>
 nnoremap Uu :<C-u>Unite file_mru<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap Ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap Ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap Um :<C-u>Unite menu:shortcut<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+let g:unite_source_menu_menus = {
+      \   "shortcut" : {
+      \       "description" : "unite-menu",
+      \       "command_candidates" : [
+      \           ["edit vimrc",   "edit $MYVIMRC"],
+      \           ["source vimrc", "source $MYVIMRC"],
+      \           ["file mru",     "Unite file_mru"],
+      \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
+      \           ["buffer",       "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
+      \           ["register",     "Unite -buffer-name=register register"],
+      \           ["neobundle",    "Unite neobundle"],
+      \       ],
+      \   },
+      \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
@@ -170,33 +189,15 @@ autocmd BufNewFile,BufRead *.as set filetype=actionscript
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" EnhancedCommentify
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EnhCommentifyRespectIndent = 'Yes'
-let g:EnhCommentifyUseSyntax = 'Yes'
-
-function EnhCommentifyCallback(ft)
-  if a:ft == 'actionscript'
-    let b:ECcommentOpen = '//'
-  endif
-  if a:ft == 'eruby'
-    let b:ECcommentOpen = '<%#'
-    let b:ECcommentMiddle = ''
-    let b:ECcommentClose = '%>'
-  endif
-endfunction
-let g:EnhCommentifyCallbackExists = 'Yes'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 """ zencoding.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_zen_settings = { 'indentation' : '  ' }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" align.vim
+""" alignta.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-vmap <leader>a :Align =><CR>
+vmap <leader>a :Alignta =><CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
