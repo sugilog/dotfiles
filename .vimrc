@@ -38,6 +38,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'h1mesuke/unite-outline'
 "" :Unite scriptnames
 NeoBundle 'zhaocai/unite-scriptnames'
+NeoBundle 'basyura/unite-rails'
 
 
 filetype plugin indent on
@@ -146,8 +147,10 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_enable_start_insert=1
 nnoremap Uu :<C-u>Unite file_mru<CR>
-nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
+nnoremap Us :<C-u>Unite source<CR>
+nnoremap Ur :<C-u>Unite source<CR>rails/ 
+nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
@@ -156,13 +159,13 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
-      \           ["edit vimrc",   "edit $MYVIMRC"],
-      \           ["source vimrc", "source $MYVIMRC"],
-      \           ["file mru",     "Unite file_mru"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
+      \           ["file mru",     "Unite file_mru"],
       \           ["buffer",       "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
-      \           ["neobundle",    "Unite neobundle"],
+      \           ["unite source", "Unite source"],
+      \           ["edit vimrc",   "edit $MYVIMRC"],
+      \           ["source vimrc", "source $MYVIMRC"],
       \       ],
       \   },
       \}
