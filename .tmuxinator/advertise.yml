@@ -2,16 +2,16 @@ project_name: advertise
 project_root: ~/
 tabs:
   - editor:
-      layout: c4b2,364x96,0,0{127x96,0,0,0,236x96,128,0[236x68,128,0{123x68,128,0,1,112x68,252,0,3},236x27,128,69{123x27,128,69,2,112x27,252,69,4}]}
+      layout: 21a8,364x97,0,0{72x97,0,0,0,291x97,73,0[291x68,73,0{145x68,73,0,1,145x68,219,0,3},291x28,73,69{145x28,73,69,2,145x28,219,69,4}]}
       panes:
         - ssh advertise_development
         - ssh advertise_development
         - ssh advertise_development
         - ssh advertise_development
         - |-
-          tmux send-keys -t 0 "cdd working" C-m &&
+          tmux send-keys -t 0 "cdd working && tail -f log/development.log" C-m &&
           tmux send-keys -t 1 "cdd working" C-m &&
-          tmux send-keys -t 2 "cdd working && tail -f log/development.log" C-m &&
+          tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working && script/console" C-m &&
           tmux kill-pane
   - other: ~/tmp

@@ -39,7 +39,7 @@ NeoBundle 'h1mesuke/unite-outline'
 "" :Unite scriptnames
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
-
+NeoBundle 'tomasr/molokai'
 
 filetype plugin indent on
 
@@ -81,6 +81,11 @@ set ambiwidth=double
 if $TERM != "screen"
   set clipboard=unnamed
 endif
+
+if $TERM == "xterm-256color"
+  colorscheme molokai
+end
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search setting
@@ -207,3 +212,4 @@ vmap <leader>a :Alignta =><CR>
 """ sudo.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>s :e sudo:%<CR>
+
