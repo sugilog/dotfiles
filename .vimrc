@@ -33,7 +33,8 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-speeddating'
 "" :Unite outline
 NeoBundle 'h1mesuke/unite-outline'
 "" :Unite scriptnames
