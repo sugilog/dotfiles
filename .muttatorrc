@@ -2,6 +2,7 @@ set wildmode=list:full
 set followhints=1
 set toolbars=folderlist,mail,nostatus,menu
 set focuscontent
+set editor="$HOME/bin/mvim -f"
 
 " Keymap for search folder behavior
 " http://code.google.com/p/vimperator-labs/issues/detail?id=696

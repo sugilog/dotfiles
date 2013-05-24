@@ -30,10 +30,12 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'vim-scripts/tracwiki'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-speeddating'
 "" :Unite outline
 NeoBundle 'h1mesuke/unite-outline'
 "" :Unite scriptnames

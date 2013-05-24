@@ -3,6 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath=~/.vimperator
 source ~/.vimperatorrc.local
+colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ bell options
