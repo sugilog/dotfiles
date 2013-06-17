@@ -10,11 +10,10 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/'))
 endif
 
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neocomplcache-rsense'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'tpope/vim-rails'
@@ -36,9 +35,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-speeddating'
-"" :Unite outline
 NeoBundle 'h1mesuke/unite-outline'
-"" :Unite scriptnames
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'tomasr/molokai'
@@ -128,26 +125,49 @@ nnoremap Y y$
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" neocomplcache
-""" https://github.com/Shougo/neocomplcache/wiki/neocomplcache-tips
+""" neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-autocmd FileType java let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
 
-imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <expr><S-TAB> neocomplcache#cancel_popup()."\<C-n>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
 endif
-let g:rsenseUseOmniFunc = 1
-if filereadable(expand('~/git/rsense/bin/rsense'))
-  let g:rsenseHome = expand('~/git/rsense')
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-endif
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  " return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
@@ -158,6 +178,7 @@ nnoremap Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Us :<C-u>Unite source<CR>
 nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap Uo :<C-u>Unite outline<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
