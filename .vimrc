@@ -127,7 +127,7 @@ nnoremap Y y$
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
+if has('lua')
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)"
       \: pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -167,7 +167,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
