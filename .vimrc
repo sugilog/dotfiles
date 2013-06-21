@@ -10,34 +10,40 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/'))
 endif
 
+NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'vim-scripts/svn-diff.vim'
+NeoBundle 'Shougo/vimproc', {
+      \ "build" : {
+      \     "mac"  : "make -f make_mac.mak",
+      \     "unix" : "make -f make_unix.mak",
+      \   },
+      \ }
+" Make following plugins lazy and set autoload hook
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'vim-scripts/yanktmp.vim'
-NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'vim-scripts/svn-diff.vim'
-NeoBundle 'janx/vim-rubytest'
-NeoBundle 'othree/eregex.vim'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'jeroenbourgois/vim-actionscript'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'vim-scripts/tracwiki'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'janx/vim-rubytest'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'jeroenbourgois/vim-actionscript'
+NeoBundle 'vim-scripts/tracwiki'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'vim-scripts/yanktmp.vim'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
 
 filetype plugin indent on
@@ -178,6 +184,7 @@ nnoremap Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Us :<C-u>Unite source<CR>
 nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap Ub :<C-u>Unite buffer<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
@@ -189,7 +196,7 @@ let g:unite_source_menu_menus = {
       \       "command_candidates" : [
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite file_mru"],
-      \           ["buffer",       "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
+      \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
       \           ["unite source", "Unite source"],
       \           ["edit vimrc",   "edit $MYVIMRC"],
