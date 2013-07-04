@@ -244,3 +244,14 @@ vmap <leader>a :Alignta =><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>s :e sudo:%<CR>
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" trackwiki.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.tracwiki
+  \ if &ft == '' |
+  \   set ft=tracwiki |
+  \ else |
+  \   setf tracwiki |
+  \ endif
