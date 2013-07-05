@@ -83,6 +83,7 @@ set fileencodings=utf-8,euc-jp,cp932
 " setting for ambiguous characters
 " on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
 set ambiwidth=double
+set display+=lastline
 
 if $TERM != "screen"
   set clipboard=unnamed
@@ -116,6 +117,9 @@ au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
 
 highlight WhitespaceBOL ctermfg=Red ctermbg=Red guibg=Red
 au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
+
+highlight WhitespaceERB ctermfg=Magenta ctermbg=Yellow guibg=Red
+au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceERB", '^<%\s\+')
 
 " disable highlight parenthesis
 " enable on file editing do :DoMatchParen
