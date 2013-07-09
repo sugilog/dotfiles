@@ -1,1 +1,1 @@
-source ~/dotfiles/cdd
+source ~/dotfiles/cdd/cdd
