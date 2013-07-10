@@ -114,8 +114,10 @@ au QuickfixCmdPost vimgrep cw
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if $TERM == "xterm-256color"
   highlight myWhitespace ctermbg=241
+  " highlight CursorColumn ctermbg=241 term=reverse
 else
   highlight myWhitespace ctermbg=DarkBlue
+  " highlight CursorColumn ctermbg=DarkBlue term=reverse
 endif
 
 function s:myWhitespaceHighlight()
@@ -124,6 +126,8 @@ function s:myWhitespaceHighlight()
   syntax match myWhitespace "^<%\s\+"
 endfunction
 au BufWinEnter,VimEnter,WinEnter * call s:myWhitespaceHighlight()
+
+" set cursorcolumn
 
 " disable highlight parenthesis
 " enable on file editing do :DoMatchParen
