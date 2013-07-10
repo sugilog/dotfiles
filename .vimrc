@@ -112,14 +112,18 @@ au QuickfixCmdPost vimgrep cw
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
-highlight WhitespaceEOL ctermfg=Red ctermbg=Red guibg=Red
-au BufWinEnter,VimEnter,WinEnter * let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+if $TERM == "xterm-256color"
+  highlight myWhitespace ctermbg=241
+else
+  highlight myWhitespace ctermbg=DarkBlue
+endif
 
-highlight WhitespaceBOL ctermfg=Red ctermbg=Red guibg=Red
-au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceBOL", '^\s\+')
-
-highlight WhitespaceERB ctermfg=Magenta ctermbg=Yellow guibg=Red
-au BufWinEnter,VimEnter,WinEnter * let w:m2 = matchadd("WhitespaceERB", '^<%\s\+')
+function s:myWhitespaceHighlight()
+  syntax match myWhitespace "\s\+$"
+  syntax match myWhitespace "^\s\+"
+  syntax match myWhitespace "^<%\s\+"
+endfunction
+au BufWinEnter,VimEnter,WinEnter * call s:myWhitespaceHighlight()
 
 " disable highlight parenthesis
 " enable on file editing do :DoMatchParen
