@@ -117,7 +117,7 @@ au QuickfixCmdPost vimgrep cw
 if $TERM == "xterm-256color"
   highlight myWhitespace ctermbg=241
   " highlight CursorColumn ctermbg=241 term=reverse
-  "
+
   function s:myWhitespaceHighlight()
     syntax match myWhitespace "\s\+$"
     syntax match myWhitespace "^\s\+"
