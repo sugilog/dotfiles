@@ -45,6 +45,8 @@ NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'Lokaltog/powerline'
+set rtp+=~/.vim/powerline/powerline/bindings/vim
 
 filetype plugin indent on
 

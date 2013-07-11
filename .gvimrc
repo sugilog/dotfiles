@@ -3,7 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 if has('gui_macvim')
-  colorscheme torte
+  colorscheme molokai
   set imdisable
   set nobackup
   set visualbell t_vb=
