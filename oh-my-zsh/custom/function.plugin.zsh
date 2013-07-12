@@ -31,11 +31,6 @@ freebsd*|darwin*)
   mi() {
     open $@ -a /Applications/mi.app
   }
-
-  vij() {
-    vim `date +%Y%m.md`
-  }
-  ;;
 esac
 
 viack() {
