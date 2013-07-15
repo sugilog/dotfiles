@@ -15,3 +15,5 @@
   c = commit
 [core]
 	editor = vim
+[push]
+	default = simple
