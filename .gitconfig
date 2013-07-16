@@ -13,6 +13,9 @@
   s = status
   l = log
   c = commit
+  done = tag -f 'latest' origin/master
+  read = log -p --reverse 'latest'..origin/master
+  info = remote -v
 [core]
 	editor = vim
 [push]
