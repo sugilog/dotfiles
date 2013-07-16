@@ -1,6 +1,7 @@
 project_name: advertise
 project_root: ~/
 tabs:
+  - null_session: tmux kill-window
   - editor:
       layout: 21a8,364x97,0,0{72x97,0,0,0,291x97,73,0[291x68,73,0{145x68,73,0,1,145x68,219,0,3},291x28,73,69{145x28,73,69,2,145x28,219,69,4}]}
       panes:
@@ -14,4 +15,4 @@ tabs:
           tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working && script/console" C-m &&
           tmux kill-pane
-  - other: ~/tmp
+  - other:

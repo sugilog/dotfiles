@@ -1,0 +1,10 @@
+project_name: journal
+project_root: ~/
+tabs:
+  - null_session: tmux kill-window
+  - editor:
+      layout: even-horizontal
+      panes:
+        -
+        - vim `date +$HOME/Dropbox/00-Journal/%Y%m.md`
+  - other:
