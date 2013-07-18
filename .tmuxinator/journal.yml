@@ -5,6 +5,6 @@ tabs:
   - editor:
       layout: even-horizontal
       panes:
-        - irssi
+        - TERM=screen-256color irssi
         - vim `date +$HOME/Dropbox/00-Journal/%Y%m.md`
   - other:
