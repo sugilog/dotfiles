@@ -15,4 +15,3 @@ tabs:
           tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working && script/console" C-m &&
           tmux kill-pane
-  - other:

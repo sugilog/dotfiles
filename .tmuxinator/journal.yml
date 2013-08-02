@@ -2,9 +2,8 @@ project_name: journal
 project_root: ~/
 tabs:
   - null_session: tmux kill-window
-  - editor:
+  - main:
       layout: even-horizontal
       panes:
         - TERM=screen-256color irssi
         - vim `date +$HOME/Dropbox/00-Journal/%Y%m.md`
-  - other:
