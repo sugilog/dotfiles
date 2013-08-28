@@ -1,7 +1,6 @@
-project_name: work
-project_root: ~/
-tabs:
-  - null_session: tmux kill-window
+name: work
+root: ~/
+windows:
   - main:
       layout: even-horizontal
       panes:

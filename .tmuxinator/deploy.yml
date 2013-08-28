@@ -1,7 +1,6 @@
-project_name: deploy
-project_root: ~/
-tabs:
-  - null_session: tmux kill-window
+name: deploy
+root: ~/
+windows:
   - main:
       layout: ca3b,364x97,0,0{227x97,0,0,0,136x97,228,0[136x48,228,0,1,136x48,228,49,2]}
       panes:
