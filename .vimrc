@@ -46,6 +46,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'Lokaltog/powerline'
+NeoBundle 'hrsh7th/vim-versions'
 set rtp+=~/.vim/powerline/powerline/bindings/vim
 
 filetype plugin indent on
@@ -114,17 +115,17 @@ au QuickfixCmdPost vimgrep cw
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ highlight
 """"""""""""""""""""""""""""""""""""""""""""""""""
-if $TERM == "xterm-256color"
-  highlight myWhitespace ctermbg=241
-  " highlight CursorColumn ctermbg=241 term=reverse
+" if $TERM == "xterm-256color"
+"   highlight myWhitespace ctermbg=241
+"   " highlight CursorColumn ctermbg=241 term=reverse
 
-  function s:myWhitespaceHighlight()
-    syntax match myWhitespace "\s\+$"
-    syntax match myWhitespace "^\s\+"
-    syntax match myWhitespace "^<%\s\+"
-  endfunction
-  au BufWinEnter,VimEnter,WinEnter * call s:myWhitespaceHighlight()
-endif
+"   function s:myWhitespaceHighlight()
+"     syntax match myWhitespace "\s\+$"
+"     syntax match myWhitespace "^\s\+"
+"     syntax match myWhitespace "^<%\s\+"
+"   endfunction
+"   au BufWinEnter,VimEnter,WinEnter * call s:myWhitespaceHighlight()
+" endif
 
 " set cursorcolumn
 
@@ -198,6 +199,7 @@ nnoremap Ur :<C-u>Unite source<CR>rails/
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap Ub :<C-u>Unite buffer<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
+nnoremap Uv :<C-u>UniteVersions status<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
