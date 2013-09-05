@@ -5,4 +5,4 @@ windows:
       layout: even-horizontal
       panes:
         - TERM=screen-256color irssi
-        - vim `date +$HOME/Dropbox/00-Journal/%Y%m.md`
+        - cd $HOME/Dropbox/00-Journal && vim `date +%Y%m.md`

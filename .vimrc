@@ -36,7 +36,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
 NeoBundle 'vim-scripts/tracwiki'
 NeoBundle 'h1mesuke/vim-alignta'
@@ -47,7 +47,9 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'Lokaltog/powerline'
 NeoBundle 'hrsh7th/vim-versions'
-set rtp+=~/.vim/powerline/powerline/bindings/vim
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+" set rtp+=~/.vim/powerline/powerline/bindings/vim
 
 filetype plugin indent on
 
@@ -85,7 +87,7 @@ set fileencodings=utf-8,euc-jp,cp932
 
 " setting for ambiguous characters
 " on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
-" set ambiwidth=double
+set ambiwidth=double
 set display+=lastline
 
 if $TERM != "screen"
@@ -241,7 +243,7 @@ autocmd BufNewFile,BufRead *.as set filetype=actionscript
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" zencoding.vim
+""" emmet-vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_zen_settings = { 'indentation' : '  ' }
 
@@ -268,3 +270,72 @@ autocmd BufNewFile,BufRead *.tracwiki
   \ else |
   \   setf tracwiki |
   \ endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" lightline.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+      \   'right': [[ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \ },
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! MyFilename()
+  let fname = expand('%:t')
+  return &ft == 'unite' ? unite#get_status_string() :
+        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return  &ft == 'unite' ? 'Unite' :
+        \ winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
