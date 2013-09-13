@@ -24,3 +24,7 @@ if [[ -s /usr/local/heroku/bin ]] ; then
   export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
+if [[ -s /usr/local/share/npm/bin ]] ; then
+  export PATH="/usr/local/share/npm/bin:$PATH"
+fi
+

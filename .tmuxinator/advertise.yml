@@ -14,3 +14,10 @@ windows:
           tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working && script/console" C-m &&
           tmux kill-pane -t 4
+  - s3:
+      layout: e3bc,363x91,0,0{93x91,0,0,23,269x91,94,0[269x65,94,0{123x65,94,0,24,145x65,218,0,25},269x25,94,66,26]}
+      panes:
+        - cd ~/workspace/s3advertise; ngrep -d en0 -W byline port 80 | grep -A 3 -B 7 -E --line-buffered "Referer.*s3.*amazonaws.com/.*" | grep -E "(Host|GET)"
+        - cd ~/workspace/s3advertise; ls -la
+        - cd ~/workspace/s3advertise; ls -la
+        - cd ~/workspace/s3advertise; bundle exec guard start

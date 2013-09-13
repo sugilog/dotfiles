@@ -35,7 +35,6 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'jeroenbourgois/vim-actionscript'
 NeoBundle 'vim-scripts/tracwiki'
@@ -49,6 +48,8 @@ NeoBundle 'Lokaltog/powerline'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'nishigori/vim-sunday'
 " set rtp+=~/.vim/powerline/powerline/bindings/vim
 
 filetype plugin indent on
@@ -70,13 +71,13 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 
 set number
 set title
-set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
 set nobackup
 set nowritebackup
+set noswapfile
 
 syntax enable
 
@@ -100,44 +101,28 @@ end
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" search setting
+""" search setting with vim-anzu
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set incsearch
+set hlsearch
 nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
-nnoremap n :<C-u>set hlsearch<CR>nzz
-nnoremap N :<C-u>set hlsearch<CR>Nzz
+nmap n :<C-u>set hlsearch<CR><Plug>(anzu-n)zz
+nmap N :<C-u>set hlsearch<CR><Plug>(anzu-N)zz
+nmap * :<C-u>set hlsearch<CR><Plug>(anzu-star)zz
+nmap # :<C-u>set hlsearch<CR><Plug>(anzu-sharp)zz
 nnoremap / :<C-u>set hlsearch<CR>/
 nnoremap ? :<C-u>set hlsearch<CR>?
-nnoremap * :<C-u>set hlsearch<CR>*zz
-nnoremap # :<C-u>set hlsearch<CR>#zz
 
-nnoremap mc /\(<\\|=\\|>\)\{6\}<CR>
-au QuickfixCmdPost vimgrep cw
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" highlight
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" if $TERM == "xterm-256color"
-"   highlight myWhitespace ctermbg=241
-"   " highlight CursorColumn ctermbg=241 term=reverse
-
-"   function s:myWhitespaceHighlight()
-"     syntax match myWhitespace "\s\+$"
-"     syntax match myWhitespace "^\s\+"
-"     syntax match myWhitespace "^<%\s\+"
-"   endfunction
-"   au BufWinEnter,VimEnter,WinEnter * call s:myWhitespaceHighlight()
-" endif
-
-" set cursorcolumn
-
-" disable highlight parenthesis
-" enable on file editing do :DoMatchParen
-let loaded_matchparen = 1
+augroup vim-anzu
+  autocmd!
+  autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let loaded_matchparen = 1
+
 " yank from cursol to the end of line
 nnoremap Y y$
 
@@ -149,6 +134,9 @@ nnoremap Y y$
 """ neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if has('lua')
+imap <C-y> <Plug>(neosnippet_expand_or_jump)
+smap <C-y> <Plug>(neosnippet_expand_or_jump)
+xmap <C-y> <Plug>(neosnippet_expand_target)
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)"
       \: pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -157,13 +145,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \: "\<TAB>"
 
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
@@ -173,18 +158,10 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return neocomplete#smart_close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  " return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
-" <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
 
-" Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -279,16 +256,19 @@ autocmd BufNewFile,BufRead *.tracwiki
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'anzu' ] ],
       \   'right': [[ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
+      \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
+      \   'modified': 'MyModified',
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
+      \   'anzu': 'anzu#search_status',
       \ },
       \ }
 
@@ -339,3 +319,12 @@ function! MyMode()
 endfunction
 
 let g:unite_force_overwrite_statusline = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" sunday.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:sunday_pairs = [
+  \   ['active', 'inactive'],
+  \ ]
+
