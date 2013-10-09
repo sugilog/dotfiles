@@ -12,7 +12,6 @@ endif
 
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'vim-scripts/svn-diff.vim'
 NeoBundle 'Shougo/vimproc', {
       \ "build" : {
       \     "mac"  : "make -f make_mac.mak",
@@ -187,6 +186,7 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
+      \           ["svn commit",   "Unite versions/svn/status"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite file_mru"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
@@ -326,5 +326,25 @@ let g:unite_force_overwrite_statusline = 0
 
 let g:sunday_pairs = [
   \   ['active', 'inactive'],
+  \ ]
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" custom
+""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:UniteVersionsWithDiff(type)
+  tabnew
+  silent! setlocal ft=diff nobackup noswf nobuflisted nowrap buftype=nofile
+  exe "silent! read !LANG=C " . a:type . " diff"
+  setlocal nomodifiable
+  goto 1
+  redraw!
+  exe "silent! Unite versions/" . a:type . "/status"
+endfunction
+command! -nargs=0 UniteSvnDiff call s:UniteVersionsWithDiff("svn")
+command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
+
+let g:versions#type#svn#status#ignore_status = [
+  \  "X"
   \ ]
 
