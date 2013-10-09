@@ -186,7 +186,7 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
-      \           ["svn commit",   "Unite versions/svn/status"],
+      \           ["svn commit",   "UniteSvnDiff"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite file_mru"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
