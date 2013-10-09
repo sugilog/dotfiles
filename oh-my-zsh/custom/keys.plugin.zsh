@@ -28,6 +28,8 @@ alias db="ruby script/dbconsole"
 alias g="git"
 alias s="svn"
 alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
+alias visvn="vim -c UniteSvnDiff"
+alias vigit="vim -c UniteGitDiff"
 # need to install colordiff
 # http://www.colordiff.org/
 # just do: sudo make install

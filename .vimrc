@@ -12,7 +12,6 @@ endif
 
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'othree/eregex.vim'
-NeoBundle 'vim-scripts/svn-diff.vim'
 NeoBundle 'Shougo/vimproc', {
       \ "build" : {
       \     "mac"  : "make -f make_mac.mak",
@@ -30,13 +29,11 @@ NeoBundle 'basyura/unite-rails'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'janx/vim-rubytest'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-haml'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'jeroenbourgois/vim-actionscript'
 NeoBundle 'vim-scripts/tracwiki'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'pangloss/vim-javascript'
@@ -44,13 +41,15 @@ NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'Lokaltog/powerline'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'nishigori/vim-sunday'
-" set rtp+=~/.vim/powerline/powerline/bindings/vim
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'deris/vim-textobj-enclosedsyntax'
+NeoBundle 'mattn/benchvimrc-vim'
+
 
 filetype plugin indent on
 
@@ -187,6 +186,7 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
+      \           ["svn commit",   "Unite versions/svn/status"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite file_mru"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
@@ -326,5 +326,25 @@ let g:unite_force_overwrite_statusline = 0
 
 let g:sunday_pairs = [
   \   ['active', 'inactive'],
+  \ ]
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" custom
+""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:UniteVersionsWithDiff(type)
+  tabnew
+  silent! setlocal ft=diff nobackup noswf nobuflisted nowrap buftype=nofile
+  exe "silent! read !LANG=C " . a:type . " diff"
+  setlocal nomodifiable
+  goto 1
+  redraw!
+  exe "silent! Unite versions/" . a:type . "/status"
+endfunction
+command! -nargs=0 UniteSvnDiff call s:UniteVersionsWithDiff("svn")
+command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
+
+let g:versions#type#svn#status#ignore_status = [
+  \  "X"
   \ ]
 
