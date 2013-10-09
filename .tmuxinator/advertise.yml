@@ -1,13 +1,11 @@
 name: advertise
 root: ~/
 windows:
-  - s3:
-      layout: e3bc,363x91,0,0{93x91,0,0,23,269x91,94,0[269x65,94,0{123x65,94,0,24,145x65,218,0,25},269x25,94,66,26]}
+  - working:
+      layout: even-horizontal
       panes:
-        - cd ~/workspace/s3advertise; ngrep -d en0 -W byline port 80 | grep -A 3 -B 7 -E --line-buffered "Referer.*s3.*amazonaws.com/.*" | grep -E "(Host|GET)"
-        - cd ~/workspace/s3advertise; ls -la
-        - cd ~/workspace/s3advertise; ls -la
-        - cd ~/workspace/s3advertise; bundle exec guard start
+        -
+        -
   - editor:
       layout: 21a8,364x97,0,0{72x97,0,0,0,291x97,73,0[291x68,73,0{145x68,73,0,1,145x68,219,0,3},291x28,73,69{145x28,73,69,2,145x28,219,69,4}]}
       panes:
@@ -21,3 +19,10 @@ windows:
           tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working && script/console" C-m &&
           tmux kill-pane -t 4
+  # - s3:
+  #     layout: e3bc,363x91,0,0{93x91,0,0,23,269x91,94,0[269x65,94,0{123x65,94,0,24,145x65,218,0,25},269x25,94,66,26]}
+  #     panes:
+  #       - cd ~/workspace/s3advertise; ngrep -d en0 -W byline port 80 | grep -A 3 -B 7 -E --line-buffered "Referer.*s3.*amazonaws.com/.*" | grep -E "(Host|GET)"
+  #       - cd ~/workspace/s3advertise; ls -la
+  #       - cd ~/workspace/s3advertise; ls -la
+  #       - cd ~/workspace/s3advertise; bundle exec guard start

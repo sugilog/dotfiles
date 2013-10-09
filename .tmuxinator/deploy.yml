@@ -2,10 +2,12 @@ name: deploy
 root: ~/
 windows:
   - main:
-      layout: ca3b,364x97,0,0{227x97,0,0,0,136x97,228,0[136x48,228,0,1,136x48,228,49,2]}
+      layout: e878,363x91,0,0{181x91,0,0,23,181x91,182,0[181x45,182,0,24,181x22,182,46,26,181x22,182,69,27]}
       panes:
         - ssh advertise_development
-        - ssh util01
+        - ssh advertise_development
+        - ssh advertise_development
         - |-
           tmux send-keys -t 0 "cdd trunk" C-m &&
-          ssh util01
+          tmux send-keys -t 1 "cdd monitoring; cap tail_web_error_status" C-m &&
+          tmux send-keys -t 2 "cdd monitoring; cap tail_tag_error_status" C-m
