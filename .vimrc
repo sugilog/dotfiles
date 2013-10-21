@@ -41,9 +41,6 @@ NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'nishigori/vim-sunday'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'deris/vim-textobj-enclosedsyntax'
@@ -65,7 +62,7 @@ set smartcase
 
 set showcmd
 set laststatus=2
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 set number
 set title
@@ -98,30 +95,22 @@ set background=dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" search setting with vim-anzu
-""""""""""""""""""""""""""""""""""""""""""""""""""
-set incsearch
-set hlsearch
-nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
-nmap n :<C-u>set hlsearch<CR><Plug>(anzu-n)zz
-nmap N :<C-u>set hlsearch<CR><Plug>(anzu-N)zz
-nmap * :<C-u>set hlsearch<CR><Plug>(anzu-star)zz
-nmap # :<C-u>set hlsearch<CR><Plug>(anzu-sharp)zz
-nnoremap / :<C-u>set hlsearch<CR>/
-nnoremap ? :<C-u>set hlsearch<CR>?
-
-augroup vim-anzu
-  autocmd!
-  autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-augroup END
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let loaded_matchparen = 1
 
 " yank from cursol to the end of line
 nnoremap Y y$
+
+set incsearch
+set hlsearch
+nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
+nnoremap n :<C-u>set hlsearch<CR>nzz
+nnoremap N :<C-u>set hlsearch<CR>Nzz
+nnoremap * :<C-u>set hlsearch<CR>*zz
+nnoremap # :<C-u>set hlsearch<CR>#zz
+nnoremap / :<C-u>set hlsearch<CR>/
+nnoremap ? :<C-u>set hlsearch<CR>?
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
@@ -246,77 +235,6 @@ autocmd BufNewFile,BufRead *.tracwiki
   \   setf tracwiki |
   \ endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" lightline.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'anzu' ] ],
-      \   'right': [[ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'filename': 'MyFilename',
-      \   'modified': 'MyModified',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \   'anzu': 'anzu#search_status',
-      \ },
-      \ }
-
-function! MyModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! MyFilename()
-  let fname = expand('%:t')
-  return &ft == 'unite' ? unite#get_status_string() :
-        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth('.') > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  let fname = expand('%:t')
-  return  &ft == 'unite' ? 'Unite' :
-        \ winwidth('.') > 60 ? lightline#mode() : ''
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ sunday.vim
