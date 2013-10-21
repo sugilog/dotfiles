@@ -40,7 +40,6 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
@@ -94,9 +93,8 @@ if $TERM != "screen"
   set clipboard=unnamed
 endif
 
-if $TERM == "xterm-256color"
-  colorscheme molokai
-end
+colorscheme koehler
+set background=dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
