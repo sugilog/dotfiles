@@ -23,28 +23,24 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'janx/vim-rubytest'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/tracwiki'
-NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/yanktmp.vim'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'mileszs/ack.vim'
 NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'nishigori/vim-sunday'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'deris/vim-textobj-enclosedsyntax'
-NeoBundle 'mattn/benchvimrc-vim'
+" fork from 'tomasr/molokai' 
+NeoBundle 'sugilog/molokai' 
+" NeoBundle 'mattn/benchvimrc-vim'
 
 
 filetype plugin indent on
@@ -74,6 +70,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+colorscheme molokai
+let g:rehash256=1
+set background=dark
+
 syntax enable
 
 set fileformat=unix
@@ -89,9 +89,6 @@ set display+=lastline
 if $TERM != "screen"
   set clipboard=unnamed
 endif
-
-colorscheme koehler
-set background=dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,6 +149,8 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 endif
+
+let g:neocomplete#force_overwrite_completefunc = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ unite.vim
@@ -237,16 +236,7 @@ autocmd BufNewFile,BufRead *.tracwiki
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" sunday.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:sunday_pairs = [
-  \   ['active', 'inactive'],
-  \ ]
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" custom
+""" vim-versions
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function! s:UniteVersionsWithDiff(type)
   tabnew
