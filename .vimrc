@@ -18,7 +18,6 @@ NeoBundle 'Shougo/vimproc', {
       \     "unix" : "make -f make_unix.mak",
       \   },
       \ }
-" Make following plugins lazy and set autoload hook
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
@@ -41,6 +40,7 @@ NeoBundle 'hrsh7th/vim-versions'
 " fork from 'tomasr/molokai' 
 NeoBundle 'sugilog/molokai' 
 " NeoBundle 'mattn/benchvimrc-vim'
+NeoBundle 'osyo-manga/vim-anzu'
 
 
 filetype plugin indent on
@@ -101,13 +101,13 @@ nnoremap Y y$
 
 set incsearch
 set hlsearch
-nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
-nnoremap n :<C-u>set hlsearch<CR>nzz
-nnoremap N :<C-u>set hlsearch<CR>Nzz
-nnoremap * :<C-u>set hlsearch<CR>*zz
-nnoremap # :<C-u>set hlsearch<CR>#zz
-nnoremap / :<C-u>set hlsearch<CR>/
-nnoremap ? :<C-u>set hlsearch<CR>?
+" nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
+" nnoremap n :<C-u>set hlsearch<CR>nzz
+" nnoremap N :<C-u>set hlsearch<CR>Nzz
+" nnoremap * :<C-u>set hlsearch<CR>*zz
+" nnoremap # :<C-u>set hlsearch<CR>#zz
+" nnoremap / :<C-u>set hlsearch<CR>/
+" nnoremap ? :<C-u>set hlsearch<CR>?
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
@@ -254,3 +254,15 @@ let g:versions#type#svn#status#ignore_status = [
   \  "X"
   \ ]
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" anzu with search mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
+nmap n :set hlsearch<CR>zz<Plug>(anzu-n-with-echo)
+nmap N :set hlsearch<CR>zz<Plug>(anzu-N-with-echo)
+nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
+nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
+nnoremap / :set hlsearch<CR>/
+nnoremap ? :set hlsearch<CR>?
+let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'

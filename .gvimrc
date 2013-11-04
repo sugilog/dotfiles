@@ -10,7 +10,7 @@ if has('gui_macvim')
   set antialias
   set showtabline=2
   set guioptions-=T
-  set guifont=Ricty_for_Powerline:h13
+  set guifont=Ricty:h13
   " http://code.google.com/p/macvim-kaoriya/wiki/Readme
   set transparency=20
 
