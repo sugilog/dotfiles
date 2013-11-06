@@ -1,10 +1,5 @@
 function chpwd() {
   ls -la
-
-  if [ -d ".svn" ]; then
-    echo "\nsvn info\n`svn info`"
-  fi
-
   _reg_pwd_screennum
 }
 
