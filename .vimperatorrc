@@ -15,7 +15,7 @@ set novisualbell
 """ gui options
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set titlestring="Firefox"
-set toolbars=addons,bookmarks,tabs,nomenu,nonavigation
+set toolbars=addons,tabs,nobookmarks,nomenu,nonavigation
 set focuscontent
 
 
@@ -48,13 +48,14 @@ set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin settings
 """ git://github.com/vimpr/vimperator-plugins.git
-"" feedsomekey_3.js
+"" _libly.js
 "" _smooziee.js
 "" copy.js
-"" _libly.js
-"" websearch.js => https://github.com/sugilog/websearch.vimpr
-"" migemo_find.js
+"" feedSomeKeys_3.js
+"" migemo-find.js
+"" migemo_completion.js
 "" migemo_hint.js
+"" websearch.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,7 +65,7 @@ set hintmatching=custom
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"" feedsomekey_2.js
+"" feedsomekey_3.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
 autocmd LocationChange .* :fmapc
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
@@ -142,45 +143,5 @@ var getShortUrl = function() {
 
   return JSON.parse(request.responseText).id;
 };
-EOF
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" addons setting
-"" xul/migemo
-"" hatena bookmark
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" hatena_bookmark
-""""""""""""""""""""""""""""""""""""""""""""""""""
-javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-set complete+=H
-
-javascript <<EOF
-liberator.globalVariables.hBookmark_shortcuts = {
-  hintsAdd     : 'c',
-  hintsComment : 'C',
-  add          : ['c'],
-  comment      : ['C'],
-};
-
-liberator.globalVariables.hBookmark_commands = {
-  hbsearch             : 'hb[search]',
-  hbsearch_tab         : 'hbt[absearch]',
-  hbsearch_comment     : 'hbc[omment]',
-  hbsearch_comment_tab : 'hbtc[omment]',
-  hbsearch_url         : 'hbu[rl]',
-  hbsearch_url_tab     : 'hbtu[rl]',
-  hbsearch_title       : 'hbti[tle]',
-  hbsearch_title_tab   : 'hbtti[tle]',
-};
-
-liberator.globalVariables.hBookmark_bangFunction = 'entryPage';
-
-liberator.globalVariables.hBookmark_search_interval = 1000;
-liberator.globalVariables.hBookmark_search_limit = 10;
-liberator.globalVariables.hBookmark_search_max_limit = 100;
 EOF
 
