@@ -11,13 +11,11 @@ alias ls="ls -v -F --color"
 ;;
 esac
 
-alias ll='ls -al'
-alias la='ls -A'
+alias ll="ls -lah"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias locate="locate -i"
-alias lv="lv -c -T8192"
 alias du="du -h"
 alias df="df -h"
 alias vi="vim"
@@ -26,8 +24,6 @@ alias sc="ruby script/console"
 alias ss="ruby script/console --sandbox"
 alias db="ruby script/dbconsole"
 alias g="git"
-alias s="svn"
-alias svn_addall="svn st | grep '^?' | awk '{print \$2}' | xargs svn add"
 alias visvn="vim -c UniteSvnDiff"
 alias vigit="vim -c UniteGitDiff"
 # need to install colordiff

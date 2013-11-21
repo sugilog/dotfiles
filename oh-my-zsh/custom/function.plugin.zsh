@@ -1,5 +1,4 @@
 function chpwd() {
-  ls -la
   _reg_pwd_screennum
 }
 
@@ -23,11 +22,6 @@ viack() {
 viag() {
   vim `ag $@ -l`
 }
-
-sd() {
-  svn diff $@ | colordiff | less
-}
-
 
 # http://unix.stackexchange.com/questions/41980/prevent-watch-breaking-colors
 function watcher()
