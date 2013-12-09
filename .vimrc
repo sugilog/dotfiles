@@ -41,6 +41,7 @@ NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'sugilog/molokai' 
 " NeoBundle 'mattn/benchvimrc-vim'
 NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'osyo-manga/vim-over'
 
 
 filetype plugin indent on
@@ -158,6 +159,7 @@ let g:neocomplete#force_overwrite_completefunc = 1
 let g:unite_enable_start_insert=1
 nnoremap Uu :<C-u>Unite file_mru<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
+vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Us :<C-u>Unite source<CR>
 nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -172,6 +174,8 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
+      \           ["invoke over",           "OverCommandLine"],
+      \           ["invoke over (visual)",  "'<,'>OverCommandLine"],
       \           ["svn commit",   "UniteSvnDiff"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite file_mru"],
@@ -266,3 +270,10 @@ nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" over
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Leader>o :OverCommandLine<CR>
+
