@@ -284,6 +284,7 @@ nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
 
+vnoremap * "zy:let @/ = @z<CR>n
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ over
