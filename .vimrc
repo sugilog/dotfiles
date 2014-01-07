@@ -42,6 +42,10 @@ NeoBundle 'sugilog/molokai'
 " NeoBundle 'mattn/benchvimrc-vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
+" Gist-vim required webapi-vim
+" and set: git config --global github.user Username
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/gist-vim'
 
 
 filetype plugin indent on
@@ -160,6 +164,7 @@ let g:unite_enable_start_insert=1
 nnoremap Uu :<C-u>Unite file_mru<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
 vmap     Um :<C-u>Unite menu:shortcut<CR>
+nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Us :<C-u>Unite source<CR>
 nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -184,6 +189,14 @@ let g:unite_source_menu_menus = {
       \           ["unite source", "Unite source"],
       \           ["edit vimrc",   "edit $MYVIMRC"],
       \           ["source vimrc", "source $MYVIMRC"],
+      \       ],
+      \   },
+      \   "gist" : {
+      \       "description" : "unite-gist-menu",
+      \       "command_candidates" : [
+      \           ["my gists",     "Gist -l sugilog"],
+      \           ["post gist",    "Gist -p"],
+      \           ["update gist",  "Gist -e"],
       \       ],
       \   },
       \}
@@ -276,4 +289,14 @@ let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
 """ over
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Leader>o :OverCommandLine<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gist
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gist_clip_command = 'pbcopy'
+let g:gist_open_browser_after_post = 1
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
 
