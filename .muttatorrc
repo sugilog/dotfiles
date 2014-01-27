@@ -1,7 +1,8 @@
 set wildmode=list:full
 set followhints=1
-set toolbars=folderlist,mail,nostatus,menu
+set toolbars=folderlist,mail,status,menu
 set focuscontent
+set hintchars=HJKLASDFG
 set editor="$HOME/bin/mvim -f"
 
 " Keymap for search folder behavior
