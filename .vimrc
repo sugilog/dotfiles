@@ -21,7 +21,15 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'marijnh/tern_for_vim', {
+      \   "build" : {
+      \     "mac"  : "npm install",
+      \     "unix" : "npm install",
+      \   },
+      \   "autoload": {
+      \     "filetypes": ["javascript", "typescript"]
+      \   },
+      \ }
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
@@ -154,7 +162,6 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 endif
 
 let g:neocomplete#force_overwrite_completefunc = 1
