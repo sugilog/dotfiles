@@ -8,6 +8,6 @@ windows:
         - ssh advertise_development
         - ssh advertise_development
         - |-
-          tmux send-keys -t 0 "cdd trunk" C-m &&
+          tmux send-keys -t 0 "cdd current" C-m &&
           tmux send-keys -t 1 "cdd monitoring; cap tail_web_error_status" C-m &&
           tmux send-keys -t 2 "cdd monitoring; cap tail_tag_error_status" C-m
