@@ -116,16 +116,6 @@ let loaded_matchparen = 1
 " yank from cursol to the end of line
 nnoremap Y y$
 
-set incsearch
-set hlsearch
-" nnoremap <silent> <Esc><Esc> :<C-u>set hlsearch!<CR>
-" nnoremap n :<C-u>set hlsearch<CR>nzz
-" nnoremap N :<C-u>set hlsearch<CR>Nzz
-" nnoremap * :<C-u>set hlsearch<CR>*zz
-" nnoremap # :<C-u>set hlsearch<CR>#zz
-" nnoremap / :<C-u>set hlsearch<CR>/
-" nnoremap ? :<C-u>set hlsearch<CR>?
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,12 +212,15 @@ map <silent> tP :call YanktmpPaste_P()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ easy-motion and anzu
 """"""""""""""""""""""""""""""""""""""""""""""""""
+set incsearch
+set hlsearch
+
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
-map  n <Plug>(easymotion-next)<Plug>(anzu-n-with-echo)
-map  N <Plug>(easymotion-prev)<Plug>(anzu-N-with-echo)
+map  n <Plug>(anzu-n-with-echo)
+map  N <Plug>(anzu-N-with-echo)
 nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
 nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
