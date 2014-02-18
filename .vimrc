@@ -219,8 +219,8 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
-map  n <Plug>(anzu-n-with-echo)
-map  N <Plug>(anzu-N-with-echo)
+map  n <Plug>(anzu-n-with-echo)zz
+map  N <Plug>(anzu-N-with-echo)zz
 nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
 nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
