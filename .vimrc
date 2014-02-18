@@ -11,7 +11,6 @@ if has('vim_starting')
 endif
 
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'othree/eregex.vim'
 NeoBundle 'Shougo/vimproc', {
       \ "build" : {
       \     "mac"  : "make -f make_mac.mak",
@@ -48,6 +47,9 @@ NeoBundle 'hrsh7th/vim-versions'
 " fork from 'tomasr/molokai' 
 NeoBundle 'sugilog/molokai' 
 " NeoBundle 'mattn/benchvimrc-vim'
+" require to install https://github.com/koron/cmigemo
+NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'osyo-manga/vim-over'
 " Gist-vim required webapi-vim
@@ -218,12 +220,21 @@ map <silent> tp :call YanktmpPaste_p()<CR>
 map <silent> tP :call YanktmpPaste_P()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" eregex.vim
+""" easy-motion and anzu
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,/ :M/
-nnoremap ,? :M?
-"" call Explore only E; to prevent ambiguous command with E2v
-command! E :Explore
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
+map  n <Plug>(easymotion-next)<Plug>(anzu-n-with-echo)
+map  N <Plug>(easymotion-prev)<Plug>(anzu-N-with-echo)
+nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
+nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
+let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
+
+vnoremap * "zy:let @/ = @z<CR>n
+
+let g:EasyMotion_use_migemo = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ actionscript.vim
@@ -279,21 +290,6 @@ command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
 let g:versions#type#svn#status#ignore_status = [
   \  "X"
   \ ]
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" anzu with search mapping
-""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
-nmap n :set hlsearch<CR>zz<Plug>(anzu-n-with-echo)
-nmap N :set hlsearch<CR>zz<Plug>(anzu-N-with-echo)
-nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
-nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
-nnoremap / :set hlsearch<CR>/
-nnoremap ? :set hlsearch<CR>?
-let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
-
-vnoremap * "zy:let @/ = @z<CR>n
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ over
