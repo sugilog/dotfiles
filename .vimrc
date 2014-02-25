@@ -20,6 +20,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'marijnh/tern_for_vim', {
       \   "build" : {
       \     "mac"  : "npm install",
@@ -162,7 +163,7 @@ let g:neocomplete#force_overwrite_completefunc = 1
 """ unite.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:unite_enable_start_insert=1
-nnoremap Uu :<C-u>Unite file_mru<CR>
+nnoremap Uu :<C-u>Unite neomru/file<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
 vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Ug :<C-u>Unite menu:gist<CR>
@@ -184,7 +185,8 @@ let g:unite_source_menu_menus = {
       \           ["invoke over (visual)",  "'<,'>OverCommandLine"],
       \           ["svn commit",   "UniteSvnDiff"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
-      \           ["file mru",     "Unite file_mru"],
+      \           ["file mru",     "Unite neomru/file"],
+      \           ["dir mru",      "Unite neomru/directory"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
       \           ["unite source", "Unite source"],
