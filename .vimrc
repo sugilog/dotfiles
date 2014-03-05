@@ -35,7 +35,6 @@ NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'janx/vim-rubytest'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
@@ -57,7 +56,9 @@ NeoBundle 'osyo-manga/vim-over'
 " and set: git config --global github.user Username
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
-
+NeoBundle 'benmills/vimux'
+NeoBundle 'pgr0ss/vimux-ruby-test'
+" NeoBundle 'janx/vim-rubytest'
 
 filetype plugin indent on
 
@@ -301,3 +302,12 @@ let g:gist_detect_filetype = 1
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
 
+""" vimux
+
+let g:VimuxRunnerIndex = 3
+let g:VimuxUseNearest = 0
+let g:VimuxResetSequence = ""
+let g:vimux_ruby_clear_console_on_run = 0
+
+nmap <leader>t :RunRailsFocusedTest<CR>
+nmap <leader>T :RunAllRailsTest<CR>
