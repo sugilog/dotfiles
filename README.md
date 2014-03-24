@@ -36,6 +36,16 @@ ln -s $HOME/dotfiles/.vimperatorrc   $HOME/
 ln -s $HOME/dotfiles/.vimrc          $HOME/
 ```
 
+### with oh-my-zsh
+```
+ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom/
+```
+
+### without oh-my-zsh
+```
+ln -s $HOME/dotfiles/.zshrc $HOME/
+```
+
 ### copy secure-data-contain-able file
 ```
 cp $HOME/dotfiles/.gitconfig $HOME/
