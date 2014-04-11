@@ -39,6 +39,7 @@ alias -g M="\`svn st | egrep '^(M|A)' | awk '{print \$2}'\`"
 alias -g FF="-r failfast"
 
 alias mongod="mongod --dbpath $HOME/.mongo/data/ --port 27017"
+alias tmux="tmux -u"
 
 
 # key binds
