@@ -230,7 +230,7 @@ let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
 
 vnoremap * "zy:let @/ = @z<CR>n
 
-let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_use_migemo = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ actionscript.vim
