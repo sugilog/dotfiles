@@ -215,7 +215,7 @@ map <silent> tP :call YanktmpPaste_P()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ easy-motion and anzu
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set incsearch
+" set incsearch
 set hlsearch
 
 map  / <Plug>(easymotion-sn)
@@ -228,9 +228,13 @@ nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
 nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
 
+" http://haya14busa.com/mastering-vim-easymotion/
+nmap s :set hlsearch<CR><Plug>(easymotion-s2)
+
 vnoremap * "zy:let @/ = @z<CR>n
 
-let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_use_migemo = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ actionscript.vim
