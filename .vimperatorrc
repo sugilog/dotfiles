@@ -15,7 +15,8 @@ set novisualbell
 """ gui options
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set titlestring="Firefox"
-set toolbars=addons,tabs,nobookmarks,nomenu,nonavigation
+# when use nagios checker use status-4-evar
+set toolbars=tabs,nobookmarks,nomenu,nonavigation
 set focuscontent
 
 
@@ -84,7 +85,8 @@ var templates = [
   { names: ['codic'], description: 'search programming terms', url: 'http://codic.jp/search?q=%KEYWORD%' },
   { names: ['rurima'], description: 'search manual on ruby reference manual search', url: 'http://doc.ruby-lang.org/ja/search/query:%KEYWORD%/' },
   { names: ['weblio'], description: 'search on weblio en-js', url: 'http://ejje.weblio.jp/content_find/contains/0/%KEYWORD%' },
-  { names: ["apidock", "rails"], description: "search rails api on apidock",  url: "http://apidock.com/rails/search?query=%KEYWORD%" }
+  { names: ["apidock", "rails"], description: "search rails api on apidock",  url: "http://apidock.com/rails/search?query=%KEYWORD%" },
+  { names: ["mvn"], description: "search on maven central repository", url: "http://search.maven.org/#search|ga|1|%KEYWORD%" }
 ];
 if (liberator.globalVariables.webSearchTemplates) {
   liberator.globalVariables.webSearchTemplates = liberator.globalVariables.webSearchTemplates.concat(templates);
