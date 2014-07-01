@@ -10,6 +10,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/'))
 endif
 
+
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'Shougo/vimproc', {
       \ "build" : {
@@ -34,7 +35,7 @@ NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'tmhedberg/matchit'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
