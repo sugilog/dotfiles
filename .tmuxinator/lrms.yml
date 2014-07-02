@@ -12,5 +12,5 @@ windows:
           tmux send-keys -t 0 "cdd working && tail -f log/development.log" C-m &&
           tmux send-keys -t 1 "cdd working" C-m &&
           tmux send-keys -t 2 "cdd working" C-m &&
-          tmux send-keys -t 3 "cdd working && script/console" C-m &&
+          tmux send-keys -t 3 "cdd working && guard" C-m &&
           tmux kill-pane -t 4
