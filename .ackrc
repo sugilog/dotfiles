@@ -4,3 +4,4 @@
 --type-add=rails=.haml
 --type-add=rails=.feature
 --type-add=rails=.sass
+--all
