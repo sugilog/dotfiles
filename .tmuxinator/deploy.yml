@@ -2,12 +2,21 @@ name: deploy
 root: ~/
 windows:
   - main:
-      layout: e878,363x91,0,0{181x91,0,0,23,181x91,182,0[181x45,182,0,24,181x22,182,46,26,181x22,182,69,27]}
+      layout: 0a0b,364x98,0,0{182x98,0,0[182x49,0,0,9,182x24,0,50,17,182x23,0,75,18],181x98,183,0[181x24,183,0,10,181x24,183,25,14,181x24,183,50,12,181x23,183,75{90x23,183,75,13,90x23,274,75,19}]}
       panes:
+        - ssh advertise_development
+        - ssh advertise_development
+        - ssh advertise_development
+        - ssh advertise_development
         - ssh advertise_development
         - ssh advertise_development
         - ssh advertise_development
         - |-
           tmux send-keys -t 0 "cdd current" C-m &&
-          tmux send-keys -t 1 "cdd monitoring; cap tail_web_error_status" C-m &&
-          tmux send-keys -t 2 "cdd monitoring; cap tail_tag_error_status" C-m
+          tmux send-keys -t 1 "cdd monitoring; cap show_processlist_main01" C-m &&
+          tmux send-keys -t 2 "cdd monitoring; cap show_processlist_main02" C-m &&
+          tmux send-keys -t 3 "cdd monitoring; cap tail_web_error_status" C-m   &&
+          tmux send-keys -t 4 "cdd monitoring; cap tail_tag_error_status" C-m   &&
+          tmux send-keys -t 5 "cdd monitoring; cap tail_web_app_error" C-m      &&
+          tmux send-keys -t 6 "cdd monitoring; cap tail_tag_app_error" C-m      &&
+          tmux kill-pane -t 7
