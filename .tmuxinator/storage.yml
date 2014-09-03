@@ -10,8 +10,11 @@ windows:
         - ssh storage_development
         - |-
           tmux send-keys -t 0 "cdd working" C-m &&
-          tmux send-keys -t 0 "bundle exec unicorn -c unicorn.rb" C-m &&
-          tmux send-keys -t 0 "tail -f log/unicorn.*.log" C-m &&
+          tmux send-keys -t 0 "cd ../" C-m &&
+          tmux send-keys -t 0 "./unicorn_server start \`cdd working | awk -F / '{ print \$4 }'\`" C-m &&
+          tmux send-keys -t 0 "cdd working" C-m &&
+          tmux send-keys -t 0 "cdd shared" C-m &&
+          tmux send-keys -t 0 "tail -F log/production.log" C-m &&
           tmux send-keys -t 1 "cdd working" C-m &&
           tmux send-keys -t 2 "cdd working" C-m &&
           tmux send-keys -t 3 "cdd working" C-m &&
