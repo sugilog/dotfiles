@@ -1,3 +1,4 @@
+export DISABLE_UPDATE_PROMPT=true
 export LESS=R
 export SVN_EDITOR=vim
 export EDITOR=vim
@@ -27,4 +28,3 @@ fi
 if [[ -s /usr/local/share/npm/bin ]] ; then
   export PATH="/usr/local/share/npm/bin:$PATH"
 fi
-
