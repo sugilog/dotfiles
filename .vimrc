@@ -61,6 +61,8 @@ NeoBundle 'mattn/gist-vim'
 NeoBundle 'benmills/vimux'
 NeoBundle 'pgr0ss/vimux-ruby-test'
 " NeoBundle 'janx/vim-rubytest'
+NeoBundle 'spolu/dwm.vim'
+NeoBundle 'kannokanno/unite-dwm'
 
 filetype plugin indent on
 
@@ -173,7 +175,7 @@ nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Us :<C-u>Unite source<CR>
 nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap Ub :<C-u>Unite buffer<CR>
+nnoremap Ub :<C-u>Unite dwm<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 
@@ -187,6 +189,7 @@ let g:unite_source_menu_menus = {
       \           ["invoke over",           "OverCommandLine"],
       \           ["invoke over (visual)",  "'<,'>OverCommandLine"],
       \           ["svn commit",   "UniteSvnDiff"],
+      \           ["dwm",          "Unite dwm:no-current"],
       \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite neomru/file"],
       \           ["dir mru",      "Unite neomru/directory"],
@@ -206,6 +209,22 @@ let g:unite_source_menu_menus = {
       \       ],
       \   },
       \}
+
+let s:action = {
+      \ 'description' : 'open with dwm',
+      \ 'is_selectable' : 1,
+      \ }
+function! s:action.func(candidates)
+  for l:candidate in a:candidates
+    call unite#util#command_with_restore_cursor('rightbelow split')
+    call unite#take_action('open', candidate)
+    call DWM_Focus()
+  endfor
+endfunction
+call unite#custom_action('openable', 'dwm_new', s:action)
+call unite#custom#default_action("file", "dwm_new")
+unlet s:action
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
