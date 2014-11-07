@@ -16,7 +16,8 @@ windows:
           tmux send-keys -t 1 "cdd monitoring; cap show_processlist_main01" C-m &&
           tmux send-keys -t 2 "cdd monitoring; cap show_processlist_main02" C-m &&
           tmux send-keys -t 3 "cdd monitoring; cap tail_web_error_status" C-m   &&
-          tmux send-keys -t 4 "cdd monitoring; cap tail_tag_error_status" C-m   &&
+          tmux send-keys -t 4 "cdd monitoring; env CAP_SSH_GATEWAY=\$(echo \$TAG_SSH_GATEWAY) cap tail_tag_error_status" C-m &&
           tmux send-keys -t 5 "cdd monitoring; cap tail_web_app_error" C-m      &&
-          tmux send-keys -t 6 "cdd monitoring; cap tail_tag_app_error" C-m      &&
+          tmux send-keys -t 6 "cdd monitoring; env CAP_SSH_GATEWAY=\$(echo \$TAG_SSH_GATEWAY) cap tail_tag_app_error" C-m    &&
           tmux kill-pane -t 7
+
