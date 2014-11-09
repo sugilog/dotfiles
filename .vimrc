@@ -310,7 +310,7 @@ let g:gist_post_private = 1
 
 """ vimux
 
-let g:VimuxRunnerIndex = 3
+let g:VimuxRunnerIndex = 2
 let g:VimuxUseNearest = 0
 let g:VimuxResetSequence = ""
 let g:vimux_ruby_clear_console_on_run = 0
