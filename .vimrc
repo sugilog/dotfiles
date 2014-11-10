@@ -216,15 +216,28 @@ let s:action = {
       \ }
 function! s:action.func(candidates)
   for l:candidate in a:candidates
-    call unite#util#command_with_restore_cursor('rightbelow split')
-    call unite#take_action('open', candidate)
-    call DWM_Focus()
+    echo l:candidate.action__path
+    if bufexists(l:candidate.action__path)
+      let l:winnr = bufwinnr(l:candidate.action__path)
+
+      if l:winnr == -1
+        call DWM_Stack(1)
+        split
+        call unite#take_action('open', l:candidate)
+        call DWM_AutoEnter()
+      else
+        exec l:winnr . "wincmd w"
+        call DWM_AutoEnter()
+      endif
+    else
+      call DWM_New()
+      call unite#take_action("open", l:candidate)
+    endif
   endfor
 endfunction
-call unite#custom_action('openable', 'dwm_new', s:action)
-call unite#custom#default_action("file", "dwm_new")
+call unite#custom_action('openable', 'dwm_open', s:action)
+call unite#custom#default_action("file", "dwm_open")
 unlet s:action
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
