@@ -33,11 +33,11 @@ NeoBundle 'marijnh/tern_for_vim', {
       \   },
       \ }
 NeoBundle 'zhaocai/unite-scriptnames'
-NeoBundle 'basyura/unite-rails'
+" NeoBundle 'basyura/unite-rails'
+NeoBundle 'sugilog/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tmhedberg/matchit'
-NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
@@ -172,15 +172,25 @@ nnoremap Uu :<C-u>Unite neomru/file<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
 vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Ug :<C-u>Unite menu:gist<CR>
-nnoremap Us :<C-u>Unite source<CR>
-nnoremap Ur :<C-u>Unite source<CR>rails/ 
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap UD :<C-u>Unite directory<CR>
 nnoremap Ub :<C-u>Unite dwm<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
+nnoremap Ua :<C-u>Unite buffer -default-action=dwm_open<CR><ESC>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+nnoremap Rc :<C-u>Unite rails/controller<CR>
+nnoremap Rm :<C-u>Unite rails/model<CR>
+nnoremap Rv :<C-u>Unite rails/view<CR>
+nnoremap Rh :<C-u>Unite rails/helper<CR>
+nnoremap Rl :<C-u>Unite rails/lib<CR>
+nnoremap Rp :<C-u>Unite rails/public<CR>
+nnoremap Rj :<C-u>Unite rails/javascript<CR>
+nnoremap Rf :<C-u>Unite rails/javascript<CR>framework/
+nnoremap Rs :<C-u>Unite rails/spec<CR>
 
 let g:unite_source_menu_menus = {
       \   "shortcut" : {
@@ -216,7 +226,6 @@ let s:action = {
       \ }
 function! s:action.func(candidates)
   for l:candidate in a:candidates
-    echo l:candidate.action__path
     if bufexists(l:candidate.action__path)
       let l:winnr = bufwinnr(l:candidate.action__path)
 
@@ -234,10 +243,30 @@ function! s:action.func(candidates)
       call unite#take_action("open", l:candidate)
     endif
   endfor
+
+  call CleanEmptyBuffers()
 endfunction
 call unite#custom_action('openable', 'dwm_open', s:action)
 call unite#custom#default_action("file", "dwm_open")
 unlet s:action
+
+function! CleanEmptyBuffers()
+  let l:i = 0
+  let l:n = bufnr('$')
+  let l:bufs = []
+
+  while l:i <= l:n
+    if bufexists(l:i) && empty(bufname(l:i)) && buflisted(l:i)
+      call add(l:bufs, l:i)
+    endif
+    let l:i += 1
+  endwhile
+
+  if len(l:bufs) > 0
+    exe 'bdelete' join(l:bufs)
+  endif
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
