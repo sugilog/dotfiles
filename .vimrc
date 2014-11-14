@@ -38,13 +38,13 @@ NeoBundle 'sugilog/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-scripts/tracwiki'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'hrsh7th/vim-versions'
 " fork from 'tomasr/molokai' 
 NeoBundle 'sugilog/molokai' 
@@ -174,10 +174,10 @@ vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap UD :<C-u>Unite directory<CR>
-nnoremap Ub :<C-u>Unite dwm<CR>
+"nnoremap Ub :<C-u>Unite dwm<CR>
+nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
-nnoremap Ua :<C-u>Unite buffer -default-action=dwm_open<CR><ESC>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
@@ -189,7 +189,7 @@ nnoremap Rh :<C-u>Unite rails/helper<CR>
 nnoremap Rl :<C-u>Unite rails/lib<CR>
 nnoremap Rp :<C-u>Unite rails/public<CR>
 nnoremap Rj :<C-u>Unite rails/javascript<CR>
-nnoremap Rf :<C-u>Unite rails/javascript<CR>framework/
+nnoremap Rf :<C-u>Unite rails/public -input=framework/<CR>
 nnoremap Rs :<C-u>Unite rails/spec<CR>
 
 let g:unite_source_menu_menus = {
@@ -205,7 +205,6 @@ let g:unite_source_menu_menus = {
       \           ["dir mru",      "Unite neomru/directory"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
-      \           ["unite source", "Unite source"],
       \           ["edit vimrc",   "edit $MYVIMRC"],
       \           ["source vimrc", "source $MYVIMRC"],
       \       ],
@@ -266,7 +265,6 @@ function! CleanEmptyBuffers()
     exe 'bdelete' join(l:bufs)
   endif
 endfunction
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ yanktmp.vim
