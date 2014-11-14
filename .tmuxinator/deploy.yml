@@ -2,22 +2,37 @@ name: deploy
 root: ~/
 windows:
   - main:
-      layout: 0a0b,364x98,0,0{182x98,0,0[182x49,0,0,9,182x24,0,50,17,182x23,0,75,18],181x98,183,0[181x24,183,0,10,181x24,183,25,14,181x24,183,50,12,181x23,183,75{90x23,183,75,13,90x23,274,75,19}]}
+      layout: 4a49,364x98,0,0{120x98,0,0[120x29,0,0,66,120x34,0,30,69,120x33,0,65,70],120x98,121,0[120x29,121,0,67,120x34,121,30,71,120x33,121,65,72],122x98,242,0[122x49,242,0,68,122x48,242,50,73]}
       panes:
-        - ssh advertise_development
-        - ssh advertise_development
-        - ssh advertise_development
-        - ssh advertise_development
-        - ssh advertise_development
-        - ssh advertise_development
-        - ssh advertise_development
-        - |-
-          tmux send-keys -t 0 "cdd current" C-m &&
-          tmux send-keys -t 1 "cdd monitoring; cap show_processlist_main01" C-m &&
-          tmux send-keys -t 2 "cdd monitoring; cap show_processlist_main02" C-m &&
-          tmux send-keys -t 3 "cdd monitoring; cap tail_web_error_status" C-m   &&
-          tmux send-keys -t 4 "cdd monitoring; env CAP_SSH_GATEWAY=\$(echo \$TAG_SSH_GATEWAY) cap tail_tag_error_status" C-m &&
-          tmux send-keys -t 5 "cdd monitoring; cap tail_web_app_error" C-m      &&
-          tmux send-keys -t 6 "cdd monitoring; env CAP_SSH_GATEWAY=\$(echo \$TAG_SSH_GATEWAY) cap tail_tag_app_error" C-m    &&
-          tmux kill-pane -t 7
-
+        - main01:
+          - ssh advertise_development
+          - cdd monitoring
+          - cap show_processlist_main01
+        - web_status:
+          - ssh advertise_development
+          - cdd monitoring
+          - cap tail_web_error_status
+        - web_app_error:
+          - ssh advertise_development
+          - cdd monitoring
+          - cap tail_web_app_error
+        - main02:
+          - ssh advertise_development
+          - cdd monitoring
+          - cap show_processlist_main02
+        - tag_status:
+          - ssh advertise_development
+          - cdd monitoring
+          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_error_status
+        - tag_app_error:
+          - ssh advertise_development
+          - cdd monitoring
+          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_app_error
+        - workspace:
+          - ssh advertise_development
+          - cdd current
+          - svn up
+          - svn st
+          - svn info
+        - mac:
+          - date

@@ -45,6 +45,7 @@ map <C-h> :history!
 set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
 set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
+map <S-e> :tabgroups switch<SPACE>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin settings
@@ -54,7 +55,6 @@ set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ
 "" _libly.js
 "" _smooziee.js
 "" copy.js
-"" feedSomeKeys_3.js
 "" migemo-find.js
 "" migemo_hint.js
 """ https://github.com/caisui/vimperator
@@ -65,14 +65,6 @@ set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ
 "" migemo_find/hint.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set hintmatching=custom
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"" feedsomekey_3.js
-""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd LocationChange .* :fmapc
-autocmd LocationChange 'mail\.google\.com/mail' :fmap! -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc
-autocmd LocationChange 'www\.google\.com/reader' :fmap! -vkey j k n p m s t v a A r S N P X O gh ga gs gt gu u / ?
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
