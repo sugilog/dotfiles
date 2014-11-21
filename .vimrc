@@ -23,15 +23,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'marijnh/tern_for_vim', {
-      \   "build" : {
-      \     "mac"  : "npm install",
-      \     "unix" : "npm install",
-      \   },
-      \   "autoload": {
-      \     "filetypes": ["javascript", "typescript"]
-      \   },
-      \ }
 NeoBundle 'zhaocai/unite-scriptnames'
 " NeoBundle 'basyura/unite-rails'
 NeoBundle 'sugilog/unite-rails'
