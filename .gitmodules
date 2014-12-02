@@ -4,9 +4,3 @@
 [submodule "cdd"]
 	path = cdd
 	url = https://github.com/m4i/cdd.git
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/Lokaltog/powerline.git
-[submodule "cmigemo"]
-	path = cmigemo
-	url = https://github.com/koron/cmigemo.git

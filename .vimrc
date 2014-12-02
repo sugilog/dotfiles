@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" vundle
+""" vundle ほげ
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
@@ -24,7 +24,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'zhaocai/unite-scriptnames'
-" NeoBundle 'basyura/unite-rails'
+" fork from 'basyura/unite-rails'
 NeoBundle 'sugilog/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
@@ -39,21 +39,16 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'hrsh7th/vim-versions'
 " fork from 'tomasr/molokai' 
 NeoBundle 'sugilog/molokai' 
-" NeoBundle 'mattn/benchvimrc-vim'
-" require to install https://github.com/koron/cmigemo
-NeoBundle 'haya14busa/vim-migemo'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'osyo-manga/vim-over'
 " Gist-vim required webapi-vim
 " and set: git config --global github.user Username
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'benmills/vimux'
 NeoBundle 'pgr0ss/vimux-ruby-test'
-" NeoBundle 'janx/vim-rubytest'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'kannokanno/unite-dwm'
+NeoBundle 'rbtnn/vimconsole.vim'
 
 filetype plugin indent on
 
@@ -170,6 +165,8 @@ nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 
+nnoremap U/ :<C-u>Unite line:all<CR>
+
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
@@ -187,17 +184,15 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
-      \           ["invoke over",           "OverCommandLine"],
-      \           ["invoke over (visual)",  "'<,'>OverCommandLine"],
       \           ["svn commit",   "UniteSvnDiff"],
       \           ["dwm",          "Unite dwm:no-current"],
-      \           ["dir",          "UniteWithBufferDir -buffer-name=files file"],
       \           ["file mru",     "Unite neomru/file"],
-      \           ["dir mru",      "Unite neomru/directory"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
       \           ["edit vimrc",   "edit $MYVIMRC"],
       \           ["source vimrc", "source $MYVIMRC"],
+      \           ["console",      "VimConsoleOpen"],
+      \           ["console redraw", "VimConsoleRedraw"],
       \       ],
       \   },
       \   "gist" : {
@@ -258,20 +253,10 @@ function! CleanEmptyBuffers()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" yanktmp.vim
+""" search and anzu
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> ty :call YanktmpYank()<CR>
-map <silent> tp :call YanktmpPaste_p()<CR>
-map <silent> tP :call YanktmpPaste_P()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" easy-motion and anzu
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" set incsearch
+set incsearch
 set hlsearch
-
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 nnoremap <silent> <Esc><Esc> :set hlsearch!<CR>:echo<CR>
 map  n <Plug>(anzu-n-with-echo)zz
@@ -280,13 +265,7 @@ nmap * :set hlsearch<CR>zz<Plug>(anzu-star-with-echo)
 nmap # :set hlsearch<CR>zz<Plug>(anzu-sharp-with-echo)
 let g:anzu_no_match_word = '%#ErrorMsg#Pattern not found: %p'
 
-" http://haya14busa.com/mastering-vim-easymotion/
-nmap s :set hlsearch<CR><Plug>(easymotion-s2)
-
 vnoremap * "zy:let @/ = @z<CR>n
-
-let g:EasyMotion_enter_jump_first = 1
-let g:EasyMotion_use_migemo = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ actionscript.vim
@@ -342,12 +321,6 @@ command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
 let g:versions#type#svn#status#ignore_status = [
   \  "X"
   \ ]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" over
-""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Leader>o :OverCommandLine<CR>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ gist

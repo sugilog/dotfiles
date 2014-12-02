@@ -17,11 +17,6 @@ if [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] ; then
   source $HOME/.tmuxinator/scripts/tmuxinator;
 fi
 
-if [[ -s $HOME/dotfiles/powerline/scripts ]] ; then
-  PATH=$HOME/dotfiles/powerline/scripts:$PATH
-  . $HOME/dotfiles/powerline/powerline/bindings/zsh/powerline.zsh
-fi
-
 if [[ -s /usr/local/heroku/bin ]] ; then
   export PATH="/usr/local/heroku/bin:$PATH"
 fi
