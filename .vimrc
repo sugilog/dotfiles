@@ -307,13 +307,13 @@ autocmd BufNewFile,BufRead *.tracwiki
 """ vim-versions
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function! s:UniteVersionsWithDiff(type)
-  tabnew
+  call DWM_New()
   silent! setlocal ft=diff nobackup noswf nobuflisted nowrap buftype=nofile
-  exe "silent! read !LANG=C " . a:type . " diff"
+  exe "read !LANG=C " . a:type . " diff"
   setlocal nomodifiable
   goto 1
-  redraw!
   exe "silent! Unite versions/" . a:type . "/status"
+  call feedkeys("\<ESC>")
 endfunction
 command! -nargs=0 UniteSvnDiff call s:UniteVersionsWithDiff("svn")
 command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
