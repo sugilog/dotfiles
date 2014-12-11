@@ -313,7 +313,6 @@ function! s:UniteVersionsWithDiff(type)
   setlocal nomodifiable
   goto 1
   exe "silent! Unite versions/" . a:type . "/status"
-  call feedkeys("\<ESC>")
 endfunction
 command! -nargs=0 UniteSvnDiff call s:UniteVersionsWithDiff("svn")
 command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
