@@ -2,7 +2,7 @@ name: lrms
 root: ~/
 windows:
   - editor:
-      layout: 17c6,364x98,0,0{93x98,0,0,8,270x98,94,0[270x69,94,0,9,270x28,94,70{135x28,94,70,11,134x28,230,70,14}]}
+      layout: aed2,364x98,0,0{93x98,0,0,18,270x98,94,0[270x69,94,0,19,270x28,94,70,20]}
       panes:
         - logs:
           - ssh lrms_development
@@ -16,7 +16,3 @@ windows:
           - ssh lrms_development
           - cdd working
           - guard start
-        - karma:
-          - ssh lrms_development
-          - cdd working
-          - karma start
