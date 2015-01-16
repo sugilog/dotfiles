@@ -26,7 +26,6 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'zhaocai/unite-scriptnames'
 " fork from 'basyura/unite-rails'
 NeoBundle 'sugilog/unite-rails'
-NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'tpope/vim-rails'
@@ -160,9 +159,7 @@ vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap UD :<C-u>Unite directory<CR>
-"nnoremap Ub :<C-u>Unite dwm<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
-nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 
 nnoremap U/ :<C-u>Unite line:all<CR>
@@ -185,7 +182,6 @@ let g:unite_source_menu_menus = {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
       \           ["svn commit",   "UniteSvnDiff"],
-      \           ["dwm",          "Unite dwm:no-current"],
       \           ["file mru",     "Unite neomru/file"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
@@ -203,7 +199,7 @@ let g:unite_source_menu_menus = {
       \           ["update gist",  "Gist -e"],
       \       ],
       \   },
-      \}
+      \ }
 
 let s:action = {
       \ 'description' : 'open with dwm',
