@@ -20,3 +20,6 @@
 	editor = vim
 [push]
 	default = simple
+; https://help.github.com/articles/caching-your-github-password-in-git/
+; [credential]
+;     helper = osxkeychain
