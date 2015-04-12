@@ -48,6 +48,7 @@ NeoBundle 'pgr0ss/vimux-ruby-test'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'kannokanno/unite-dwm'
 NeoBundle 'rbtnn/vimconsole.vim'
+NeoBundle 'AndrewRadev/linediff.vim'
 
 filetype plugin indent on
 
