@@ -11,3 +11,5 @@ ln -s $HOME/dotfiles/.vimrc          $HOME/
 # copy gitconfig
 cp $HOME/dotfiles/.gitconfig $HOME/
 
+# with oh-my-zsh
+ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom/
