@@ -13,6 +13,8 @@ cp $HOME/dotfiles/.gitconfig $HOME/
 
 # with oh-my-zsh
 
-wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
-ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom/
-sed -i -e "1i export DISABLE_UPDATE_PROMPT=true" $HOME/.zshrc
+if [ ! -d $HOME/.oh-my-zsh ]; then
+  wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+  ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom/
+  sed -i -e "1i export DISABLE_UPDATE_PROMPT=true" $HOME/.zshrc
+fi
