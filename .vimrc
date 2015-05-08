@@ -342,4 +342,4 @@ nmap <leader>T :RunAllRailsTest<CR>
 """ LineDiff
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-vmap <silent>ld :Linediff<CR>
+vmap <leader>d :Linediff<CR>
