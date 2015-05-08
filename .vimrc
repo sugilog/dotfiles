@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" vundle ほげ
+""" vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
@@ -336,3 +336,10 @@ let g:vimux_ruby_clear_console_on_run = 0
 
 nmap <leader>t :RunRailsFocusedTest<CR>
 nmap <leader>T :RunAllRailsTest<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" LineDiff
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+vmap <silent>ld :Linediff<CR>
