@@ -23,3 +23,5 @@
 ; https://help.github.com/articles/caching-your-github-password-in-git/
 ; [credential]
 ;     helper = osxkeychain
+[github]
+	user = sugilog@gmail.com
