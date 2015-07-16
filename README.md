@@ -38,7 +38,8 @@ ln -s $HOME/dotfiles/.vimrc          $HOME/
 
 ### with oh-my-zsh
 ```
-ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom/
+ln -s $HOME/dotfiles/oh-my-zsh/custom/* $HOME/.oh-my-zsh/custom
+ln -s $HOME/dotfiles/oh-my-zsh/custom/plugins/* $HOME/.oh-my-zsh/custom/plugins
 ```
 
 ### without oh-my-zsh
