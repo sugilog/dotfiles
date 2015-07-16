@@ -1,7 +1,3 @@
-function chpwd() {
-  _reg_pwd_screennum
-}
-
 case "${OSTYPE}" in
 freebsd*|darwin*)
   # http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
