@@ -6,13 +6,13 @@ windows:
       panes:
         - logs:
           - ssh advertise_development
-          - cdd working
+          - jump working
           - tail -f log/development.log
         - editor:
           - ssh advertise_development
-          - cdd working
+          - jump working
           - vim
         - console:
           - ssh advertise_development
-          - cdd working
+          - jump working
           - script/console

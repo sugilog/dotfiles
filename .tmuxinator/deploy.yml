@@ -6,31 +6,31 @@ windows:
       panes:
         - main01:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - cap show_processlist_main01
         - web_status:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - cap tail_web_error_status
         - web_app_error:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - cap tail_web_app_error
         - main02:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - cap show_processlist_main02
         - tag_status:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_error_status
         - tag_app_error:
           - ssh advertise_development
-          - cdd monitoring
+          - jump monitoring
           - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_app_error
         - workspace:
           - ssh advertise_development
-          - cdd current
+          - jump current
           - svn up
           - svn st
           - svn info

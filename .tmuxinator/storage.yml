@@ -6,16 +6,16 @@ windows:
       panes:
         - logs:
           - ssh storage_development
-          - cdd working
+          - jump working
           - cd ../
-          - ./unicorn_server start `cdd working | awk -F / '{ print \$4 }'`
-          - cdd shared
+          - ./unicorn_server start `showmarks working | awk -F / '{ print \$4 }'`
+          - jump shared
           - tail -f log/production.log
         - editor:
           - ssh storage_development
-          - cdd working
+          - jump working
           - vim
         - test:
           - ssh storage_development
-          - cdd working
+          - jump working
           - bundle exec guard start

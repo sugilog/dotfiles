@@ -6,13 +6,13 @@ windows:
       panes:
         - logs:
           - ssh lrms_development
-          - cdd working
+          - jump working
           - tail -f log/development.log
         - editor:
           - ssh lrms_development
-          - cdd working
+          - jump working
           - vim
         - guard:
           - ssh lrms_development
-          - cdd working
+          - jump working
           - guard start
