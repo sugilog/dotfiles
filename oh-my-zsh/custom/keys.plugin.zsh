@@ -1,6 +1,6 @@
 # alias
 
-setopt complete_aliases
+setopt no_complete_aliases
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
@@ -39,6 +39,7 @@ alias -g FF="-r failfast"
 alias mongod="mongod --dbpath $HOME/.mongo/data/ --port 27017"
 alias tmux="tmux -u"
 
+alias cdd="jump"
 
 # key binds
 
