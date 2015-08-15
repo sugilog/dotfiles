@@ -61,6 +61,7 @@ set wrap
 set wrapscan
 set wildmenu
 
+set ignorecase
 set smartcase
 
 set showcmd
