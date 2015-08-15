@@ -21,3 +21,11 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
   sed -i -e 's/ZSH_THEME="[^"]*"/ZSH_THEME="my_theme"/g' $HOME/.zshrc
   sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator zshmarks golang)/g" $HOME/.zshrc
 fi
+
+which awsenv
+
+if [ $? -ne 0 ]; then
+  wget https://raw.githubusercontent.com/bdclark/awsenv/master/awsenv -O $HOME/bin/awsenv
+  chmod +x $HOME/bin/awsenv
+  echo 'setaws() { [[ $# -gt 0 ]] && eval "$($HOME/bin/awsenv $@)"; }' >> $HOME/.zshrc
+fi
