@@ -1,17 +1,3 @@
-case "${OSTYPE}" in
-freebsd*|darwin*)
-  # http://d.hatena.ne.jp/zariganitosh/20110614/release_memory_no_swap
-  libera_memory() {
-    du -sx / >& /dev/null & sleep 5 && kill $!
-    diskutil repairPermissions /
-    purge
-  }
-
-  mi() {
-    open $@ -a /Applications/mi.app
-  }
-esac
-
 viack() {
   vim `ack $@ -l`
 }
