@@ -1,0 +1,18 @@
+name: aws_connector
+root: ~/
+windows:
+  - editor:
+      layout: aed2,364x98,0,0{93x98,0,0,18,270x98,94,0[270x69,94,0,19,270x28,94,70,20]}
+      panes:
+        - logs:
+          - ssh storage_development
+          - jump aws_current
+          - tail -f log/production.log
+        - editor:
+          - ssh storage_development
+          - jump aws_current
+          - vim
+        - test:
+          - ssh storage_development
+          - jump aws_current
+          - bundle exec guard start
