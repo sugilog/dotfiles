@@ -55,17 +55,9 @@ map <S-e> :tabgroups switch<SPACE>
 "" _libly.js
 "" _smooziee.js
 "" copy.js
-"" migemo-find.js
-"" migemo_hint.js
 """ https://github.com/caisui/vimperator
 "" optionSelector.js
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"" migemo_find/hint.js
-""""""""""""""""""""""""""""""""""""""""""""""""""
-set hintmatching=custom
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ websearch.js custom templates

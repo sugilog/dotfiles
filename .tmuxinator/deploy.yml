@@ -19,7 +19,7 @@ windows:
         - main02:
           - ssh advertise_development
           - jump monitoring
-          - cap show_processlist_main02
+          - cap show_processlist_main03
         - tag_status:
           - ssh advertise_development
           - jump monitoring
