@@ -30,3 +30,7 @@ if [ $? -ne 0 ]; then
   chmod +x $HOME/bin/awsenv
   echo 'setaws() { [[ $# -gt 0 ]] && eval "$($HOME/bin/awsenv $@)"; }' >> $HOME/.zshrc
 fi
+
+if [ `cat $HOME/.zshrc | grep GOPATH | wc -l` -eq 0 ]; then
+  echo "GOPATH=$HOME/.go" >> $HOME/.zshrc
+fi
