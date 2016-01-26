@@ -41,6 +41,8 @@ alias tmux="tmux -u"
 
 alias cdd="jump"
 
+alias -g L="2>&1 | less"
+
 # key binds
 
 bindkey -v

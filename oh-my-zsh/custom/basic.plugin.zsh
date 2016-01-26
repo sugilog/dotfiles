@@ -1,4 +1,4 @@
 function chpwd() {
-  deletemark last
-  bookmark last > /dev/null
+  # deletemark last
+  # bookmark last > /dev/null
 }
