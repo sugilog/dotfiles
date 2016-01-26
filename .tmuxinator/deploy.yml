@@ -11,7 +11,7 @@ windows:
         - web_status:
           - ssh advertise_development
           - jump monitoring
-          - cap tail_web_error_status
+          - cap tail_web_error_status | lc f --key time,method,status,path
         - web_app_error:
           - ssh advertise_development
           - jump monitoring
@@ -23,7 +23,7 @@ windows:
         - tag_status:
           - ssh advertise_development
           - jump monitoring
-          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_error_status
+          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_error_status | lc f --key time,method,status,path
         - tag_app_error:
           - ssh advertise_development
           - jump monitoring

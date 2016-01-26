@@ -7,8 +7,7 @@ windows:
         - logs:
           - ssh storage_development
           - jump working
-          - cd ../
-          - ./unicorn_server start `showmarks working | awk -F / '{ print \$4 }'`
+          - RACK_ENV=production bundle exec rake unicorn
           - jump shared
           - tail -f log/production.log
         - editor:
