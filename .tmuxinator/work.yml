@@ -1,8 +1,0 @@
-name: work
-root: ~/
-windows:
-  - main:
-      layout: even-horizontal
-      panes:
-        -
-        -
