@@ -28,7 +28,6 @@ alias g="git"
 # http://www.colordiff.org/
 # just do: sudo make install
 alias diff="colordiff"
-alias sd="svn diff --diff-cmd /usr/bin/diff -x '-b -B -U 5' | colordiff | less"
 
 alias sudo="sudo env PATH=$PATH"
 
