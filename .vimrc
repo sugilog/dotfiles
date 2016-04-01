@@ -23,6 +23,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'zhaocai/unite-scriptnames'
@@ -165,6 +166,7 @@ nnoremap UD :<C-u>Unite directory<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
+nnoremap Uy :<C-u>Unite history/yank<CR>
 
 nnoremap U/ :<C-u>Unite line:all<CR>
 
