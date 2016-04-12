@@ -1,0 +1,48 @@
+#!/bin/sh
+
+function _author_name() {
+  if [ -n "${GIT_AUTHOR_NAME}" ]; then
+    echo ${GIT_AUTHOR_NAME}
+  else
+    git config user.name
+  fi
+}
+
+function _author_email() {
+  if [ -n "${GIT_AUTHOR_EMAIL}" ]; then
+    echo ${GIT_AUTHOR_EMAIL}
+  else
+    git config user.email
+  fi
+}
+
+function _committer_name() {
+  if [ -n "${GIT_COMMITTER_NAME}" ]; then
+    echo ${GIT_COMMITTER_NAME}
+  else
+    git config user.name
+  fi
+}
+
+function _committer_email() {
+  if [ -n "${GIT_COMMITTER_EMAIL}" ]; then
+    echo ${GIT_COMMITTER_EMAIL}
+  else
+    git config user.email
+  fi
+}
+
+function _myenv() {
+  cat <<-EOM
+# Commit with following user.
+#   Author: `_author_name` <`_author_email`>
+#   Commit: `_committer_name` <`_committer_email`>
+EOM
+}
+
+if [ "$2" = "" ]; then
+  mv $1 $1.tmp
+  echo "\n`_myenv`" > $1
+  cat $1.tmp >> $1
+  rm -f $1.tmp
+fi
