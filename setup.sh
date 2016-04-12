@@ -34,3 +34,12 @@ fi
 if [ `cat $HOME/.zshrc | grep GOPATH | wc -l` -eq 0 ]; then
   echo "GOPATH=$HOME/.go" >> $HOME/.zshrc
 fi
+
+which direnv
+
+if [ $? -ne 0 ]; then
+  git clone https://github.com/direnv/direnv.git $HOME/bin/direnv
+  cd $HOME/bin/direnv
+  make build
+  echo 'eval "$(direnv hook zsh)"' >> $HOME/.zshrc
+fi
