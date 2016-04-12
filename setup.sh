@@ -39,6 +39,7 @@ fi
 which direnv
 
 if [ $? -ne 0 ]; then
+  mkdir -p $HOME/bin
   git clone https://github.com/direnv/direnv.git $HOME/bin/direnv
   cd $HOME/bin/direnv
   make build
