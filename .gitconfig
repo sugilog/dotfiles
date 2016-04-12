@@ -8,6 +8,7 @@
   branch = auto
   interactive = auto
 [alias]
+  myclone = "!f(){ git clone --template=$HOME/dotfiles/git-template/ $@; }; f"
   co = checkout
   a = add
   s = status
