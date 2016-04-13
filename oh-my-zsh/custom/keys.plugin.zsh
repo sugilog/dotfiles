@@ -21,7 +21,6 @@ alias df="df -h"
 alias vi="vim"
 
 alias sc="ruby script/console"
-alias ss="ruby script/console --sandbox"
 alias db="ruby script/dbconsole"
 alias g="git"
 # need to install colordiff
