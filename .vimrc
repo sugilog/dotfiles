@@ -161,8 +161,8 @@ nnoremap Uu :<C-u>Unite neomru/file<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
 vmap     Um :<C-u>Unite menu:shortcut<CR>
 nnoremap Ug :<C-u>Unite menu:gist<CR>
-nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap UD :<C-u>Unite directory<CR>
+nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap UD :<C-u>Unite directory -buffer-name=files file file/new<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
