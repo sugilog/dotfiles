@@ -6,3 +6,4 @@ ln -s $HOME/dotfiles/.tmux.conf      $HOME/
 ln -s $HOME/dotfiles/.tmuxinator     $HOME/
 ln -s $HOME/dotfiles/.vimperatorrc   $HOME/
 ln -s $HOME/dotfiles/.vimrc          $HOME/
+ln -s $HOME/dotfiles/.gitconfig      $HOME/
