@@ -33,16 +33,15 @@ function _committer_email() {
 }
 
 function _myenv() {
-  cat <<-EOM
-# Commit with following user.
-#   Author: `_author_name` <`_author_email`>
-#   Commit: `_committer_name` <`_committer_email`>
-EOM
+  echo "# Commit with following user."
+  echo "#   Author: `_author_name` <`_author_email`>"
+  echo "#   Commit: `_committer_name` <`_committer_email`>"
 }
 
 if [ "$2" = "" ]; then
   mv $1 $1.tmp
-  echo "\n`_myenv`" > $1
+  echo "" >> $1
+  echo "`_myenv`" >> $1
   cat $1.tmp >> $1
   rm -f $1.tmp
 fi
