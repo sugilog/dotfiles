@@ -12,6 +12,11 @@ if [[ -s $HOME/.rbenv ]]; then
   eval "$(rbenv init -)"
 fi
 
+if [[ -s $HOME/.ndenv ]]; then
+  export PATH="$HOME/.ndenv/bin:$PATH"
+  eval "$(ndenv init -)"
+fi
+
 # check tmuxinator env: tmuxinator doctor
 if [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] ; then
   source $HOME/.tmuxinator/scripts/tmuxinator;
