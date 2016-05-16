@@ -6,3 +6,4 @@ sh setup/awsenv.sh
 sh setup/gopath.sh
 sh setup/direnv.sh
 sh setup/rbenv.sh
+sh setup/ndenv.sh
