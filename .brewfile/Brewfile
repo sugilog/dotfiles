@@ -1,0 +1,36 @@
+tap caskroom/cask
+cask vagrant
+cask vienna
+
+tap homebrew/core
+brew autoconf
+brew autogen
+brew automake
+brew awscli
+brew colordiff
+brew coreutils
+brew go
+brew irssi
+brew lua
+brew maven
+brew mitmproxy
+brew ngrep
+brew nkf
+brew python3
+brew reattach-to-user-namespace
+brew tmux
+brew vim
+brew wget
+brew zsh
+brew peco
+
+brew the_silver_searcher
+
+# App Store applications
+appstore 1Password
+appstore Divvy
+appstore GIPHY CAPTURE
+appstore Growl
+appstore Helium
+appstore The Unarchiver
+appstore Xcode
