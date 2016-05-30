@@ -97,6 +97,7 @@ set suffixesadd+=.js
 " on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
 set ambiwidth=double
 set display+=lastline
+set showtabline=2
 
 if $TERM != "screen"
   set clipboard=unnamed
@@ -352,19 +353,23 @@ vmap <leader>d :Linediff<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" GUI
+""" tab
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-if has("gui_macvim")
-  " as 1gt, 2gt, ...
-  noremap <D-1> :tabn 1<CR>
-  noremap <D-2> :tabn 2<CR>
-  noremap <D-3> :tabn 3<CR>
-  noremap <D-4> :tabn 4<CR>
-  noremap <D-5> :tabn 5<CR>
-  noremap <D-6> :tabn 6<CR>
-  noremap <D-7> :tabn 7<CR>
-  noremap <D-8> :tabn 8<CR>
-  noremap <D-9> :tabn 9<CR>
-endif
+" The prefix key.
+nnoremap [Tag] <Nop>
+nmap     t [Tag]
+
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+
+  if has("gui_macvim")
+    execute 'nnoremap <D-'.n.'> :tabn '.n.'<CR>'
+  endif
+endfor
+
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+map <silent> [Tag]x :tabclose<CR>
+map <silent> [Tag]n :tabnext<CR>
+map <silent> [Tag]p :tabprevious<CR>
 
