@@ -168,6 +168,7 @@ nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uv :<C-u>UniteVersions status<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uy :<C-u>Unite history/yank<CR>
+nnoremap Ut :<C-u>Unite tab<CR>
 
 nnoremap U/ :<C-u>Unite line:all<CR>
 
