@@ -31,8 +31,6 @@ windows:
         - workspace:
           - ssh advertise_development
           - jump current
-          - svn up
-          - svn st
-          - svn info
+          - git status
         - mac:
           - date
