@@ -42,6 +42,9 @@ repo = 'tpope/vim-rails'
 repo = 'tpope/vim-markdown'
 
 [[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
 repo = 'tpope/vim-repeat'
 
 [[plugins]]
