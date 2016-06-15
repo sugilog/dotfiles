@@ -67,9 +67,6 @@ repo = 'sugilog/molokai'
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
-repo = "osyo-manga/vim-precious"
-
-[[plugins]]
 repo = 'benmills/vimux'
 
 [[plugins]]
