@@ -3,54 +3,19 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
-set rtp+=~/dotfiles/neobundle.vim
+set runtimepath+=~/dotfiles/dein.vim
 
-if has('vim_starting')
-  set runtimepath+=~/dotfiles/neobundle.vim
-  call neobundle#rc(expand('~/.vim/'))
+if dein#load_state(expand('~/.vim/dein'))
+  call dein#begin(expand('~/.vim/dein'))
+  call dein#load_toml(expand('~/dotfiles/dein.toml'),      {'lazy': 0})
+  call dein#load_toml(expand('~/dotfiles/dein_lazy.toml'), {'lazy': 1})
+  call dein#end()
+  call dein#save_state()
 endif
 
-
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ "build" : {
-      \     "mac"  : "make -f make_mac.mak",
-      \     "unix" : "make -f make_unix.mak",
-      \   },
-      \ }
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'zhaocai/unite-scriptnames'
-" fork from 'basyura/unite-rails'
-NeoBundle 'sugilog/unite-rails'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'vim-scripts/tracwiki'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'hrsh7th/vim-versions'
-" fork from 'tomasr/molokai' 
-NeoBundle 'sugilog/molokai' 
-NeoBundle 'osyo-manga/vim-anzu'
-" Gist-vim required webapi-vim
-" and set: git config --global github.user Username
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'benmills/vimux'
-NeoBundle 'pgr0ss/vimux-ruby-test'
-NeoBundle 'spolu/dwm.vim'
-NeoBundle 'kannokanno/unite-dwm'
-NeoBundle 'AndrewRadev/linediff.vim'
+if dein#check_install()
+  call dein#install()
+endif
 
 filetype plugin indent on
 
