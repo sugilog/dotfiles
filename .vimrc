@@ -78,10 +78,6 @@ let loaded_matchparen = 1
 nnoremap Y y$
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if has('lua')
@@ -126,7 +122,6 @@ let g:unite_enable_start_insert=1
 nnoremap Uu :<C-u>Unite neomru/file<CR>
 nnoremap Um :<C-u>Unite menu:shortcut<CR>
 vmap     Um :<C-u>Unite menu:shortcut<CR>
-nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap UD :<C-u>Unite directory -buffer-name=files file file/new<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
@@ -160,14 +155,6 @@ let g:unite_source_menu_menus = {
       \           ["source vimrc", "source $MYVIMRC"],
       \           ["console",      "VimConsoleOpen"],
       \           ["console redraw", "VimConsoleRedraw"],
-      \       ],
-      \   },
-      \   "gist" : {
-      \       "description" : "unite-gist-menu",
-      \       "command_candidates" : [
-      \           ["my gists",     "Gist -l sugilog"],
-      \           ["post gist",    "Gist -p"],
-      \           ["update gist",  "Gist -e"],
       \       ],
       \   },
       \ }
@@ -271,15 +258,8 @@ autocmd BufNewFile,BufRead *.tracwiki
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" gist
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gist_clip_command = 'pbcopy'
-let g:gist_open_browser_after_post = 1
-let g:gist_detect_filetype = 1
-let g:gist_show_privates = 1
-let g:gist_post_private = 1
-
 """ vimux
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:VimuxRunnerIndex = 2
 let g:VimuxUseNearest = 0

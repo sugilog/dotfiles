@@ -64,14 +64,6 @@ repo = 'sugilog/molokai'
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
-# Gist-vim required webapi-vim
-# and set: git config --global github.user Username
-repo = 'mattn/webapi-vim'
-
-[[plugins]]
-repo = 'mattn/gist-vim'
-
-[[plugins]]
 repo = 'benmills/vimux'
 
 [[plugins]]
