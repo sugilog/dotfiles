@@ -15,6 +15,4 @@ if has('gui_macvim')
   set transparency=20
 
   set lines=100 columns=180
-
-  autocmd NeoComplCacheDisable
 endif
