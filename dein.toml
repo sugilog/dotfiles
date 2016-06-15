@@ -79,7 +79,5 @@ repo = 'pgr0ss/vimux-ruby-test'
 repo = 'spolu/dwm.vim'
 
 [[plugins]]
-repo = 'kannokanno/unite-dwm'
-
-[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
+
