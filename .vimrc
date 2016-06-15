@@ -17,6 +17,8 @@ if dein#check_install()
   call dein#install()
 endif
 
+call map(dein#check_clean(), "delete(v:val, 'rf')")
+
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
