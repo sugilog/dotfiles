@@ -153,7 +153,6 @@ let g:unite_source_menu_menus = {
       \   "shortcut" : {
       \       "description" : "unite-menu",
       \       "command_candidates" : [
-      \           ["svn commit",   "UniteSvnDiff"],
       \           ["file mru",     "Unite neomru/file"],
       \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
       \           ["register",     "Unite -buffer-name=register register"],
