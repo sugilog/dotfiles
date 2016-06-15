@@ -130,7 +130,6 @@ nnoremap Ug :<C-u>Unite menu:gist<CR>
 nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap UD :<C-u>Unite directory -buffer-name=files file file/new<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
-nnoremap Uv :<C-u>UniteVersions status<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
 nnoremap Uy :<C-u>Unite history/yank<CR>
 nnoremap Ut :<C-u>Unite tab<CR>
@@ -271,24 +270,6 @@ autocmd BufNewFile,BufRead *.tracwiki
   \   setf tracwiki |
   \ endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-""" vim-versions
-""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:UniteVersionsWithDiff(type)
-  call DWM_New()
-  silent! setlocal ft=diff nobackup noswf nobuflisted nowrap buftype=nofile
-  exe "read !LANG=C " . a:type . " diff"
-  setlocal nomodifiable
-  goto 1
-  exe "silent! Unite versions/" . a:type . "/status"
-endfunction
-command! -nargs=0 UniteSvnDiff call s:UniteVersionsWithDiff("svn")
-command! -nargs=0 UniteGitDiff call s:UniteVersionsWithDiff("git")
-
-let g:versions#type#svn#status#ignore_status = [
-  \  "X"
-  \ ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ gist

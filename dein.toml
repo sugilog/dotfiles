@@ -57,9 +57,6 @@ repo = 'vim-scripts/tracwiki'
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'hrsh7th/vim-versions'
-
-[[plugins]]
 # fork from 'tomasr/molokai' 
 repo = 'sugilog/molokai' 
 
