@@ -13,14 +13,10 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#save_state()
 endif
 
+" TO Clean disused repos: call map(dein#check_clean(), "delete(v:val, 'rf')")
 if dein#check_install()
   call dein#install()
 endif
-
-try
-  call map(dein#check_clean(), "delete(v:val, 'rf')")
-catch
-endtry
 
 filetype plugin indent on
 
