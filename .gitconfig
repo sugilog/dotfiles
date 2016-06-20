@@ -19,9 +19,10 @@
   info = remote -v
   subup = "!f(){ git submodule foreach 'git pull origin master'; git submodule update; }; f"
 [core]
-	editor = vim
-; https://help.github.com/articles/caching-your-github-password-in-git/
-; [credential]
-;     helper = osxkeychain
+  editor = vim
 [github]
-	user = sugilog@gmail.com
+  user = sugilog@gmail.com
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
