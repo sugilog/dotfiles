@@ -1,5 +1,5 @@
+sh setup/tools/sh
 sh setup/symlinks.sh
-sh setup/copy.sh
 sh setup/oh-my-zsh.sh
 sh setup/awsenv.sh
 # FIXME: use direnv
