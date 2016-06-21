@@ -2,4 +2,3 @@
 --smart-case
 --type-set=rails:ext:rjs,haml,sass
 --known-types
---ignore-dir=vendor
