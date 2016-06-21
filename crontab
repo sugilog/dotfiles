@@ -1,1 +1,0 @@
-45 14 * * * /usr/local/bin/vim -s /home/admin/dotfiles/update4vimplugin | Mail ""
