@@ -35,11 +35,3 @@ function _notify()
   fi
 
 }
-function fcgi_mem_usage()
-{
-  ps aux | grep fcgi | grep -v grep | awk '{ print $2","$6 }' | ruby -nle 'pid, mem = $_.split(","); mem.to_i > 1000000 ? (puts "WARN: #{pid}: #{mem}") : nil'
-}
-function notify_fcgi_mem_usage()
-{
-  _notify $1 "fcgi mem usage" "`fcgi_mem_usage`"
-}
