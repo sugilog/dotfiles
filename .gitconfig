@@ -17,7 +17,6 @@
   done = tag -f 'latest' origin/master
   read = log -p --reverse 'latest'..origin/master
   info = remote -v
-  subup = "!f(){ git submodule foreach 'git pull origin master'; git submodule update; }; f"
 [core]
   editor = vim
 [github]
