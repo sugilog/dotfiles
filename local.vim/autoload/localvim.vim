@@ -43,7 +43,7 @@ function! localvim#time_elapsed( key, threshold )
   endtry
 
   let now = localtime()
-  let past = get( cache, a:key, now )
+  let past = get( cache, a:key, 0 )
 
   return ( now - past ) > a:threshold
 endfunction
