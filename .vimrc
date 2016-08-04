@@ -5,6 +5,7 @@
 set nocompatible
 filetype off
 set runtimepath+=~/dotfiles/dein.vim
+set runtimepath+=~/dotfiles/local.vim
 
 if dein#load_state(expand('~/.vim/dein'))
   call dein#begin(expand('~/.vim/dein'))
@@ -18,6 +19,11 @@ if !has("gui_macvim")
   " TO Clean disused repos: call map(dein#check_clean(), "delete(v:val, 'rf')")
   if dein#check_install()
     call dein#install()
+  endif
+
+  if localvim#time_elapsed( 'update', 24 * 60 * 60 )
+    call localvim#save_time_state( 'update' )
+    call dein#update()
   endif
 endif
 
