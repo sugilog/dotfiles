@@ -8,16 +8,23 @@ alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
 
 if [[ -s $HOME/.rbenv ]]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+  export PATH="$HOME/.rbenv/shims:$PATH"
   eval "$(rbenv init -)"
+else
+  which rbenv
+  if [ "$?" = "0" ]]; then
+    export PATH="$HOME/.rbenv/shims:$PATH"
+    eval "$(rbenv init -)"
+  fi
 fi
 
 if [[ -s $HOME/.nodenv ]]; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
+  export PATH="$HOME/.nodenv/shims:$PATH"
   eval "$(nodenv init -)"
 else
   which nodenv
   if [[ "$?" = "0" ]]; then
+    export PATH="$HOME/.nodenv/shims:$PATH"
     eval "$(nodenv init -)"
   fi
 fi
