@@ -12,9 +12,14 @@ if [[ -s $HOME/.rbenv ]]; then
   eval "$(rbenv init -)"
 fi
 
-if [[ -s $HOME/.ndenv ]]; then
-  export PATH="$HOME/.ndenv/bin:$PATH"
-  eval "$(ndenv init -)"
+if [[ -s $HOME/.nodenv ]]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+else
+  which nodenv
+  if [[ "$?" = "0" ]]; then
+    eval "$(nodenv init -)"
+  fi
 fi
 
 # check tmuxinator env: tmuxinator doctor
