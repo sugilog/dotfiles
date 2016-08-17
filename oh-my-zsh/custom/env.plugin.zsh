@@ -11,7 +11,7 @@ if [[ -s $HOME/.rbenv ]]; then
   export PATH="$HOME/.rbenv/shims:$PATH"
   eval "$(rbenv init -)"
 else
-  which rbenv
+  which rbenv 2>&1 > /dev/null
   if [[ "$?" = "0" ]]; then
     export PATH="$HOME/.rbenv/shims:$PATH"
     eval "$(rbenv init -)"
@@ -22,7 +22,7 @@ if [[ -s $HOME/.nodenv ]]; then
   export PATH="$HOME/.nodenv/shims:$PATH"
   eval "$(nodenv init -)"
 else
-  which nodenv
+  which nodenv 2>&1 > /dev/null
   if [[ "$?" = "0" ]]; then
     export PATH="$HOME/.nodenv/shims:$PATH"
     eval "$(nodenv init -)"
