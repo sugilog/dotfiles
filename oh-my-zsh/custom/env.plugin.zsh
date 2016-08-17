@@ -12,7 +12,7 @@ if [[ -s $HOME/.rbenv ]]; then
   eval "$(rbenv init -)"
 else
   which rbenv
-  if [ "$?" = "0" ]]; then
+  if [[ "$?" = "0" ]]; then
     export PATH="$HOME/.rbenv/shims:$PATH"
     eval "$(rbenv init -)"
   fi
