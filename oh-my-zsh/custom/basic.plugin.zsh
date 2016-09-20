@@ -2,9 +2,10 @@ function chpwd() {
   local _markname="last"
   local _directory=`showmarks ${_markname:?}`
 
-  if [[ " " != ${_directory:?} ]]; then
+  while [[ " " != ${_directory:?} ]]; do
     deletemark ${_markname:?}
-  fi
+    _directory=`showmarks ${_markname:?}`
+  done
 
   bookmark ${_markname:?} > /dev/null
 }
