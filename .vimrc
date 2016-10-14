@@ -36,7 +36,11 @@ set textwidth=0
 set autoindent
 set wrap
 set wrapscan
-set wildmenu
+set breakindent
+
+try
+  set wildmenu
+endtry
 
 set ignorecase
 set smartcase
@@ -293,8 +297,8 @@ vmap <leader>d :Linediff<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 " The prefix key.
-nnoremap [Tag] <Nop>
-nmap     t [Tag]
+" nnoremap [Tag] <Nop>
+" nmap     t [Tag]
 
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -304,8 +308,8 @@ for n in range(1, 9)
   endif
 endfor
 
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-map <silent> [Tag]x :tabclose<CR>
-map <silent> [Tag]n :tabnext<CR>
-map <silent> [Tag]p :tabprevious<CR>
+map <silent> tc :tablast <bar> tabnew<CR>
+map <silent> tx :tabclose<CR>
+map <silent> tn :tabnext<CR>
+map <silent> tp :tabprevious<CR>
 
