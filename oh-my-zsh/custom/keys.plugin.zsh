@@ -24,7 +24,7 @@ alias sc="ruby script/console"
 alias db="ruby script/dbconsole"
 alias g="git"
 # need to install colordiff
-# http://www.colordiff.org/
+# https://github.com/daveewart/colordiff
 # just do: sudo make install
 alias diff="colordiff"
 
