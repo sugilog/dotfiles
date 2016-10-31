@@ -11,21 +11,18 @@ brew automake
 brew awscli
 brew colordiff
 brew coreutils
-brew go
 brew irssi
 brew lua
 brew maven
 brew mitmproxy
-brew ngrep
 brew nkf
 brew python3
 brew reattach-to-user-namespace
 brew tmux
-brew vim
+brew vim # dependent ruby
 brew wget
 brew zsh
 brew peco
-
 brew the_silver_searcher
 
 # App Store applications
