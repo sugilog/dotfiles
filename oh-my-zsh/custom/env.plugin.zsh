@@ -29,6 +29,19 @@ else
   fi
 fi
 
+if [[ -s $HOME/.goenv ]]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+else
+  which goenv > /dev/null 2>&1
+  if [[ "$?" = "0" ]]; then
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    eval "$(goenv init -)"
+  fi
+fi
+
 which direnv > /dev/null 2>&1
 if [[ "$0" = "0" ]]; then
   eval "$(direnv hook zsh)"
