@@ -15,4 +15,13 @@ if has('gui_macvim')
   set transparency=20
 
   set lines=100 columns=180
+
+  nnoremap <D-t> :tabnew<CR>
+  macm Window.New      key=<D-n> action=newWindow:
+  macm File.Open\.\.\. key=<D-o> action=fileOpen:
+  macm Window.Close      key=<D-w> action=performClose:
+
+  macm Edit.Cut<Tab>"+x       key=<D-x> action=cut:
+  macm Edit.Copy<Tab>"+y      key=<D-c> action=copy:
+  macm Edit.Paste<Tab>"+gP    key=<D-v> action=paste:
 endif
