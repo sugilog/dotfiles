@@ -42,6 +42,17 @@ else
   fi
 fi
 
+if [[ -s $HOME/.vimenv ]]; then
+  export PATH="$HOME/.vimenv/bin:$PATH"
+  eval "$(vimenv init -)"
+else
+  which vimenv > /dev/null 2>&1
+  if [[ "$?" = "0" ]]; then
+    export PATH="$HOME/.vimenv/bin:$PATH"
+    eval "$(vimenv init -)"
+  fi
+fi
+
 which direnv > /dev/null 2>&1
 if [[ "$0" = "0" ]]; then
   eval "$(direnv hook zsh)"
