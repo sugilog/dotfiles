@@ -2,7 +2,9 @@
 """ vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
+if &compatible
+  set nocompatible
+endif
 filetype off
 set runtimepath+=~/dotfiles/dein.vim
 
@@ -22,8 +24,10 @@ if !has("gui_macvim")
   endif
 
   if localvim#time_elapsed( 'update', 24 * 60 * 60 )
-    call localvim#save_time_state( 'update' )
-    call dein#update()
+    if dein#check_update()
+      call localvim#save_time_state( 'update' )
+      call dein#update()
+    endif
   endif
 endif
 
