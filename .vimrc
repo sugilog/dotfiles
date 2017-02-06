@@ -272,16 +272,13 @@ autocmd BufNewFile,BufRead *.tracwiki
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" vimux
+""" vim-go
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:VimuxRunnerIndex = 2
-let g:VimuxUseNearest = 0
-let g:VimuxResetSequence = ""
-let g:vimux_ruby_clear_console_on_run = 0
-
-nmap <leader>t :RunRailsFocusedTest<CR>
-nmap <leader>T :RunAllRailsTest<CR>
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,7 +286,6 @@ nmap <leader>T :RunAllRailsTest<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 vmap <leader>d :Linediff<CR>
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""

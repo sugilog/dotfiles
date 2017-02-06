@@ -1,7 +1,7 @@
 _url=""
 
 function _detect_url() {
-  _version="v2.8.1"
+  _version="v2.10.0"
 
   case ${OSTYPE:0:6} in
     "linux-" )
@@ -27,7 +27,6 @@ if [ $? -ne 0 ]; then
     mkdir -p $HOME/bin
     wget ${_url} -O $HOME/bin/direnv
     chmod +x $HOME/bin/direnv
-    echo 'eval "$(direnv hook zsh)"' >> $HOME/.zshrc
   else
     echo "Failed to detect url"
     exit 1

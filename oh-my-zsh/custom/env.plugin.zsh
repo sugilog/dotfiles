@@ -31,13 +31,15 @@ fi
 
 if [[ -s $HOME/.goenv ]]; then
   export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
+  export GOPATH=$HOME/go
+  export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
   eval "$(goenv init -)"
 else
   which goenv > /dev/null 2>&1
   if [[ "$?" = "0" ]]; then
     export GOENV_ROOT="$HOME/.goenv"
-    export PATH="$GOENV_ROOT/bin:$PATH"
+    export GOPATH=$HOME/go
+    export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
     eval "$(goenv init -)"
   fi
 fi
@@ -54,7 +56,7 @@ else
 fi
 
 which direnv > /dev/null 2>&1
-if [[ "$0" = "0" ]]; then
+if [[ "$?" = "0" ]]; then
   eval "$(direnv hook zsh)"
 fi
 

@@ -60,17 +60,14 @@ repo = 'vim-scripts/tracwiki'
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
 # fork from 'tomasr/molokai' 
 repo = 'sugilog/molokai' 
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
-
-[[plugins]]
-repo = 'benmills/vimux'
-
-[[plugins]]
-repo = 'pgr0ss/vimux-ruby-test'
 
 [[plugins]]
 repo = 'spolu/dwm.vim'
