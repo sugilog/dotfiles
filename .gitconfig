@@ -17,6 +17,7 @@
   done = tag -f 'latest' origin/master
   read = log -p --reverse 'latest'..origin/master
   info = remote -v
+  bclean = !git branch --merged | grep -vE '^\\*|master$|release$' | xargs git branch -d
 [core]
   editor = vim
 [github]
