@@ -272,6 +272,20 @@ autocmd BufNewFile,BufRead *.tracwiki
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+""" vim-rubytest
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:rubytest_in_quickfix = 1
+let g:rubytest_cmd_test = "bundle exec rails test %p"
+let g:rubytest_cmd_testcase = "bundle exec rails test %p -n '/%c/'"
+let g:rubytest_cmd_spec = "bundle exxec rspec -f specdoc %p"
+let g:rubytest_cmd_example = "bundle exec rspec -f specdoc %p -e '%c'"
+
+au FileType ruby nmap <Leader>t <Plug>RubyTestRun
+au FileType ruby nmap <Leader>T <Plug>RubyFileRun
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 """ vim-go
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
