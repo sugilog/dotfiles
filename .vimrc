@@ -276,10 +276,21 @@ autocmd BufNewFile,BufRead *.tracwiki
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:rubytest_in_quickfix = 1
-let g:rubytest_cmd_test = "bundle exec rails test %p"
-let g:rubytest_cmd_testcase = "bundle exec rails test %p -n '/%c/'"
-let g:rubytest_cmd_spec = "bundle exxec rspec -f specdoc %p"
-let g:rubytest_cmd_example = "bundle exec rspec -f specdoc %p -e '%c'"
+
+function! SwitchRubytest()
+  if glob("Gemfile")
+    let g:rubytest_cmd_test = "bundle exec rails test %p"
+    let g:rubytest_cmd_testcase = "bundle exec rails test %p -n '/%c/'"
+    let g:rubytest_cmd_spec = "bundle exxec rspec -f specdoc %p"
+    let g:rubytest_cmd_example = "bundle exec rspec -f specdoc %p -e '%c'"
+  else
+    let g:rubytest_cmd_test = "ruby %p"
+    let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
+    let g:rubytest_cmd_spec = "spec -f specdoc %p"
+    let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
+  endif
+endfunction
+autocmd BufNewFile,BufRead *.rb :call SwitchRubytest()
 
 au FileType ruby nmap <Leader>t <Plug>RubyTestRun
 au FileType ruby nmap <Leader>T <Plug>RubyFileRun
