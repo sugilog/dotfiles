@@ -278,7 +278,7 @@ autocmd BufNewFile,BufRead *.tracwiki
 let g:rubytest_in_quickfix = 1
 
 function! SwitchRubytest()
-  if glob("Gemfile")
+  if glob("Gemfile") == "Gemfile"
     let g:rubytest_cmd_test = "bundle exec rails test %p"
     let g:rubytest_cmd_testcase = "bundle exec rails test %p -n '/%c/'"
     let g:rubytest_cmd_spec = "bundle exxec rspec -f specdoc %p"
