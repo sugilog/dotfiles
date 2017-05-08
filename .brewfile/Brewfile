@@ -2,7 +2,6 @@ tap caskroom/cask
 cask vagrant
 cask vienna
 cask macvim
-cask quicksilver
 
 tap homebrew/core
 brew autoconf
@@ -33,3 +32,4 @@ appstore Growl
 appstore Helium
 appstore The Unarchiver
 appstore Xcode
+appstore Alfred
