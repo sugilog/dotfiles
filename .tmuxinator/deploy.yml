@@ -6,28 +6,28 @@ windows:
       panes:
         - main01:
           - ssh advertise_development
-          - jump monitoring
-          - cap show_processlist_main01
+          - jump working
+          - bundle exec cap production monitor:db:main01
         - web_status:
           - ssh advertise_development
-          - jump monitoring
-          - cap tail_web_error_status | lc f --key time,method,status,path
+          - jump working
+          - bundle exec cap production monitor:web:access_error
         - web_app_error:
           - ssh advertise_development
-          - jump monitoring
-          - cap tail_web_app_error
+          - jump working
+          - bundle exec cap production monitor:web:app_error
         - main02:
           - ssh advertise_development
-          - jump monitoring
-          - cap show_processlist_main03
+          - jump working
+          - bundle exec cap production monitor:db:main03
         - tag_status:
           - ssh advertise_development
-          - jump monitoring
-          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_error_status | lc f --key time,method,status,path
+          - jump working
+          - bundle exec cap production monitor:tag:access_error
         - tag_app_error:
           - ssh advertise_development
-          - jump monitoring
-          - env CAP_SSH_GATEWAY=$(echo $TAG_SSH_GATEWAY) cap tail_tag_app_error
+          - jump working
+          - bundle exec cap production monitor:tag:app_error
         - workspace:
           - ssh advertise_development
           - jump current

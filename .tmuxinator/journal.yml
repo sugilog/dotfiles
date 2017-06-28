@@ -6,6 +6,6 @@ windows:
       panes:
         - TERM=screen-256color irssi
         - cd $HOME/Dropbox/Journal && vim `date +%Y%m.md`
-  - notes:
+  - extra:
       panes:
-        - cd $HOME/workspace/electron-notes && npm start
+        - cd $HOME/workspace/electron-notes && nohup npm start &; tmux kill-pane
