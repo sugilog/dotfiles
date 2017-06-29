@@ -1,11 +1,11 @@
 name: journal
 root: ~/
 windows:
+  - extra:
+      panes:
+        - cd $HOME/workspace/electron-notes && nohup npm start &; tmux kill-pane
   - main:
       layout: even-horizontal
       panes:
         - TERM=screen-256color irssi
         - cd $HOME/Dropbox/Journal && vim `date +%Y%m.md`
-  - extra:
-      panes:
-        - cd $HOME/workspace/electron-notes && nohup npm start &; tmux kill-pane
