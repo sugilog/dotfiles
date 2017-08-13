@@ -7,6 +7,7 @@
   status = auto
   branch = auto
   interactive = auto
+  pager = true
 [alias]
   myclone = "!f(){ git clone --template=$HOME/dotfiles/git-template/ $@; }; f"
   co = checkout
@@ -23,8 +24,8 @@
 [github]
   user = sugilog@gmail.com
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  log  = less
+  show = less
+  diff = less
 [diff]
   compactionHeuristic = true
