@@ -1,1 +1,1 @@
-git clone https://github.com/kaneshin/goenv.git ~/.goenv
+git clone https://github.com/syndbg/goenv.git ~/.goenv
