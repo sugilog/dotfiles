@@ -6,10 +6,10 @@ windows:
       panes:
         - TERM=screen-256color irssi
         - cd $HOME/Dropbox/Journal && vim `date +%Y%m.md`
-  # - extra:
-  #     panes:
-  #       - cd $HOME/workspace/electron-notes && ruby -e "fork { exec 'yarn start' }"
-  # - kill:
-  #     panes:
-  #       - sleep 2 && tmux kill-window -t journal:1
-  #       - sleep 3 && tmux kill-window -t journal:2
+  - extra:
+      panes:
+        - cd $HOME/workspace/electron-notes && ruby -e "fork { exec 'yarn start' }"
+  - kill:
+      panes:
+        - sleep 2 && tmux kill-window -t journal:1
+        - sleep 3 && tmux kill-window -t journal:2
