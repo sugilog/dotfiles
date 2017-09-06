@@ -4,6 +4,8 @@
 
 if has('gui_macvim')
   colorscheme molokai
+  highlight Normal guibg=#002f51
+  highlight LineNr guibg=#002f51
   set imdisable
   set nobackup
   set visualbell t_vb=
