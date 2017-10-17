@@ -91,6 +91,9 @@ let loaded_matchparen = 1
 " yank from cursol to the end of line
 nnoremap Y y$
 
+autocmd FileType ruby vmap <leader>r :s/:\([^ ]*\)\( *\)=> /\1:\2/gc<CR>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
