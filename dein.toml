@@ -78,3 +78,5 @@ repo = 'spolu/dwm.vim'
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 
+[[plugins]]
+repo = 'hashivim/vim-terraform'
