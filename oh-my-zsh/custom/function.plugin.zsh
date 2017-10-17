@@ -1,6 +1,3 @@
-viack() {
-  vim `ack $@ -l`
-}
 viag() {
   vim `ag $@ -l`
 }
