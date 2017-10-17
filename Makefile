@@ -3,7 +3,7 @@ $(shell test -s $1 && echo 1 || echo 0)
 endef
 
 define BINEXISTS
-$(lastword $(shell which $1; test $${?} -eq 0 && echo 1 || echo 0))
+$(lastword $(shell which $1 2>/dev/null; test $${?} -eq 0 && echo 1 || echo 0))
 endef
 
 define DETECTOS
@@ -80,8 +80,10 @@ endif
 endif
 
 rbenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.rbenv),1)
 	cd ${HOME}/.rbenv && git pull
 	cd ${HOME}/.rbenv/plugins/ruby-build && git pull
+endif
 
 nodenv:
 ifeq ($(call BINEXISTS,nodenv),0)
@@ -91,8 +93,10 @@ ifeq ($(call BINEXISTS,nodenv),0)
 endif
 
 nodenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.nodenv),1)
 	cd ${HOME}/.nodenv && git pull
 	cd ${HOME}/.nodenv/plugins/node-build && git pull
+endif
 
 goenv:
 ifeq ($(call BINEXISTS,goenv),0)
@@ -100,7 +104,9 @@ ifeq ($(call BINEXISTS,goenv),0)
 endif
 
 goenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.goenv),1)
 	cd ${HOME}/.goenv && git pull
+endif
 
 vimenv:
 ifeq ($(call BINEXISTS,vimenv),0)
@@ -109,8 +115,10 @@ ifeq ($(call BINEXISTS,vimenv),0)
 endif
 
 vimenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.vimenv),1)
 	cd ${HOME}/.vimenv && git pull
 	cd ${HOME}/.vimenv/plugins/vim-build && git pull
+endif
 
 symlinks:
 	ln -sf ${HOME}/dotfiles/.gvimrc     ${HOME}/
