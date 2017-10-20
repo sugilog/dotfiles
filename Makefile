@@ -14,12 +14,16 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
+BREWS := wget the_silver_searcher awscli colordiff lua reattach-to-user-namespace tmux
+CASKS := macvim rstudio
+YUMS  := wget the_silver_searcher
+
 help:
 	@echo "init     : init submodules"
 	@echo "update   : update submodules"
 	@echo "symlinks : add symlinks"
 	@echo "tools    : install tools and add symlinks"
-	@echo "tools-update : update tools except brew"
+	@echo "tools-update : update tools except brew cask"
 
 init:
 	git submodule init
@@ -30,27 +34,30 @@ update:
 
 tools: localbin package ohmyzsh awsenv rbenv nodenv goenv vimenv symlinks
 
-tools-update: awsenv-update rbenv-update nodenv-update goenv-update vimenv-update
+tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update vimenv-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
 
+list = hoge fuga piyo
+
+hoge:
+	@$(foreach t,$(list),echo ${t};)
+
 package:
 ifeq ($(call DETECTOS),darwin)
-	brew install wget
-	brew install the_silver_searcher
-	brew install awscli
-	brew install colordiff
-	brew install lua
-	brew install reattach-to-user-namespace
-	brew install tmux
-	brew install the_silver_searcher
+	$(foreach formula,$(BREWS),brew install $(formula);)
 	brew tap caskroom/cask
-	brew cask install macvim
-	brew cask install rstudio
+	$(foreach formula,$(CASKS),brew cask install $(formula);)
 else
-	sudo yum install wget
-	sudo yum install the_silver_searcher
+	sudo yum install $(YUMS)
+endif
+
+package-update:
+ifeq ($(call DETECTOS),darwin)
+	$(foreach formula,$(BREWS),brew upgrade $(formula);)
+else
+	@echo FIXME
 endif
 
 ohmyzsh:
