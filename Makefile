@@ -55,7 +55,7 @@ endif
 
 package-update:
 ifeq ($(call DETECTOS),darwin)
-	$(foreach formula,$(BREWS),brew upgrade $(formula);)
+	$(foreach formula,$(BREWS),brew upgrade $(formula);)echo continue
 else
 	@echo FIXME
 endif
