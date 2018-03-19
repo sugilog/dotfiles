@@ -7,7 +7,7 @@ windows:
         - main01:
           - ssh advertise_development
           - jump working
-          - bundle exec cap production monitor:db:main01
+          - bundle exec cap production monitor:db:main_db
         - web_status:
           - ssh advertise_development
           - jump working
@@ -19,7 +19,7 @@ windows:
         - main02:
           - ssh advertise_development
           - jump working
-          - bundle exec cap production monitor:db:main03
+          - bundle exec cap production monitor:db:main_ro_db
         - tag_status:
           - ssh advertise_development
           - jump working
