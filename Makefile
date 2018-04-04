@@ -14,8 +14,8 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli colordiff lua reattach-to-user-namespace tmux
-CASKS := macvim rstudio postman
+BREWS := wget the_silver_searcher awscli colordiff lua reattach-to-user-namespace tmux heroku
+CASKS := macvim rstudio postman google-cloud-sdk
 YUMS  := wget the_silver_searcher
 
 help:
