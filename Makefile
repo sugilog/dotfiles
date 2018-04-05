@@ -15,7 +15,7 @@ OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
 BREWS := wget the_silver_searcher awscli colordiff lua reattach-to-user-namespace tmux heroku
-CASKS := macvim rstudio postman google-cloud-sdk
+CASKS := macvim rstudio postman google-cloud-sdk drawio
 YUMS  := wget the_silver_searcher
 
 help:
