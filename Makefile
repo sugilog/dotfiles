@@ -32,9 +32,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv nodenv goenv vimenv symlinks
+tools: localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks
 
-tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update vimenv-update
+tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -92,6 +92,16 @@ ifeq ($(call DIREXISTS,${HOME}/.rbenv),1)
 	cd ${HOME}/.rbenv/plugins/ruby-build && git pull
 endif
 
+pyenv:
+ifeq ($(call BINEXISTS,pyenv),0)
+	git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv
+endif
+
+pyenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
+	cd ${HOME}/.pyenv && git pull
+endif
+
 nodenv:
 ifeq ($(call BINEXISTS,nodenv),0)
 	git clone https://github.com/nodenv/nodenv.git ${HOME}/.nodenv
@@ -147,5 +157,5 @@ endif
 
 .DEFAULT_GOAL = help
 
-.PHONY: help init update tools localbin package ohmyzsh awsenv rbenv nodenv goenv vimenv symlinks awsenv-update rbenv-update nodenv-update goenv-update vimenv-update
+.PHONY: help init update tools localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update
 
