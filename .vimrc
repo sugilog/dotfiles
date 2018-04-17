@@ -337,3 +337,23 @@ map <silent> tx :tabclose<CR>
 map <silent> tn :tabnext<CR>
 map <silent> tp :tabprevious<CR>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" json/jq
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>j :Jq<CR>
+
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    " execute "%! jq \"" . l:arg . "\""
+    execute "normal! ^v$"
+    execute "normal! :"
+    execute "'<,'>! jq \"" . l:arg . "\""
+endfunction
+
