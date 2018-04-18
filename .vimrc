@@ -88,6 +88,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let loaded_matchparen = 1
 
+" insert tab
+inoremap <S-Tab> <C-V><Tab>
+
 " yank from cursol to the end of line
 nnoremap Y y$
 
