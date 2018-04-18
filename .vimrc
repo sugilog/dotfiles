@@ -82,6 +82,7 @@ if $TERM != "screen"
   set clipboard=unnamed
 endif
 
+set maxmempattern=10000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
