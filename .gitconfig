@@ -29,3 +29,4 @@
   diff = less
 [diff]
   compactionHeuristic = true
+  colorMoved = dimmed_zebra
