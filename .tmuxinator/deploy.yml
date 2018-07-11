@@ -32,5 +32,8 @@ windows:
           - ssh advertise_development
           - jump current
           - git status
-        - mac:
-          - date
+        - inspector:
+          - ssh advertise_development
+          - jump inspector
+          - git checkout master
+          - git pull
