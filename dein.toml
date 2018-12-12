@@ -80,3 +80,6 @@ repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
+
+[[plugins]]
+repo = 'powerman/vim-plugin-AnsiEsc'
