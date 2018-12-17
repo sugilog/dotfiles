@@ -1,0 +1,3 @@
+[docker]
+clean-containers = "rm $(docker ps -q -f status=exited)"
+clean-images     = "rmi $(docker images -q -f dangling=true)"
