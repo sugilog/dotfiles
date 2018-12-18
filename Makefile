@@ -17,7 +17,7 @@ ZSHRC   := ${HOME}/.zshrc
 BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle
 YUMS  := wget the_silver_searcher
-GO    := lycoris0731/salias
+GO    := lycoris0731/salias lucagrulla/cw
 
 help:
 	@echo "init     : init submodules"
