@@ -14,7 +14,7 @@ if has('gui_macvim')
   set guioptions-=T
   set guifont=Ricty:h13
   " http://code.google.com/p/macvim-kaoriya/wiki/Readme
-  set transparency=65
+  set transparency=20
 
   set lines=100 columns=180
 
