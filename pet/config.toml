@@ -1,0 +1,7 @@
+[General]
+  snippetfile = "~/notes/snippet/pet.toml"
+  editor = "vim"
+  column = 40
+  selectcmd = "peco"
+  backend = ""
+  sortby = ""

@@ -14,9 +14,10 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle
 YUMS  := wget the_silver_searcher
+GO    := lycoris0731/salias lucagrulla/cw knqyf263/pet
 
 help:
 	@echo "init     : init submodules"
@@ -32,9 +33,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks
+tools: localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks go
 
-tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update
+tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -154,6 +155,11 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 else
 	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
 endif
+
+go:
+	$(foreach go,$(GO),go get -u github.com/$(go);)
+
+go-update: go
 
 .DEFAULT_GOAL = help
 

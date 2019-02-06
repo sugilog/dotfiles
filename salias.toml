@@ -1,0 +1,3 @@
+[docker]
+null-containers = "ps --filter status=exited --quiet"
+null-images     = "images --filter dangling=true --quiet"
