@@ -32,3 +32,9 @@ function _notify()
   fi
 
 }
+
+function pet-search() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}

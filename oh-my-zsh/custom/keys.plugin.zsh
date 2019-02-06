@@ -58,4 +58,6 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-search-backward
 
-
+zle -N pet-search
+stty -ixon
+bindkey '^s' pet-search
