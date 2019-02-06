@@ -14,10 +14,10 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle
 YUMS  := wget the_silver_searcher
-GO    := lycoris0731/salias lucagrulla/cw
+GO    := lycoris0731/salias lucagrulla/cw knqyf263/pet
 
 help:
 	@echo "init     : init submodules"
