@@ -87,3 +87,7 @@ fi
 if [[ -s /usr/local/share/npm/bin ]] ; then
   export PATH="/usr/local/share/npm/bin:$PATH"
 fi
+
+if [[ -s /home/linuxbrew/.linuxbrew ]] ; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
