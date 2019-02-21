@@ -1,5 +1,5 @@
 [General]
-  snippetfile = "~/notes/snippet/pet.toml"
+  snippetfile = "~/TIL/snippet/pet.toml"
   editor = "vim"
   column = 40
   selectcmd = "peco"
