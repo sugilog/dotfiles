@@ -92,3 +92,7 @@ if [[ -s $GOPATH/bin/salias ]]; then
   export SALIAS_PATH=$HOME/dotfiles/salias.toml
   source <(salias --init)
 fi
+
+if [[ -s /home/linuxbrew/.linuxbrew ]] ; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
