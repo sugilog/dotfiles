@@ -19,6 +19,8 @@ CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindl
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw
 
+.DEFAULT_GOAL = help
+
 help:
 	@echo "init     : init submodules"
 	@echo "update   : update submodules"
@@ -39,11 +41,6 @@ tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-upda
 
 localbin:
 	mkdir -p ${LOCALBIN}
-
-list = hoge fuga piyo
-
-hoge:
-	@$(foreach t,$(list),echo ${t};)
 
 package:
 ifeq ($(call DETECTOS),darwin)
@@ -161,7 +158,8 @@ go:
 
 go-update: go
 
-.DEFAULT_GOAL = help
-
-.PHONY: help init update tools localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update
-
+behavior:
+ifeq ($(call DETECTOS),darwin)
+	defaults write NSGlobalDomain InitialKeyRepeat -int 12
+	defaults write NSGlobalDomain KeyRepeat -int 1
+endif
