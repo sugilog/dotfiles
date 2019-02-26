@@ -17,7 +17,7 @@ ZSHRC   := ${HOME}/.zshrc
 BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle
 YUMS  := wget the_silver_searcher
-GO    := lycoris0731/salias lucagrulla/cw
+GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
 .DEFAULT_GOAL = help
 
