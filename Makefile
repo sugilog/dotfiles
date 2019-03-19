@@ -15,7 +15,7 @@ OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
 BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi
-CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password
+CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
