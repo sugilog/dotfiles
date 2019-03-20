@@ -33,6 +33,17 @@ else
   fi
 fi
 
+if [[ -s $HOME/.plenv ]]; then
+  export PATH="$HOME/.plenv/bin:$PATH"
+  eval "$(plenv init -)"
+else
+  which plenv > /dev/null 2>&1
+  if [[ "$?" = "0" ]]; then
+    export PATH="$HOME/.plenv/bin:$PATH"
+    eval "$(plenv init -)"
+  fi
+fi
+
 if [[ -s $HOME/.nodenv ]]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
   eval "$(nodenv init -)"

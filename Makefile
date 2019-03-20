@@ -15,7 +15,7 @@ OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
 BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi
-CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker
+CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
@@ -35,9 +35,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks go
+tools: localbin package ohmyzsh awsenv rbenv pyenv plenv nodenv goenv vimenv symlinks go
 
-tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update go-update
+tools-update: package-update awsenv-update rbenv-update pyenv-update plenv-update nodenv-update goenv-update vimenv-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -100,6 +100,19 @@ ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
 	cd ${HOME}/.pyenv && git pull
 endif
 
+plenv:
+ifeq ($(call BINEXISTS,plenv),0)
+	git clone https://github.com/tokuhirom/plenv.git ${HOME}/.plenv
+	git clone https://github.com/tokuhirom/Perl-Build.git ${HOME}/.plenv/plugins/perl-build/
+endif
+
+plenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.plenv),1)
+	cd ${HOME}/.plenv && git pull
+	cd ${HOME}/.plenv/plugins/perl-build/ && git pull
+endif
+endif
+
 nodenv:
 ifeq ($(call BINEXISTS,nodenv),0)
 	git clone https://github.com/nodenv/nodenv.git ${HOME}/.nodenv
@@ -142,9 +155,6 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/
 	ln -sf ${HOME}/dotfiles/.vimrc      ${HOME}/
 	ln -sf ${HOME}/dotfiles/.gitconfig  ${HOME}/
-ifeq ($(call DETECTOS),darwin)
-	ln -sf ${HOME}/dotfiles/.brewfile   ${HOME}/
-endif
 ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
@@ -152,7 +162,7 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 else
 	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
 endif
-  mkdir -p ${HOME}/.config
+	mkdir -p ${HOME}/.config
 	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 
 go:
@@ -165,3 +175,7 @@ ifeq ($(call DETECTOS),darwin)
 	defaults write NSGlobalDomain InitialKeyRepeat -int 12
 	defaults write NSGlobalDomain KeyRepeat -int 1
 endif
+
+cpanm:
+	plenv install-cpanm
+	cpanm install Growl::GNTP
