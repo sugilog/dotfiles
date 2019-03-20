@@ -152,6 +152,8 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 else
 	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
 endif
+  mkdir -p ${HOME}/.config
+	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 
 go:
 	$(foreach go,$(GO),go get -u github.com/$(go);)
