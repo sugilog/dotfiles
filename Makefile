@@ -14,8 +14,14 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible
+MAS_LINE := 539883307
+MAS_DIVVY := 413857545
+MAS_MINICAL := 1088779979
+
+
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner
+MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL)
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
@@ -47,6 +53,7 @@ ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew install $(formula);)
 	brew tap caskroom/cask
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
+	$(foreach id,$(MAS),mas install $(id);)
 else
 	sudo yum install $(YUMS)
 endif
