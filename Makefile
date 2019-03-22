@@ -35,9 +35,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv pyenv plenv nodenv goenv vimenv symlinks go
+tools: localbin package ohmyzsh awsenv rbenv nodenv goenv vimenv symlinks go
 
-tools-update: package-update awsenv-update rbenv-update pyenv-update plenv-update nodenv-update goenv-update vimenv-update go-update
+tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update vimenv-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -88,29 +88,6 @@ rbenv-update:
 ifeq ($(call DIREXISTS,${HOME}/.rbenv),1)
 	cd ${HOME}/.rbenv && git pull
 	cd ${HOME}/.rbenv/plugins/ruby-build && git pull
-endif
-
-pyenv:
-ifeq ($(call BINEXISTS,pyenv),0)
-	git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv
-endif
-
-pyenv-update:
-ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
-	cd ${HOME}/.pyenv && git pull
-endif
-
-plenv:
-ifeq ($(call BINEXISTS,plenv),0)
-	git clone https://github.com/tokuhirom/plenv.git ${HOME}/.plenv
-	git clone https://github.com/tokuhirom/Perl-Build.git ${HOME}/.plenv/plugins/perl-build/
-endif
-
-plenv-update:
-ifeq ($(call DIREXISTS,${HOME}/.plenv),1)
-	cd ${HOME}/.plenv && git pull
-	cd ${HOME}/.plenv/plugins/perl-build/ && git pull
-endif
 endif
 
 nodenv:
