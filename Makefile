@@ -14,7 +14,7 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
