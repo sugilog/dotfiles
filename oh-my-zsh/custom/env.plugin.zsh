@@ -2,7 +2,6 @@ export DISABLE_UPDATE_PROMPT=true
 export LESS=R
 export SVN_EDITOR=vim
 export EDITOR=vim
-# export LC_CTYPE=UTF-8
 
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
