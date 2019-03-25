@@ -23,16 +23,6 @@ function watcher()
   done
 }
 
-function _notify()
-{
-  if [ $3 != "" ]; then
-    ip=`echo $SSH_CONNECTION | awk '{ print $1 }'`
-    echo $3
-    ssh $1@$ip "growlnotify -t $2 -m '$3' -w"
-  fi
-
-}
-
 function pet-search() {
   BUFFER=$(pet search --query "$LBUFFER")
   CURSOR=$#BUFFER

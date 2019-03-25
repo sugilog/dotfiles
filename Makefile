@@ -14,8 +14,14 @@ LOCALBIN := ${HOME}/bin
 OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet
-CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle
+MAS_LINE := 539883307
+MAS_DIVVY := 413857545
+MAS_MINICAL := 1088779979
+MAX_UNARCHIVER := 425424353
+
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas
+CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox
+MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
@@ -35,9 +41,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv pyenv nodenv goenv vimenv symlinks go
+tools: localbin package ohmyzsh awsenv rbenv nodenv goenv vimenv symlinks go
 
-tools-update: package-update awsenv-update rbenv-update pyenv-update nodenv-update goenv-update vimenv-update go-update
+tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update vimenv-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -47,6 +53,7 @@ ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew install $(formula);)
 	brew tap caskroom/cask
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
+	$(foreach id,$(MAS),mas install $(id);)
 else
 	sudo yum install $(YUMS)
 endif
@@ -88,16 +95,6 @@ rbenv-update:
 ifeq ($(call DIREXISTS,${HOME}/.rbenv),1)
 	cd ${HOME}/.rbenv && git pull
 	cd ${HOME}/.rbenv/plugins/ruby-build && git pull
-endif
-
-pyenv:
-ifeq ($(call BINEXISTS,pyenv),0)
-	git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv
-endif
-
-pyenv-update:
-ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
-	cd ${HOME}/.pyenv && git pull
 endif
 
 nodenv:
@@ -142,9 +139,6 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/
 	ln -sf ${HOME}/dotfiles/.vimrc      ${HOME}/
 	ln -sf ${HOME}/dotfiles/.gitconfig  ${HOME}/
-ifeq ($(call DETECTOS),darwin)
-	ln -sf ${HOME}/dotfiles/.brewfile   ${HOME}/
-endif
 ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
@@ -152,6 +146,8 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 else
 	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
 endif
+	mkdir -p ${HOME}/.config
+	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 
 go:
 	$(foreach go,$(GO),go get -u github.com/$(go);)

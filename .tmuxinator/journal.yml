@@ -2,7 +2,8 @@ name: journal
 root: ~/
 windows:
   - main:
-      layout: even-horizontal
+      layout: 0f98,547x111,0,0{181x111,0,0,0,181x111,182,0,1,183x111,364,0,3}
       panes:
         - TERM=screen-256color irssi
         - cd $HOME/Documents/Journal && vim `date +%Y%m.md`
+        -

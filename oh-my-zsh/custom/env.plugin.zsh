@@ -21,17 +21,6 @@ else
   fi
 fi
 
-if [[ -s $HOME/.pyenv ]]; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-else
-  which pyenv > /dev/null 2>&1
-  if [[ "$?" = "0" ]]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-  fi
-fi
-
 if [[ -s $HOME/.nodenv ]]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
   eval "$(nodenv init -)"
