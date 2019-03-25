@@ -28,3 +28,8 @@ function pet-search() {
   CURSOR=$#BUFFER
   zle redisplay
 }
+
+function escape_whitespace ()
+{
+  sed 's/ /\\ /g'
+}
