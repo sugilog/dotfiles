@@ -83,3 +83,6 @@ repo = 'hashivim/vim-terraform'
 
 [[plugins]]
 repo = 'powerman/vim-plugin-AnsiEsc'
+
+[[plugins]]
+repo = 'w0rp/ale'

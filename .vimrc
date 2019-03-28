@@ -16,7 +16,7 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#save_state()
 endif
 
-if !has("gui_macvim")
+if !has("gui_running")
   set runtimepath+=~/dotfiles/local.vim
   " TO Clean disused repos: call map(dein#check_clean(), "delete(v:val, 'rf')")
   if localvim#time_elapsed( 'update', 24 * 60 * 60 )
@@ -344,7 +344,7 @@ vmap <leader>d :Linediff<CR>
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 
-  if has("gui_macvim")
+  if has("gui_running")
     execute 'nnoremap <D-'.n.'> :tabn '.n.'<CR>'
   endif
 endfor
@@ -353,4 +353,12 @@ map <silent> tc :tablast <bar> tabnew<CR>
 map <silent> tx :tabclose<CR>
 map <silent> tn :tabnext<CR>
 map <silent> tp :tabprevious<CR>
+
+
+"""""""""""""""""""""""""""""""""
+""" package config
+"""""""""""""""""""""""""""""""""
+if len(findfile("package.vimrc", fnameescape(getcwd()))) > 1
+  source package.vimrc
+endif
 
