@@ -84,6 +84,9 @@ endif
 
 set maxmempattern=10000
 
+set exrc
+set secure
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -353,12 +356,3 @@ map <silent> tc :tablast <bar> tabnew<CR>
 map <silent> tx :tabclose<CR>
 map <silent> tn :tabnext<CR>
 map <silent> tp :tabprevious<CR>
-
-
-"""""""""""""""""""""""""""""""""
-""" package config
-"""""""""""""""""""""""""""""""""
-if len(findfile("package.vimrc", fnameescape(getcwd()))) > 1
-  source package.vimrc
-endif
-
