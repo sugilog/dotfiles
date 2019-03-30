@@ -5,29 +5,13 @@ repo = 'vim-scripts/sudo.vim'
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'zhaocai/unite-scriptnames'
-
-[[plugins]]
-# fork from 'basyura/unite-rails'
-repo = 'sugilog/unite-rails'
 
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'

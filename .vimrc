@@ -118,16 +118,6 @@ endfunction
 """ neocomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if has('lua')
-imap <C-y> <Plug>(neosnippet_expand_or_jump)
-smap <C-y> <Plug>(neosnippet_expand_or_jump)
-xmap <C-y> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -163,23 +153,12 @@ nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap UD :<C-u>Unite directory -buffer-name=files file file/new<CR>
 nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
 nnoremap Uo :<C-u>Unite outline<CR>
-nnoremap Uy :<C-u>Unite history/yank<CR>
 nnoremap Ut :<C-u>Unite tab<CR>
 
 nnoremap U/ :<C-u>Unite line:all<CR>
 
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
-nnoremap Rc :<C-u>Unite rails/controller<CR>
-nnoremap Rm :<C-u>Unite rails/model<CR>
-nnoremap Rv :<C-u>Unite rails/view<CR>
-nnoremap Rh :<C-u>Unite rails/helper<CR>
-nnoremap Rl :<C-u>Unite rails/lib<CR>
-nnoremap Rp :<C-u>Unite rails/public<CR>
-nnoremap Rj :<C-u>Unite rails/javascript<CR>
-nnoremap Rf :<C-u>Unite rails/public -input=framework/<CR>
-nnoremap Rs :<C-u>Unite rails/spec<CR>
 
 let g:unite_source_menu_menus = {
       \   "shortcut" : {
