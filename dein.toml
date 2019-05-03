@@ -67,3 +67,6 @@ repo = 'powerman/vim-plugin-AnsiEsc'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
