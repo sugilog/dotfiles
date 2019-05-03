@@ -268,3 +268,21 @@ map <silent> tc :tablast <bar> tabnew<CR>
 map <silent> tx :tabclose<CR>
 map <silent> tn :tabnext<CR>
 map <silent> tp :tabprevious<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" ale
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:ale_linters = {}
+" let g:ale_fixers = {}
+
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_completion_enabled = 1
+
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_fix_on_save = 1
