@@ -143,84 +143,17 @@ endif
 let g:neocomplete#force_overwrite_completefunc = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" unite.vim
+""" denite.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_enable_start_insert=1
-nnoremap Uu :<C-u>Unite neomru/file<CR>
-nnoremap Um :<C-u>Unite menu:shortcut<CR>
-vmap     Um :<C-u>Unite menu:shortcut<CR>
-nnoremap Ud :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap UD :<C-u>Unite directory -buffer-name=files file file/new<CR>
-nnoremap Ub :<C-u>Unite buffer -default-action=dwm_open<CR>
-nnoremap Uo :<C-u>Unite outline<CR>
-nnoremap Ut :<C-u>Unite tab<CR>
+nnoremap Uu :<C-u>Denite file_mru<CR>
+nnoremap Ud :<C-u>DeniteBufferDir file<CR>
+nnoremap UD :<C-u>Denite directory file<CR>
+nnoremap Ub :<C-u>Denite buffer<CR>
+nnoremap Uo :<C-u>Denite outline<CR>
+nnoremap U/ :<C-u>Denite line:all<CR>
 
-nnoremap U/ :<C-u>Unite line:all<CR>
-
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
-let g:unite_source_menu_menus = {
-      \   "shortcut" : {
-      \       "description" : "unite-menu",
-      \       "command_candidates" : [
-      \           ["file mru",     "Unite neomru/file"],
-      \           ["unite",        "UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file"],
-      \           ["register",     "Unite -buffer-name=register register"],
-      \           ["edit vimrc",   "edit $MYVIMRC"],
-      \           ["source vimrc", "source $MYVIMRC"],
-      \           ["console",      "VimConsoleOpen"],
-      \           ["console redraw", "VimConsoleRedraw"],
-      \       ],
-      \   },
-      \ }
-
-let s:action = {
-      \ 'description' : 'open with dwm',
-      \ 'is_selectable' : 1,
-      \ }
-function! s:action.func(candidates)
-  for l:candidate in a:candidates
-    if bufexists(l:candidate.action__path)
-      let l:winnr = bufwinnr(l:candidate.action__path)
-
-      if l:winnr == -1
-        call DWM_Stack(1)
-        split
-        call unite#take_action('open', l:candidate)
-        call DWM_AutoEnter()
-      else
-        exec l:winnr . "wincmd w"
-        call DWM_AutoEnter()
-      endif
-    else
-      call DWM_New()
-      call unite#take_action("open", l:candidate)
-    endif
-  endfor
-
-  call CleanEmptyBuffers()
-endfunction
-call unite#custom_action('openable', 'dwm_open', s:action)
-call unite#custom#default_action("file", "dwm_open")
-unlet s:action
-
-function! CleanEmptyBuffers()
-  let l:i = 0
-  let l:n = bufnr('$')
-  let l:bufs = []
-
-  while l:i <= l:n
-    if bufexists(l:i) && empty(bufname(l:i)) && buflisted(l:i)
-      call add(l:bufs, l:i)
-    endif
-    let l:i += 1
-  endwhile
-
-  if len(l:bufs) > 0
-    exe 'bdelete' join(l:bufs)
-  endif
-endfunction
+au FileType denite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType denite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search and anzu
