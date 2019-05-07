@@ -17,9 +17,6 @@ repo = 'h1mesuke/vim-alignta'
 repo = 'tmhedberg/matchit'
 
 [[plugins]]
-repo = 'janx/vim-rubytest'
-
-[[plugins]]
 repo = 'tpope/vim-rails'
 
 [[plugins]]
