@@ -1,4 +1,4 @@
-let g:localvim_time_cachefile = "~/.vim/local.time.cache"
+let g:localvim_time_cachefile = "~/.config/nvim/local.time.cache"
 
 function! localvim#load( filepath )
   if filereadable( a:filepath )

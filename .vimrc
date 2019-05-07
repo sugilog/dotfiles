@@ -8,8 +8,8 @@ endif
 filetype off
 set runtimepath+=~/dotfiles/dein.vim
 
-if dein#load_state(expand('~/.vim/dein'))
-  call dein#begin(expand('~/.vim/dein'))
+if dein#load_state(expand('~/.config/nvim/dein'))
+  call dein#begin(expand('~/.config/nvim/dein'))
   call dein#load_toml(expand('~/dotfiles/dein.toml'),      {'lazy': 0})
   call dein#load_toml(expand('~/dotfiles/dein_lazy.toml'), {'lazy': 1})
   call dein#end()
