@@ -19,10 +19,10 @@ MAS_DIVVY := 413857545
 MAS_MINICAL := 1088779979
 MAX_UNARCHIVER := 425424353
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim pipenv python
+BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim
 CASKS := macvim rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
-YUMS  := wget the_silver_searcher neovim python2-neovim python3-neovim
+YUMS  := wget the_silver_searcher
 GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
 
 .DEFAULT_GOAL = help
@@ -41,9 +41,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv nodenv goenv pipenv symlinks go
+tools: localbin package ohmyzsh awsenv rbenv nodenv goenv pyenv neovim symlinks go
 
-tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update pipenv-update go-update
+tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -55,8 +55,6 @@ ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
 	$(foreach id,$(MAS),mas install $(id);)
 else
-	# for neovim
-	sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 	sudo yum install $(YUMS)
 endif
 
@@ -122,18 +120,30 @@ ifeq ($(call DIREXISTS,${HOME}/.goenv),1)
 	cd ${HOME}/.goenv && git pull
 endif
 
-pipenv: pipenv-install
-	pip install --user neovim
-	pip3 install --user neovim
-
-pipenv-update: pipenv-install
-
-pipenv-install:
-ifeq ($(call DETECTOS),darwin)
-	# use brew
-else
-	curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | python
+pyenv:
+ifeq ($(call BINEXISTS,pyenv),0)
+	git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv
 endif
+
+python-install:
+	pyenv install 2.7.16
+	pyenv install 3.6.8
+	pyenv global 2.7.16 3.6.8
+
+pyenv-update:
+ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
+	cd ${HOME}/.pyenv && git pull
+endif
+
+neovim:
+	pip install --upgrade pynvim
+	pip3 install --upgrade pynvim
+ifeq ($(call DETECTOS),linux-)
+	sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	sudo yum install --enablerepo=epel -y neovim
+endif
+
+neovim-update: neovim
 
 symlinks:
 	ln -sf ${HOME}/dotfiles/.gvimrc     ${HOME}/

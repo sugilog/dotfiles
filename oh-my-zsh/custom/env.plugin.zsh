@@ -47,6 +47,19 @@ else
   fi
 fi
 
+if [[ -s $HOME/.pyenv ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+else
+  which pyenv > /dev/null 2>&1
+  if [[ "$?" = "0" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+  fi
+fi
+
 which direnv > /dev/null 2>&1
 if [[ "$?" = "0" ]]; then
   eval "$(direnv hook zsh)"
