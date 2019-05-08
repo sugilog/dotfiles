@@ -51,12 +51,14 @@ if [[ -s $HOME/.pyenv ]]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 else
   which pyenv > /dev/null 2>&1
   if [[ "$?" = "0" ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
   fi
 fi
 

@@ -123,16 +123,18 @@ endif
 pyenv:
 ifeq ($(call BINEXISTS,pyenv),0)
 	git clone https://github.com/pyenv/pyenv.git ${HOME}/.pyenv
+	git clone https://github.com/pyenv/pyenv-virtualenv.git ${HOME}/.pyenv/plugins/pyenv-virtualenv
 endif
 
 python-install:
-	pyenv install 2.7.16
-	pyenv install 3.6.8
-	pyenv global 2.7.16 3.6.8
+	pyenv virtualenv 2.7.16 neovim2
+	pyenv virtualenv 3.6.8 neovim2
+	pyenv global neovim2 neovim3
 
 pyenv-update:
 ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
 	cd ${HOME}/.pyenv && git pull
+	cd ${HOME}/.pyenv/plugins/pyenv-virtualenv && git pull
 endif
 
 neovim:
