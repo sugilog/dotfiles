@@ -147,13 +147,11 @@ let g:neocomplete#force_overwrite_completefunc = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap Uu :<C-u>Denite file_mru<CR>
 nnoremap Ud :<C-u>DeniteBufferDir file<CR>
-nnoremap UD :<C-u>Denite directory file<CR>
+nnoremap UD :<C-u>Denite file<CR>
 nnoremap Ub :<C-u>Denite buffer<CR>
 nnoremap Uo :<C-u>Denite outline<CR>
 nnoremap U/ :<C-u>Denite line:all<CR>
 
-au FileType denite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType denite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search and anzu
