@@ -127,8 +127,15 @@ ifeq ($(call BINEXISTS,pyenv),0)
 endif
 
 python-install:
+ifeq ($(call DETECTOS),darwin)
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 2.7.16
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 3.6.8
+else
+	pyenv install 2.7.16
+	pyenv install 3.6.8
+endif
 	pyenv virtualenv 2.7.16 neovim2
-	pyenv virtualenv 3.6.8 neovim2
+	pyenv virtualenv 3.6.8 neovim3
 	pyenv global neovim2 neovim3
 
 pyenv-update:
@@ -137,7 +144,7 @@ ifeq ($(call DIREXISTS,${HOME}/.pyenv),1)
 	cd ${HOME}/.pyenv/plugins/pyenv-virtualenv && git pull
 endif
 
-neovim:
+neovim: python-install
 	pip install --upgrade pynvim
 	pip3 install --upgrade pynvim
 ifeq ($(call DETECTOS),linux-)
