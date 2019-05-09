@@ -1,7 +1,7 @@
 export DISABLE_UPDATE_PROMPT=true
 export LESS=R
-export SVN_EDITOR=vim
-export EDITOR=vim
+export SVN_EDITOR=nvim
+export EDITOR=nvim
 
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '

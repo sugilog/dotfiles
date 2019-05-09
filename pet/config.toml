@@ -1,6 +1,6 @@
 [General]
   snippetfile = "~/TIL/snippet/pet.toml"
-  editor = "vim"
+  editor = "nvim"
   column = 40
   selectcmd = "peco"
   backend = ""

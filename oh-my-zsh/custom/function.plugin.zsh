@@ -1,5 +1,5 @@
 viag() {
-  vim `ag $@ -l`
+  nvim `ag $@ -l`
 }
 
 # http://unix.stackexchange.com/questions/41980/prevent-watch-breaking-colors
