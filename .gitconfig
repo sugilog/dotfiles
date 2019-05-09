@@ -20,7 +20,7 @@
   info = remote -v
   bclean = !git branch --merged | grep -vE '^\\*|master$|release$' | xargs git branch -d
 [core]
-  editor = vim
+  editor = nvim
 [github]
   user = sugilog@gmail.com
 [pager]
