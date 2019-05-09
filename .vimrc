@@ -1,7 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
 if &compatible
   set nocompatible
 endif
@@ -10,8 +9,7 @@ set runtimepath+=~/dotfiles/dein.vim
 
 if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#begin(expand('~/.config/nvim/dein'))
-  call dein#load_toml(expand('~/dotfiles/dein.toml'),      {'lazy': 0})
-  call dein#load_toml(expand('~/dotfiles/dein_lazy.toml'), {'lazy': 1})
+  call dein#load_toml(expand('~/dotfiles/dein.toml'), {'lazy': 0})
   call dein#end()
   call dein#save_state()
 endif
@@ -118,32 +116,9 @@ function! s:Jq(...)
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""" neocomplete
+""" deoplete.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-if has('lua')
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#smart_close_popup() . "\<CR>"
-endfunction
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-endif
-
-let g:neocomplete#force_overwrite_completefunc = 1
+let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ denite.nvim
