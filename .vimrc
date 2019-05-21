@@ -78,7 +78,6 @@ set suffixesadd+=.js
 " on Mac Terminal.app, use with https://github.com/Nyoho/TerminalEastAsianAmbiguousClearer
 set ambiwidth=double
 set display+=lastline
-set showtabline=2
 
 if $TERM != "screen"
   set clipboard=unnamed
