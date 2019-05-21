@@ -181,7 +181,7 @@ behavior:
 ifeq ($(call DETECTOS),darwin)
 	defaults write NSGlobalDomain InitialKeyRepeat -int 12
 	defaults write NSGlobalDomain KeyRepeat -int 1
-	defaults -currentHost write com.apple.screensaver idleTime 60
+	defaults -currentHost write com.apple.screensaver idleTime 120
 	defaults -currentHost write com.apple.screensaver moduleDict -dict-add moduleName "Computer Name"
 	defaults -currentHost write com.apple.screensaver moduleDict -dict-add path "`ls -d /System/Library/Frameworks/ScreenSaver.framework/Resources/Computer*`"
 	defaults read NSGlobalDomain | grep Key
