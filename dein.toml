@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'vim-scripts/sudo.vim'
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
