@@ -10,6 +10,7 @@ set runtimepath+=~/dotfiles/dein.vim
 if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#begin(expand('~/.config/nvim/dein'))
   call dein#load_toml(expand('~/dotfiles/dein.toml'), {'lazy': 0})
+  call dein#load_toml(expand('~/dotfiles/dein.lazy.toml'), {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
@@ -219,3 +220,11 @@ nmap <C-w>v <plug>TilerNew
 nmap <C-w>s <plug>TilerNew
 nmap <C-w>c <plug>TilerClose
 nmap <C-space> <plug>TilerRotateForwards
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" git-messenger.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <Leader>gm <Plug>(git-messenger)
+
