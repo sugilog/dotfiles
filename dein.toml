@@ -51,9 +51,6 @@ repo = 'sugilog/molokai'
 repo = 'osyo-manga/vim-anzu'
 
 [[plugins]]
-repo = 'spolu/dwm.vim'
-
-[[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
@@ -67,3 +64,6 @@ repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'zhamlin/tiler.vim'

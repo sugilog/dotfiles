@@ -115,6 +115,7 @@ function! s:Jq(...)
     execute "'<,'>! jq \"" . l:arg . "\""
 endfunction
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ deoplete.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,3 +202,20 @@ let g:ale_fix_on_save = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:go_version_warning = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" window manager / tiler.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <C-j> <C-w>w
+nmap <C-k> <C-w>W
+nmap <C-n> <C-w>v
+nmap <C-s> <C-w>s
+nmap <C-c> <C-w>c
+
+nmap <C-w>n <plug>TilerNew
+nmap <C-w>v <plug>TilerNew
+nmap <C-w>s <plug>TilerNew
+nmap <C-w>c <plug>TilerClose
+nmap <C-space> <plug>TilerRotateForwards
