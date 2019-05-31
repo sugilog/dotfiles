@@ -226,5 +226,5 @@ nmap <C-space> <plug>TilerRotateForwards
 """ git-messenger.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-nmap <Leader>gm <Plug>(git-messenger)
+nmap gm <Plug>(git-messenger)
 
