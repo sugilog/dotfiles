@@ -133,6 +133,21 @@ nnoremap Ub :<C-u>Denite buffer<CR>
 nnoremap Uo :<C-u>Denite outline<CR>
 nnoremap U/ :<C-u>Denite line:all<CR>
 
+function! s:tileropen(context)
+  execute 'TilerOpen ' . a:context.targets[0].action__path
+endfunction
+call denite#custom#action('file', 'tiler', function('s:tileropen'))
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action', 'tiler')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search and anzu
