@@ -134,8 +134,8 @@ else
 	pyenv install 2.7.16
 	pyenv install 3.6.8
 endif
-	pyenv virtualenv 2.7.16 neovim2
-	pyenv virtualenv 3.6.8 neovim3
+	-pyenv virtualenv 2.7.16 neovim2
+	-pyenv virtualenv 3.6.8 neovim3
 	pyenv global neovim2 neovim3
 
 pyenv-update:
