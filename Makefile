@@ -148,8 +148,8 @@ neovim: python-install
 	pip install --upgrade pynvim
 	pip3 install --upgrade pynvim
 ifeq ($(call DETECTOS),linux-)
-	sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-	sudo yum install --enablerepo=epel -y neovim
+	-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	-sudo yum install --enablerepo=epel -y neovim
 endif
 
 neovim-update: neovim
