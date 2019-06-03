@@ -67,3 +67,6 @@ repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'zhamlin/tiler.vim'
+
+[[plugins]]
+repo = 'thinca/vim-prettyprint'

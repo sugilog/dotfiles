@@ -134,13 +134,22 @@ nnoremap Uo :<C-u>Denite outline<CR>
 nnoremap U/ :<C-u>Denite line:all<CR>
 
 function! s:tileropen(context)
-  execute 'TilerOpen ' . a:context.targets[0].action__path
+  " if 'file' == a:context.targets[0].kind
+    for target in a:context.targets
+      execute 'TilerOpen ' . target.action__path
+    endfor
+  " else
+  "   PP(a:context)
+  "   return call denite#do_action(a:context, a:context.default_action, a:context.targets)
+  " endif
 endfunction
-call denite#custom#action('file', 'tiler', function('s:tileropen'))
+" call denite#custom#action('buffer,directory,file,openable', 'tiler', function('s:tileropen'))
+call denite#custom#action('buffer,file', 'tiler', function('s:tileropen'))
 
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action', 'tiler')
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> t denite#do_map('do_action', 'tiler')
   nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
   nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
   nnoremap <silent><buffer><expr> q denite#do_map('quit')
