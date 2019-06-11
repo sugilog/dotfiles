@@ -61,6 +61,7 @@ endif
 package-update:
 ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew upgrade $(formula);)echo continue
+	$(foreach formula,$(CASKS),brew cask upgrade $(formula);)echo continue
 else
 	@echo FIXME
 endif
