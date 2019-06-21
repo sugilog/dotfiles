@@ -227,7 +227,8 @@ let g:ale_fix_on_save = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:go_version_warning = 0
-
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ window manager / tiler.vim
