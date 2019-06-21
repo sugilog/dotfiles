@@ -23,7 +23,7 @@ BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-t
 CASKS := rstudio postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox oni
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
-GO    := lycoris0731/salias lucagrulla/cw Code-Hex/Neo-cowsay/cmd/cowsay Code-Hex/Neo-cowsay/cmd/cowthink
+GO    := github.com/lycoris0731/salias github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/cmd/gopls github.com/sugilog/instant-go
 
 .DEFAULT_GOAL = help
 
@@ -61,7 +61,7 @@ endif
 package-update:
 ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew upgrade $(formula);)echo continue
-	$(foreach formula,$(CASKS),brew cask upgrade $(formula);)echo continue
+	# $(foreach formula,$(CASKS),brew cask upgrade $(formula);)echo continue
 else
 	@echo FIXME
 endif
@@ -173,7 +173,7 @@ endif
 	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 
 go:
-	$(foreach go,$(GO),go get -u github.com/$(go);)
+	$(foreach go,$(GO),go get -u $(go);)
 
 go-update: go
 
