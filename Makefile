@@ -129,14 +129,14 @@ endif
 
 python-install:
 ifeq ($(call DETECTOS),darwin)
-	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 2.7.16
-	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 3.6.8
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 2.7.16
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 3.6.8
 else
-	pyenv install 2.7.16
-	pyenv install 3.6.8
+	pyenv --skip-existing install 2.7.16
+	pyenv --skip-existing install 3.6.8
 endif
-	-pyenv virtualenv 2.7.16 neovim2
-	-pyenv virtualenv 3.6.8 neovim3
+	pyenv virtualenv -f 2.7.16 neovim2
+	pyenv virtualenv -f 3.6.8 neovim3
 	pyenv global neovim2 neovim3
 
 pyenv-update:
