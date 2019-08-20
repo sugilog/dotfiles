@@ -33,3 +33,8 @@ function escape_whitespace ()
 {
   sed 's/ /\\ /g'
 }
+
+function til ()
+{
+  cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | peco)
+}
