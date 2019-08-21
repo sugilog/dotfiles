@@ -39,17 +39,25 @@ function p ()
   local filter=$2
 
   case $1 in
+    # til
     t*)
       local d=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
       echo "cd $d"
       cd $d
       ;;
+    # ghq
     g*)
       local d=$(ghq root)/$(ghq list | grep -i "$filter" | peco --select-1)
       echo "cd $d"
       cd $d
       ;;
+    # current
+    c*)
+      local d=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
+      echo "cd $d"
+      cd $d
+      ;;
     *)
-      p $(echo "til\nghq" | peco)
+      p $(echo "til\nghq\ncurrent" | peco)
   esac
 }
