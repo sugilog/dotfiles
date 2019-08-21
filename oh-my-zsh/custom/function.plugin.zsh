@@ -34,7 +34,16 @@ function escape_whitespace ()
   sed 's/ /\\ /g'
 }
 
-function til ()
+function p ()
 {
-  cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | peco)
+  case $1 in
+    t*)
+      cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | peco)
+      ;;
+    g*)
+      cd $(ghq root)/$(ghq list | peco)
+      ;;
+    *)
+      p $(echo "til\nghq" | peco)
+  esac
 }
