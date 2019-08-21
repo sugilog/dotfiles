@@ -30,3 +30,5 @@
 [diff]
   compactionHeuristic = true
   colorMoved = dimmed_zebra
+[ghq]
+  root=~/workspace/

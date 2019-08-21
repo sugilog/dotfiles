@@ -6,6 +6,8 @@ export EDITOR=nvim
 alias mysql="mysql --auto-rehash"
 export MYSQL_PS1='\u@\h[\d]> '
 
+export PATH=`echo $PATH | sed -e "s/:\/Applications\/VMware Fusion.app\/Contents\/Public:/:/g"`
+
 if [[ -s $HOME/bin ]]; then
   export PATH="$HOME/bin:$PATH"
 fi

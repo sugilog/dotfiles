@@ -33,3 +33,23 @@ function escape_whitespace ()
 {
   sed 's/ /\\ /g'
 }
+
+function p ()
+{
+  local filter=$2
+
+  case $1 in
+    t*)
+      local d=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep "$filter" | peco --select-1)
+      echo "cd $d"
+      cd $d
+      ;;
+    g*)
+      local d=$(ghq root)/$(ghq list | grep "$filter" | peco --select-1)
+      echo "cd $d"
+      cd $d
+      ;;
+    *)
+      p $(echo "til\nghq" | peco)
+  esac
+}

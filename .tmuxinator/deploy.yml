@@ -6,34 +6,34 @@ windows:
       panes:
         - main01:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:db:main_db
         - web_status:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:web:access_error
         - web_app_error:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:web:app_error
         - main02:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:db:main_ro_db
         - tag_status:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:tag:access_error
         - tag_app_error:
           - ssh advertise_development
-          - jump working
+          - cd ~/apps/ad_counter/current
           - bundle exec cap production monitor:tag:app_error
         - workspace:
           - ssh advertise_development
-          - jump current
+          - cd ~/apps/ad_counter/current
           - git status
         - inspector:
           - ssh advertise_development
-          - jump inspector
+          - p ghq inspector
           - git checkout master
           - git pull

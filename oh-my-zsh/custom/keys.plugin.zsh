@@ -38,8 +38,6 @@ alias -g FF="-r failfast"
 alias mongod="mongod --dbpath $HOME/.mongo/data/ --port 27017"
 alias tmux="tmux -u"
 
-alias cdd="jump"
-
 alias -g L="2>&1 | less"
 
 # key binds

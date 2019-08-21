@@ -23,7 +23,7 @@ BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-t
 CASKS := postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
-GO    := github.com/lycoris0731/salias github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/cmd/gopls github.com/sugilog/instant-go
+GO    := github.com/lycoris0731/salias github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/cmd/gopls github.com/sugilog/instant-go github.com/motemen/ghq
 
 .DEFAULT_GOAL = help
 
@@ -72,7 +72,7 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),0)
 endif
 	sed -i -e "1i export DISABLE_UPDATE_PROMPT=true" ${ZSHRC}
 	sed -i -e 's/ZSH_THEME="[^"]*"/ZSH_THEME="my_theme"/g' ${ZSHRC}
-	sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator zshmarks golang)/g" ${ZSHRC}
+	sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator golang)/g" ${ZSHRC}
 
 awsenv:
 	wget https://raw.githubusercontent.com/bdclark/awsenv/master/awsenv -O ${LOCALBIN}/awsenv
@@ -129,14 +129,14 @@ endif
 
 python-install:
 ifeq ($(call DETECTOS),darwin)
-	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 2.7.16
-	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install 3.6.8
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 2.7.16
+	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 3.6.8
 else
-	pyenv install 2.7.16
-	pyenv install 3.6.8
+	pyenv --skip-existing install 2.7.16
+	pyenv --skip-existing install 3.6.8
 endif
-	-pyenv virtualenv 2.7.16 neovim2
-	-pyenv virtualenv 3.6.8 neovim3
+	pyenv virtualenv -f 2.7.16 neovim2
+	pyenv virtualenv -f 3.6.8 neovim3
 	pyenv global neovim2 neovim3
 
 pyenv-update:
