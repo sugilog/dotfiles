@@ -38,17 +38,16 @@ function p ()
 {
   local filter=$2
 
-  if [ "$filter" = "" ]
-  then
-    filter="*"
-  fi
-
   case $1 in
     t*)
-      cd $(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep $filter | peco --select-1)
+      local d=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep "$filter" | peco --select-1)
+      echo "cd $d"
+      cd $d
       ;;
     g*)
-      cd $(ghq root)/$(ghq list | grep $filter | peco --select-1)
+      local d=$(ghq root)/$(ghq list | grep "$filter" | peco --select-1)
+      echo "cd $d"
+      cd $d
       ;;
     *)
       p $(echo "til\nghq" | peco)
