@@ -37,6 +37,7 @@ if [[ -s $HOME/.goenv ]]; then
   export GOPATH=$HOME/go
   export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
   eval "$(goenv init -)"
+  export PATH="${GOPATH}/bin:$PATH"
 else
   which goenv > /dev/null 2>&1
   if [[ "$?" = "0" ]]; then
@@ -44,6 +45,7 @@ else
     export GOPATH=$HOME/go
     export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
     eval "$(goenv init -)"
+    export PATH="${GOPATH}/bin:$PATH"
   fi
 fi
 
