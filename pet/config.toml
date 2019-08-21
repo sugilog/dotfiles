@@ -1,5 +1,5 @@
 [General]
-  snippetfile = "~/TIL/snippet/pet.toml"
+  snippetfile = "~/workspace/github.com/sugilog/TIL/snippet/pet.toml"
   editor = "nvim"
   column = 40
   selectcmd = "peco"

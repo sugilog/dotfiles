@@ -45,7 +45,7 @@ function p ()
 
   case $1 in
     t*)
-      cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | grep $filter | peco --select-1)
+      cd $(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep $filter | peco --select-1)
       ;;
     g*)
       cd $(ghq root)/$(ghq list | grep $filter | peco --select-1)
