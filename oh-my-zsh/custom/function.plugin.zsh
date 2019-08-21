@@ -36,12 +36,19 @@ function escape_whitespace ()
 
 function p ()
 {
+  local filter=$2
+
+  if [ "$filter" = "" ]
+  then
+    filter="*"
+  fi
+
   case $1 in
     t*)
-      cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | peco)
+      cd $(find ~/TIL/* -type d -depth 1 | grep -v "/archives/" | grep $filter | peco --select-1)
       ;;
     g*)
-      cd $(ghq root)/$(ghq list | peco)
+      cd $(ghq root)/$(ghq list | grep $filter | peco --select-1)
       ;;
     *)
       p $(echo "til\nghq" | peco)
