@@ -21,15 +21,19 @@
   bclean = !git branch --merged | grep -vE '^\\*|master$|release$' | xargs git branch -d
 [core]
   editor = nvim
+  quotepath = false
 [github]
   user = sugilog@gmail.com
 [pager]
   log  = less
-  show = less
+  show = cat
   diff = less
+  branch = cat
 [diff]
   compactionHeuristic = true
   colorMoved = dimmed_zebra
+[diff "sjis"]
+  textconv=iconv -f sjis -t utf-8
 [ghq]
   root=~/workspace/
 [filter "lfs"]
