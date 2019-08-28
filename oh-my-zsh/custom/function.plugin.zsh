@@ -37,27 +37,32 @@ function escape_whitespace ()
 function p ()
 {
   local filter=$2
+  local pre=""
+  local dir=""
 
   case $1 in
     # til
     t*)
-      local d=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
-      echo "cd $d"
-      cd $d
+      dir=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
       ;;
     # ghq
     g*)
-      local d=$(ghq root)/$(ghq list | grep -i "$filter" | peco --select-1)
-      echo "cd $d"
-      cd $d
+      pre=$(ghq root)/;
+      dir=$(ghq list | grep -i "$filter" | peco --select-1)
       ;;
     # current
     c*)
-      local d=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
-      echo "cd $d"
-      cd $d
+      dir=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
       ;;
     *)
       p $(echo "til\nghq\ncurrent" | peco)
   esac
+
+  if [ "${dir}" = "" ]
+  then
+    return 1
+  else
+    echo "cd ${pre}${dir}"
+    cd ${pre}${dir}
+  fi
 }
