@@ -160,9 +160,9 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/.tmux.conf  ${HOME}/
 	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/
 	ln -sf ${HOME}/dotfiles/.gitconfig  ${HOME}/
-	mkdir -p ${HOME}/.config/nvim
-	ln -sf ${HOME}/dotfiles/.vimrc ${HOME}/.config/nvim/init.vim
-	ln -sf ${HOME}/dotfiles/peco   ${HOME}/.config/
+	mkdir -p ${HOME}/.config
+	ln -sf ${HOME}/dotfiles/nvim ${HOME}/.config/
+	ln -sf ${HOME}/dotfiles/peco ${HOME}/.config/
 ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
