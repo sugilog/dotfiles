@@ -216,7 +216,7 @@ vmap <leader>d :Linediff<CR>
 " let g:ale_linters = {}
 " let g:ale_fixers = {}
 
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 let g:ale_completion_enabled = 1
 
@@ -225,6 +225,8 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_filetype_changed = 1
 let g:ale_fix_on_save = 1
+
+nmap ad :ALEDetail<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
