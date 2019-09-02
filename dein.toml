@@ -60,7 +60,7 @@ repo = 'hashivim/vim-terraform'
 repo = 'powerman/vim-plugin-AnsiEsc'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
