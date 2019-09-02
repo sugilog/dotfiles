@@ -5,18 +5,18 @@ if &compatible
   set nocompatible
 endif
 filetype off
-set runtimepath+=~/dotfiles/dein.vim
+set runtimepath+=~/.config/nvim/dein.vim
 
 if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#begin(expand('~/.config/nvim/dein'))
-  call dein#load_toml(expand('~/dotfiles/dein.toml'), {'lazy': 0})
-  call dein#load_toml(expand('~/dotfiles/dein.lazy.toml'), {'lazy': 1})
+  call dein#load_toml(expand('~/.config/nvim/dein.toml'), {'lazy': 0})
+  call dein#load_toml(expand('~/.config/nvim/dein.lazy.toml'), {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
 
 if !has("gui_running")
-  set runtimepath+=~/dotfiles/local.vim
+  set runtimepath+=~/.config/nvim/local.vim
   " TO Clean disused repos: call map(dein#check_clean(), "delete(v:val, 'rf')")
   if localvim#time_elapsed( 'update', 24 * 60 * 60 )
     call localvim#save_time_state( 'update' )
