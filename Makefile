@@ -132,8 +132,8 @@ ifeq ($(call DETECTOS),darwin)
 	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 2.7.16
 	CFLAGS="-I$$(xcrun --show-sdk-path)/usr/include" pyenv install --skip-existing 3.6.8
 else
-	pyenv --skip-existing install 2.7.16
-	pyenv --skip-existing install 3.6.8
+	pyenv install --skip-existing 2.7.16
+	pyenv install --skip-existing 3.6.8
 endif
 	pyenv virtualenv -f 2.7.16 neovim2
 	pyenv virtualenv -f 3.6.8 neovim3
@@ -150,7 +150,10 @@ neovim: python-install
 	pip3 install --upgrade pynvim
 ifeq ($(call DETECTOS),linux-)
 	-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-	-sudo yum install --enablerepo=epel -y neovim
+	-sudo yum --enablerepo=epel -y install fuse-sshfs
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod u+x nvim.appimage
+	sudo mv nvim.appimage /usr/local/bin/nvim
 endif
 
 neovim-update: neovim
