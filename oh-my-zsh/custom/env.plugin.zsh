@@ -85,6 +85,6 @@ if [[ -s /usr/local/share/npm/bin ]] ; then
 fi
 
 if [[ -s $GOPATH/bin/salias ]]; then
-  export SALIAS_PATH=$HOME/dotfiles/salias.toml
+  export SALIAS_PATH=$HOME/dotfiles/salias/config.toml
   source <(salias --init)
 fi
