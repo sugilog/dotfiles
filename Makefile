@@ -163,9 +163,11 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/.tmux.conf  ${HOME}/
 	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/
 	ln -sf ${HOME}/dotfiles/.gitconfig  ${HOME}/
+	ln -sf $(HOME)/dotfiles/tig/tigrc ${HOME}/.tigrc
 	mkdir -p ${HOME}/.config
 	ln -sf ${HOME}/dotfiles/nvim ${HOME}/.config/
 	ln -sf ${HOME}/dotfiles/peco ${HOME}/.config/
+	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
@@ -173,8 +175,6 @@ ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 else
 	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
 endif
-	mkdir -p ${HOME}/.config
-	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 
 go:
 	$(foreach go,$(GO),go get -u $(go);)
