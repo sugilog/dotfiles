@@ -1,0 +1,17 @@
+set main-view   = id date author:email-user commit-title:graph=yes,refs=yes
+set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set pager-view  = line-number:yes,interval=1 text
+set log-view    = line-number:yes,interval=1 text
+set blob-view   = line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+set line-graphics = utf-8
+set ignore-space = all
+set ignore-case = true
+set editor-line-number = yes
+
+bind main T ?git tag "%(prompt Enter tag name: )" %(commit)
+bind refs T ?git tag "%(prompt Enter tag name: )" %(branch)
+
+bind generic <Ctrl-b> scroll-page-up
+bind generic <Ctrl-f> scroll-page-down
