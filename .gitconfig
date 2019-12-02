@@ -25,10 +25,11 @@
 [github]
   user = sugilog@gmail.com
 [pager]
-  log  = less
+  log  = less -S
   show = cat
   diff = less
   branch = cat
+  grep = less -S
 [diff]
   compactionHeuristic = true
   colorMoved = dimmed_zebra
