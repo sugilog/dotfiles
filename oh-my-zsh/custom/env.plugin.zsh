@@ -14,11 +14,13 @@ fi
 
 if [[ -s $HOME/.rbenv ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
   eval "$(rbenv init -)"
 else
   which rbenv > /dev/null 2>&1
   if [[ "$?" = "0" ]]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
     eval "$(rbenv init -)"
   fi
 fi
