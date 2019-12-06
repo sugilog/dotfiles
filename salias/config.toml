@@ -1,6 +1,0 @@
-[docker]
-null-containers = "ps --filter status=exited --quiet"
-null-images     = "images --filter dangling=true --quiet"
-
-[tig]
-feed = "HEAD...my-feed-read"
