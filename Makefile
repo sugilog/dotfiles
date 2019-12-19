@@ -23,7 +23,8 @@ BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-t
 CASKS := postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox homebrew/cask-versions/google-chrome-beta
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
-GO    := github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/cmd/gopls github.com/sugilog/instant-go github.com/motemen/ghq
+GO    := github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/cmd/gopls github.com/sugilog/instant-go github.com/motemen/ghq github.com/ericchiang/pup
+
 
 .DEFAULT_GOAL = help
 
@@ -88,8 +89,8 @@ ifeq ($(call BINEXISTS,rbenv),0)
 ifeq ($(call DETECTOS),linux-)
 	sudo yum install -y gcc openssl-devel readline-devel zlib-devel
 endif
-	git clone https://github.com/sstephenson/rbenv.git ${HOME}/.rbenv
-	git clone https://github.com/sstephenson/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
+	git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
+	git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 endif
 
 rbenv-update:
