@@ -165,6 +165,7 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/nvim ${HOME}/.config/
 	ln -sf ${HOME}/dotfiles/peco ${HOME}/.config/
 	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
+	ln -sf ${HOME}/dotfiles/karabiner ${HOME}/.config/
 ifeq ($(call DIREXISTS,${OHMYZSH}),1)
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
 	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
