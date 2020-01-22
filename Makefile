@@ -76,10 +76,10 @@ endif
 	sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator golang)/g" ${ZSHRC}
 
 awsenv:
-	wget https://raw.githubusercontent.com/bdclark/awsenv/master/awsenv -O ${LOCALBIN}/awsenv
+	wget https://raw.githubusercontent.com/buzztaiki/awsenv/master/awsenv -O ${LOCALBIN}/awsenv
 	chmod +x ${LOCALBIN}/awsenv
 ifeq ($(call BINEXISTS,awsenv),0)
-	echo 'setaws() { [[ $$# -gt 0 ]] && eval "$$($$HOME/bin/awsenv $$@)"; }' >> ${ZSHRC}
+	echo 'setaws() { [[ $$# -gt 0 ]] && eval "$$($$HOME/bin/awsenv -p $$@)"; }' >> ${ZSHRC}
 endif
 
 awsenv-update: awsenv
