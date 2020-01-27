@@ -42,9 +42,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh awsenv rbenv nodenv goenv pyenv neovim symlinks go
+tools: localbin package ohmyzsh rbenv nodenv goenv pyenv neovim symlinks go
 
-tools-update: package-update awsenv-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update
+tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -74,15 +74,6 @@ endif
 	sed -i -e "1i export DISABLE_UPDATE_PROMPT=true" ${ZSHRC}
 	sed -i -e 's/ZSH_THEME="[^"]*"/ZSH_THEME="my_theme"/g' ${ZSHRC}
 	sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator golang)/g" ${ZSHRC}
-
-awsenv:
-	wget https://raw.githubusercontent.com/buzztaiki/awsenv/master/awsenv -O ${LOCALBIN}/awsenv
-	chmod +x ${LOCALBIN}/awsenv
-ifeq ($(call BINEXISTS,awsenv),0)
-	echo 'setaws() { [[ $$# -gt 0 ]] && eval "$$($$HOME/bin/awsenv -p $$@)"; }' >> ${ZSHRC}
-endif
-
-awsenv-update: awsenv
 
 rbenv:
 ifeq ($(call BINEXISTS,rbenv),0)

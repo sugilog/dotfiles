@@ -37,32 +37,49 @@ function escape_whitespace ()
 function p ()
 {
   local filter=$2
+  local selecttype="dir"
   local pre=""
-  local dir=""
+  local selection=""
 
   case $1 in
     # til
     t*)
-      dir=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
+      selection=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
       ;;
     # ghq
     g*)
       pre=$(ghq root)/;
-      dir=$(ghq list | grep -i "$filter" | peco --select-1)
+      selection=$(ghq list | grep -i "$filter" | peco --select-1)
       ;;
     # current
     c*)
-      dir=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
+      selection=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
+      ;;
+    # aws profile
+    a*)
+      selection=$(cat ~/.aws/credentials ~/.aws/config | grep -e "^\[.*\]" | sed -e "s/profile *//g" | tr "[]" "  " | awk '{ print $1 }' | sort | uniq | grep -i "$filter" | peco --select-1)
+      selecttype="aws"
       ;;
     *)
       p $(echo "til\nghq\ncurrent" | peco)
   esac
 
-  if [ "${dir}" = "" ]
+  if [ "${selection}" = "" ]
   then
     return 1
   else
-    echo "cd ${pre}${dir}"
-    cd ${pre}${dir}
+    case ${selecttype} in
+      dir)
+        echo "cd ${pre}${selection}"
+        cd ${pre}${selection}
+        ;;
+      aws)
+        echo "export AWS_PROFILE=${pre}${selection}"
+        export AWS_PROFILE=${pre}${selection}
+        ;;
+      *)
+        exit 1
+        ;;
+    esac
   fi
 }
