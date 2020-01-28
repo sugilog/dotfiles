@@ -19,7 +19,7 @@ MAS_DIVVY := 413857545
 MAS_MINICAL := 1088779979
 MAX_UNARCHIVER := 425424353
 
-BREWS := wget the_silver_searcher awscli amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
+BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
 CASKS := postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox homebrew/cask-versions/google-chrome-beta figma
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
@@ -42,9 +42,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh rbenv nodenv goenv pyenv neovim symlinks go
+tools: localbin package ohmyzsh rbenv nodenv goenv pyenv neovim symlinks go awscli
 
-tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update
+tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -169,6 +169,18 @@ go:
 	$(foreach go,$(GO),go get -u $(go);)
 
 go-update: go
+
+awscli:
+ifeq ($(call DETECTOS),darwin)
+	curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-macos.zip" -o "/tmp/awscliv2.zip"
+else
+	curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+endif
+	unzip /tmp/awscliv2.zip -d /tmp
+	sudo /tmp/aws/install --bin-dir /usr/local/bin --update
+	ln -sf /usr/local/bin/aws2 /usr/local/bin/aws
+
+awscli-update: awscli
 
 behavior:
 ifeq ($(call DETECTOS),darwin)
