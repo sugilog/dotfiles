@@ -51,6 +51,10 @@ function p ()
       pre=$(ghq root)/;
       selection=$(ghq list | grep -i "$filter" | peco --select-1)
       ;;
+    # tmux panes
+    p*)
+      selection=$(tmux list-panes -s -F "#{pane_current_path}" | sort | uniq | grep -i "$filter" | peco --select-1)
+      ;;
     # current
     c*)
       selection=$(find $HOME/apps -maxdepth 1 -mindepth 1 -type d | peco --select-1)/current
