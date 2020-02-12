@@ -65,7 +65,7 @@ function p ()
       selecttype="aws"
       ;;
     *)
-      p $(echo "til\nghq\ncurrent" | peco)
+      p $(echo "til\nghq\npanes\ncurrent\naws" | peco)
   esac
 
   if [ "${selection}" = "" ]
