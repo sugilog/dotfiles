@@ -139,6 +139,7 @@ endif
 neovim-update: neovim
 
 symlinks:
+	ln -sf ${HOME}/dotfiles/zsh/zshrc   ${HOME}/.zshrc
 	ln -sf ${HOME}/dotfiles/.irbrc      ${HOME}/
 	ln -sf ${HOME}/dotfiles/.tmux.conf  ${HOME}/
 	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/

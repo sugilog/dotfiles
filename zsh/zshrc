@@ -1,0 +1,8 @@
+export ZPLUG_HOME=~/.config/zplug-home
+source ~/.config/zplug/init.zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "knu/z", use:z.sh, defer:2
+zplug "~/dotfiles/zsh/plugin", from:local, as:plugin
+zplug "~/dotfiles/zsh/theme", from:local, as:theme
+zplug "~/dotfiles/zsh", from:local
+zplug load --verbose
