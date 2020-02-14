@@ -20,6 +20,7 @@ alias du="du -h"
 alias df="df -h"
 alias vi="nvim"
 alias vim="nvim"
+alias mux="tmuxinator"
 
 alias sc="ruby script/console"
 alias db="ruby script/dbconsole"
