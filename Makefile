@@ -11,7 +11,6 @@ $(shell echo $${OSTYPE:0:6})
 endef
 
 LOCALBIN := ${HOME}/bin
-OHMYZSH := ${HOME}/.oh-my-zsh
 ZSHRC   := ${HOME}/.zshrc
 
 MAS_LINE := 539883307
@@ -43,9 +42,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package ohmyzsh rbenv nodenv goenv pyenv neovim symlinks go awscli
+tools: localbin package rbenv nodenv goenv pyenv neovim symlinks go awscli zplug
 
-tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update
+tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update zplug-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -67,14 +66,6 @@ ifeq ($(call DETECTOS),darwin)
 else
 	@echo FIXME
 endif
-
-ohmyzsh:
-ifeq ($(call DIREXISTS,${OHMYZSH}),0)
-	wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
-endif
-	sed -i -e "1i export DISABLE_UPDATE_PROMPT=true" ${ZSHRC}
-	sed -i -e 's/ZSH_THEME="[^"]*"/ZSH_THEME="my_theme"/g' ${ZSHRC}
-	sed -i -e "s/^plugins=(\(.*\))$/plugins=(\1 tmuxinator golang)/g" ${ZSHRC}
 
 rbenv:
 ifeq ($(call BINEXISTS,rbenv),0)
@@ -182,6 +173,12 @@ endif
 	ln -sf /usr/local/bin/aws2 /usr/local/bin/aws
 
 awscli-update: awscli
+
+zplug:
+	git clone https://github.com/zplug/zplug ${HOME}/.config/zplug
+
+zplug-update:
+	cd ${HOME}/.config/zplug && git pull
 
 behavior:
 ifeq ($(call DETECTOS),darwin)
