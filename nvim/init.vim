@@ -30,7 +30,6 @@ filetype plugin indent on
 
 let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ basics
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,6 +86,17 @@ set maxmempattern=10000
 
 set exrc
 set secure
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""" paste ...
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://dev.classmethod.jp/tool/trouble-shoot-ctrlv-in-vim/
+map ^[OA ^[ka
+map ^[OB ^[ja
+map ^[OC ^[la
+map ^[OD ^[ha
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ Others
