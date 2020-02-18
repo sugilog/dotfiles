@@ -109,7 +109,7 @@ inoremap <S-Tab> <C-V><Tab>
 " yank from cursol to the end of line
 nnoremap Y y$
 
-au FileType ruby,eruby vmap <leader>r :s/:\([^ ]*\)\( *\)=> /\1:\2/gc<CR>
+au FileType ruby,eruby vmap <leader>r :s/:\([^ ]*\) *=> /\1: /gc<CR>
 
 nnoremap <leader>j :Jq<CR>
 
