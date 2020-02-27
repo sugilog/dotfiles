@@ -92,6 +92,7 @@ set secure
 """ paste ...
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " https://dev.classmethod.jp/tool/trouble-shoot-ctrlv-in-vim/
+set nocompatible
 map ^[OA ^[ka
 map ^[OB ^[ja
 map ^[OC ^[la
