@@ -165,13 +165,16 @@ go-update: go
 
 awscli:
 ifeq ($(call DETECTOS),darwin)
-	curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-macos.zip" -o "/tmp/awscliv2.zip"
+	curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "/tmp/awscliv2.pkg"
+	sudo installer -pkg /tmp/awscliv2.pkg -target /
+	ln -sf /usr/local/aws-cli/aws /usr/local/bin/aws
+	ln -sf /usr/local/aws-cli/aws_completer /usr/local/bin/aws_completer
 else
-	curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-endif
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
 	unzip /tmp/awscliv2.zip -d /tmp
 	sudo /tmp/aws/install --bin-dir /usr/local/bin --update
 	ln -sf /usr/local/bin/aws2 /usr/local/bin/aws
+endif
 
 awscli-update: awscli
 
