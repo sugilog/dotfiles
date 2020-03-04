@@ -22,8 +22,8 @@ BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-
 CASKS := postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox homebrew/cask-versions/google-chrome-beta figma
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
-GO    := github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink golang.org/x/tools/... github.com/sugilog/instant-go github.com/motemen/ghq github.com/ericchiang/pup github.com/jesseduffield/lazydocker
-# golang.org/x/tools/... contains gopls, etc. see: https://github.com/golang/tools
+GO    := github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink github.com/sugilog/instant-go github.com/motemen/ghq github.com/jesseduffield/lazydocker github.com/Songmu/make2help/cmd/make2help
+# gopls need to set GO111MODULE
 
 
 .DEFAULT_GOAL = help
@@ -160,6 +160,8 @@ endif
 
 go:
 	$(foreach go,$(GO),go get -u $(go);)
+	# Do not use the -u flag, as it will update your dependencies to incompatible versions.
+	GO111MODULE=on go get golang.org/x/tools/gopls@latest
 
 go-update: go
 
