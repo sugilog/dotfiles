@@ -22,7 +22,7 @@ BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-
 CASKS := postman google-cloud-sdk drawio jadengeller-helium kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox homebrew/cask-versions/google-chrome-beta figma
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
-GO    := github.com/lucagrulla/cw github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink github.com/sugilog/instant-go github.com/motemen/ghq github.com/jesseduffield/lazydocker github.com/Songmu/make2help/cmd/make2help
+GO    := github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink github.com/sugilog/instant-go github.com/motemen/ghq github.com/jesseduffield/lazydocker github.com/Songmu/make2help/cmd/make2help
 # gopls need to set GO111MODULE
 
 
