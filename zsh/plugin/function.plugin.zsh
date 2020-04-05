@@ -37,6 +37,9 @@ function p ()
   local selection=""
 
   case $1 in
+    list)
+      echo "til\nghq\npanes\ncurrent\naws"
+      ;;
     # til
     t*)
       selection=$(find $(ghq root)/github.com/sugilog/TIL/* -type d -depth 1 | grep -v "/archives/" | grep -i "$filter" | peco --select-1)
@@ -60,7 +63,9 @@ function p ()
       selecttype="aws"
       ;;
     *)
-      p $(echo "til\nghq\npanes\ncurrent\naws" | peco)
+      echo "no resources given"
+      return 1
+      ;;
   esac
 
   if [ "${selection}" = "" ]
