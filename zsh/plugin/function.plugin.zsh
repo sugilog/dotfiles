@@ -29,11 +29,6 @@ function pet-search() {
   zle redisplay
 }
 
-function escape_whitespace ()
-{
-  sed 's/ /\\ /g'
-}
-
 function p ()
 {
   local filter=$2
