@@ -132,9 +132,15 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_refresh_delay = 0
+
+call deoplete#custom#option({
+      \ 'auto_complete': v:true,
+      \ 'auto_complete_delay': 0,
+      \ 'auto_complete_popup': 'auto',
+      \ 'auto_reflesh_delay': 50,
+      \ 'camel_case': v:true,
+      \ 'smart_case': v:true,
+      \ })
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -180,7 +186,6 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
 endfunction
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ search and anzu
