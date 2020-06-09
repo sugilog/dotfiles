@@ -42,9 +42,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin package rbenv nodenv goenv pyenv neovim symlinks go awscli zplug
+tools: localbin symlinks zplug package rbenv nodenv goenv pyenv neovim go awscli
 
-tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update zplug-update
+tools-update: zplug-update package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -150,13 +150,7 @@ symlinks:
 	ln -sf ${HOME}/dotfiles/peco ${HOME}/.config/
 	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
 	ln -sf ${HOME}/dotfiles/karabiner ${HOME}/.config/
-ifeq ($(call DIREXISTS,${OHMYZSH}),1)
-	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh       ${OHMYZSH}/custom
-	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/*.zsh-theme ${OHMYZSH}/custom
-	ln -sf ${HOME}/dotfiles/oh-my-zsh/custom/plugins/*   ${OHMYZSH}/plugins
-else
-	ln -sf ${HOME}/dotfiles/.zshrc ${HOME}/
-endif
+	ln -sf ${HOME}/dotfiles/zsh/zshrc ${HOME}/.zshrc
 
 go:
 	$(foreach go,$(GO),go get -u $(go);)
