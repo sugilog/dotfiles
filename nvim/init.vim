@@ -156,12 +156,12 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """ denite.nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap Uu :<C-u>Denite file_mru -split=floating_relative<CR>
-nnoremap Ud :<C-u>DeniteBufferDir file -split=floating_relative<CR>
-nnoremap UD :<C-u>Denite file -split=floating_relative<CR>
-nnoremap Ub :<C-u>Denite buffer -split=floating_relative<CR>
-nnoremap Uo :<C-u>Denite outline -split=floating_relative<CR>
-nnoremap U/ :<C-u>Denite line:all -split=floating_relative<CR>
+nnoremap Uu :<C-u>Denite file_mru -split=floating_relative_cursor -vertical-preview -floating-preview -preview-width=80<CR>
+nnoremap Ud :<C-u>DeniteBufferDir file -split=floating_relative_cursor -vertical-preview -floating-preview -preview-width=80<CR>
+nnoremap UD :<C-u>Denite file -split=floating_relative_cursor -vertical-preview -floating-preview -preview-width=80<CR>
+nnoremap Ub :<C-u>Denite buffer -split=floating_relative_cursor -vertical-preview -floating-preview -preview-width=80<CR>
+nnoremap Uo :<C-u>Denite outline -split=floating_relative_cursor<CR>
+nnoremap U/ :<C-u>Denite line:all -split=floating_relative_cursor<CR>
 
 function! s:tileropen(context)
   " if 'file' == a:context.targets[0].kind
