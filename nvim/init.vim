@@ -60,11 +60,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+syntax enable
 colorscheme molokai
 let g:rehash256=1
 set background=dark
-
-syntax enable
 
 set fileformat=unix
 set encoding=utf-8
