@@ -55,6 +55,8 @@ ifeq ($(call DETECTOS),darwin)
 	brew tap homebrew/cask
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
 	$(foreach id,$(MAS),mas install $(id);)
+	brew tap aws/tap
+	brew install aws-sam-cli
 else
 	sudo yum install $(YUMS)
 endif
