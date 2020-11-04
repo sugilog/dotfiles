@@ -6,4 +6,4 @@ windows:
       panes:
         - TERM=screen-256color irssi
         - sleep 60 && tmux send-keys -t 0 /Z Enter && clear
-        - cd $HOME/Documents/Journal && vim `date +%Y%m.md`
+        - cd $HOME/Dropbox\ \(LR\)/Journal && vim `date +%Y%m.md`
