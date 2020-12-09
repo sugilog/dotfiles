@@ -54,7 +54,6 @@ ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew install $(formula);)
 	brew tap homebrew/cask
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
-	$(MAKE) chrome-beta
 	$(foreach id,$(MAS),mas install $(id);)
 	brew tap aws/tap
 	brew install aws-sam-cli
