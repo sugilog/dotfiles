@@ -19,7 +19,7 @@ MAS_MINICAL := 1088779979
 MAX_UNARCHIVER := 425424353
 
 BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
-CASKS := postman session-manager-plugin google-cloud-sdk drawio kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox homebrew/cask-versions/google-chrome-beta slack tunnelblick microsoft-edge
+CASKS := postman session-manager-plugin google-cloud-sdk drawio kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox google-chrome-beta slack tunnelblick microsoft-edge visual-studio-code
 MAS   := $(MAS_LINE) $(MAS_DIVVY) $(MAS_MINICAL) $(MAS_UNARCHIVER)
 YUMS  := wget the_silver_searcher
 GO    := github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink github.com/sugilog/instant-go github.com/motemen/ghq github.com/jesseduffield/lazydocker github.com/Songmu/make2help/cmd/make2help
@@ -54,6 +54,7 @@ ifeq ($(call DETECTOS),darwin)
 	$(foreach formula,$(BREWS),brew install $(formula);)
 	brew tap homebrew/cask
 	$(foreach formula,$(CASKS),brew cask install $(formula);)
+	$(MAKE) chrome-beta
 	$(foreach id,$(MAS),mas install $(id);)
 	brew tap aws/tap
 	brew install aws-sam-cli
@@ -67,6 +68,15 @@ ifeq ($(call DETECTOS),darwin)
 	# $(foreach formula,$(CASKS),brew cask upgrade $(formula);)echo continue
 else
 	@echo FIXME
+endif
+
+# https://support.1password.com/could-not-connect/
+chrome-beta:
+ifeq ($(call DETECTOS),darwin)
+	mkdir -p  ~/Library/Application\ Support/Google/Chrome
+	open /Applications/Google\ Chrome\ Beta.app
+	mkdir -p ~/Library/Application\ Support/Google/Chrome\ Beta/NativeMessagingHosts
+	cp ~/Library/Application\ Support/Google/Chrome/NativeMessagingHosts/2bua8c4s2c.com.agilebits.1password.json ~/Library/Application\ Support/Google/Chrome\ Beta/NativeMessagingHosts/2bua8c4s2c.com.agilebits.1password.json
 endif
 
 rbenv:
