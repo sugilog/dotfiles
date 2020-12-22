@@ -93,3 +93,7 @@ fi
 if [[ -s /usr/local/share/npm/bin ]] ; then
   export PATH="/usr/local/share/npm/bin:$PATH"
 fi
+
+if [[ -s $HOME/.cargo/bin ]] ; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi

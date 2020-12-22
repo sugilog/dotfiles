@@ -261,6 +261,12 @@ let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+""" rust.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:rustfmt_autosave = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 """ window manager / tiler.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -290,4 +296,5 @@ nmap gm <Plug>(git-messenger)
 
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
 

@@ -74,3 +74,6 @@ repo = 'thinca/vim-prettyprint'
 # https://dev.classmethod.jp/tool/trouble-shoot-ctrlv-in-vim/
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'

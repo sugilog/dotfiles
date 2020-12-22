@@ -201,3 +201,8 @@ ifeq ($(call DETECTOS),darwin)
 	defaults read NSGlobalDomain | grep Key
 	defaults -currentHost read com.apple.screensaver
 endif
+
+# temporary
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	rustup component add rustfmt
