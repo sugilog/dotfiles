@@ -77,3 +77,6 @@ repo = 'ConradIrwin/vim-bracketed-paste'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'pocke/rbs.vim'
