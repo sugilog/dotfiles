@@ -8,6 +8,10 @@ zplug "~/dotfiles/zsh/theme", from:local, as:theme
 zplug "~/dotfiles/zsh/completion", from:local, as:plugin, defer:2
 if [ -d ${LOCAL_PLUG:?} ]
 then
+  # export TMUXINATOR_DEFAULT=irssi
+  # export HOMEBREW_GITHUB_API_TOKEN=
+  # export GITLAB_GLCH_TOKEN=
   zplug ${LOCAL_PLUG:?}, from:local, as:plugin
 fi
 zplug load --verbose
+export PATH="$PATH:/usr/local/opt/mysql@5.6/bin"

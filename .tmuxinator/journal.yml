@@ -1,9 +1,0 @@
-name: journal
-root: ~/
-windows:
-  - main:
-      layout: f865,638x120,0,0{137x120,0,0,8,362x120,138,0,9,137x120,501,0,10}
-      panes:
-        - TERM=screen-256color irssi
-        - sleep 60 && tmux send-keys -t 0 /Z Enter && clear
-        - cd $HOME/Dropbox\ \(LR\)/Journal && vim `date +%Y%m.md`
