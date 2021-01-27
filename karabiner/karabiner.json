@@ -247,10 +247,23 @@
                         ]
                     },
                     {
-                        "description": "Switch Layer; toggle by esc esc",
+                        "description": "Switch Layer; toggle by esc esc (on VSCode) or ctrl+quote",
                         "manipulators": [
                             {
+                                "conditions": [ { "type": "variable_unless", "name": "keyboard_layout", "value": 1 } ],
+                                "from": { "key_code": "quote", "modifiers": { "mandatory": "left_control" } },
+                                "to": [ { "set_variable": { "name": "keyboard_layout", "value": 1 } } ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "type": "variable_if", "name": "keyboard_layout", "value": 1 } ],
+                                "from": { "key_code": "quote", "modifiers": { "mandatory": "left_control" } },
+                                "to": [ { "set_variable": { "name": "keyboard_layout", "value": 0 } } ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
+                                    { "bundle_identifiers": [ "^com\\.microsoft\\.VSCode" ], "type": "frontmost_application_if" },
                                     { "type": "variable_unless", "name": "keyboard_layout", "value": 1 },
                                     { "type": "variable_if", "name": "keyboard_layout_escape", "value": 1 }
                                 ],
@@ -260,6 +273,7 @@
                             },
                             {
                                 "conditions": [
+                                    { "bundle_identifiers": [ "^com\\.microsoft\\.VSCode" ], "type": "frontmost_application_if" },
                                     { "type": "variable_if", "name": "keyboard_layout", "value": 1 },
                                     { "type": "variable_if", "name": "keyboard_layout_escape", "value": 1 }
                                 ],
@@ -268,6 +282,9 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    { "bundle_identifiers": [ "^com\\.microsoft\\.VSCode" ], "type": "frontmost_application_if" }
+                                ],
                                 "from": { "key_code": "escape" },
                                 "to": [ { "set_variable": { "name": "keyboard_layout_escape", "value": 1 } } ],
                                 "to_delayed_action": {
