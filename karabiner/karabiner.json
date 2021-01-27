@@ -247,18 +247,36 @@
                         ]
                     },
                     {
-                        "description": "Switch Layer",
+                        "description": "Switch Layer; toggle by esc esc",
                         "manipulators": [
                             {
-                                "conditions": [ { "type": "variable_unless", "name": "keyboard_layout", "value": 1 } ],
-                                "from": { "key_code": "quote", "modifiers": { "mandatory": "left_control" } },
+                                "conditions": [
+                                    { "type": "variable_unless", "name": "keyboard_layout", "value": 1 },
+                                    { "type": "variable_if", "name": "keyboard_layout_escape", "value": 1 }
+                                ],
+                                "from": { "key_code": "escape" },
                                 "to": [ { "set_variable": { "name": "keyboard_layout", "value": 1 } } ],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [ { "type": "variable_if", "name": "keyboard_layout", "value": 1 } ],
-                                "from": { "key_code": "quote", "modifiers": { "mandatory": "left_control" } },
+                                "conditions": [
+                                    { "type": "variable_if", "name": "keyboard_layout", "value": 1 },
+                                    { "type": "variable_if", "name": "keyboard_layout_escape", "value": 1 }
+                                ],
+                                "from": { "key_code": "escape" },
                                 "to": [ { "set_variable": { "name": "keyboard_layout", "value": 0 } } ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "escape" },
+                                "to": [ { "set_variable": { "name": "keyboard_layout_escape", "value": 1 } } ],
+                                "to_delayed_action": {
+                                    "to_if_invoked": [
+                                        { "set_variable": { "name": "keyboard_layout_escape", "value": 0 } },
+                                        { "key_code": "escape" }
+                                    ],
+                                    "to_if_canceled": [ { "set_variable": { "name": "keyboard_layout_escape", "value": 0 } } ]
+                                },
                                 "type": "basic"
                             },
                             {
