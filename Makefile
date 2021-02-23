@@ -16,7 +16,7 @@ ZSHRC   := ${HOME}/.zshrc
 MAS_LINE := 539883307
 MAS_DIVVY := 413857545
 
-BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet irssi terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
+BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
 CASKS := postman session-manager-plugin google-cloud-sdk drawio kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox google-chrome-beta slack tunnelblick microsoft-edge visual-studio-code raindropio
 MAS   := $(MAS_LINE) $(MAS_DIVVY)
 YUMS  := wget the_silver_searcher

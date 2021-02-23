@@ -1,8 +1,0 @@
-name: irssi
-root: ~/
-windows:
-  - main:
-      layout: 9c91,638x120,0,0{137x120,0,0,0,500x120,138,0,1}
-      panes:
-        - TERM=screen-256color irssi
-        - sleep 60 && tmux send-keys -t 0 /Z Enter && clear
