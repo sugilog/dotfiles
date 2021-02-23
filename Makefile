@@ -17,7 +17,7 @@ MAS_LINE := 539883307
 MAS_DIVVY := 413857545
 
 BREWS := wget the_silver_searcher amazon-ecs-cli colordiff lua reattach-to-user-namespace tmux heroku zstd graphviz peco knqyf263/pet/pet terminal-notifier ansible mas jq ttygif neovim git-lfs trash tig unar
-CASKS := postman session-manager-plugin google-cloud-sdk drawio kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox google-chrome-beta slack tunnelblick microsoft-edge visual-studio-code raindropio
+CASKS := postman session-manager-plugin google-cloud-sdk drawio kindle alfred 1password karabiner-elements google-japanese-ime docker appcleaner mysqlworkbench firefox google-chrome-beta slack tunnelblick microsoft-edge visual-studio-code
 MAS   := $(MAS_LINE) $(MAS_DIVVY)
 YUMS  := wget the_silver_searcher
 GO    := github.com/Code-Hex/Neo-cowsay/cmd/cowsay github.com/Code-Hex/Neo-cowsay/cmd/cowthink github.com/sugilog/instant-go github.com/motemen/ghq github.com/jesseduffield/lazydocker github.com/Songmu/make2help/cmd/make2help
