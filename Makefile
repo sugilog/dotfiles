@@ -148,18 +148,18 @@ endif
 neovim-update: neovim
 
 symlinks:
-	ln -sf ${HOME}/dotfiles/zsh/zshrc   ${HOME}/.zshrc
-	ln -sf ${HOME}/dotfiles/.irbrc      ${HOME}/
-	ln -sf ${HOME}/dotfiles/.tmux.conf  ${HOME}/
-	ln -sf ${HOME}/dotfiles/.tmuxinator ${HOME}/
-	ln -sf ${HOME}/dotfiles/.gitconfig  ${HOME}/
-	ln -sf $(HOME)/dotfiles/tig/tigrc ${HOME}/.tigrc
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/zsh/zshrc ${HOME}/.zshrc
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/.irbrc ${HOME}/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/.tmux.conf ${HOME}/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/.tmuxinator ${HOME}/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/.gitconfig ${HOME}/
+	ln -sf $(HOME)/workspace/github.com/sugilog/dotfiles/tig/tigrc ${HOME}/.tigrc
 	mkdir -p ${HOME}/.config
-	ln -sf ${HOME}/dotfiles/nvim ${HOME}/.config/
-	ln -sf ${HOME}/dotfiles/peco ${HOME}/.config/
-	ln -sf ${HOME}/dotfiles/pet ${HOME}/.config/
-	ln -sf ${HOME}/dotfiles/karabiner ${HOME}/.config/
-	ln -sf ${HOME}/dotfiles/zsh/zshrc ${HOME}/.zshrc
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/nvim ${HOME}/.config/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/peco ${HOME}/.config/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/pet ${HOME}/.config/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/karabiner ${HOME}/.config/
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/zsh/zshrc ${HOME}/.zshrc
 
 go:
 	$(foreach go,$(GO),go get -u $(go);)
