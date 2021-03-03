@@ -160,6 +160,7 @@ symlinks:
 	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/pet ${HOME}/.config/
 	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/karabiner ${HOME}/.config/
 	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/zsh/zshrc ${HOME}/.zshrc
+	ln -sf ${HOME}/workspace/github.com/sugilog/dotfiles/bash/profile ${HOME}/.bash_profile
 
 go:
 	$(foreach go,$(GO),go get -u $(go);)

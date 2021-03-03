@@ -1,0 +1,9 @@
+source ~/workspace/github.com/sugilog/dotfiles/zsh/plugin/env.plugin.zsh
+
+export LOCAL_PLUG=~/.config/localplug
+if [ -d ${LOCAL_PLUG:?} ]
+then
+  # export HOMEBREW_GITHUB_API_TOKEN=
+  # export GITLAB_GLCH_TOKEN=
+  source ${LOCAL_PLUG:?}/env.plugin.zsh
+fi
