@@ -41,9 +41,9 @@ init:
 update:
 	git submodule update --init --remote --recursive
 
-tools: localbin symlinks zplug package rbenv nodenv goenv pyenv neovim go awscli
+tools: localbin symlinks package rbenv nodenv goenv pyenv neovim go awscli
 
-tools-update: zplug-update package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update
+tools-update: package-update rbenv-update nodenv-update goenv-update pyenv-update neovim-update go-update awscli-update
 
 localbin:
 	mkdir -p ${LOCALBIN}
@@ -184,12 +184,6 @@ else
 endif
 
 awscli-update: awscli
-
-zplug:
-	git clone https://github.com/zplug/zplug ${HOME}/.config/zplug
-
-zplug-update:
-	cd ${HOME}/.config/zplug && git pull
 
 behavior:
 ifeq ($(call DETECTOS),darwin)

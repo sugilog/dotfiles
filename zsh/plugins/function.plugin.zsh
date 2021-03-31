@@ -87,3 +87,9 @@ function p ()
     esac
   fi
 }
+
+_p_comp () {
+  compadd $(p list)
+}
+
+compdef _p_comp p
