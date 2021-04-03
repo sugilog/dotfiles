@@ -195,7 +195,7 @@ ifeq ($(call DETECTOS),darwin)
 	defaults read NSGlobalDomain | grep Key
 	defaults -currentHost read com.apple.screensaver
 	# https://apple.stackexchange.com/questions/209295/stop-safari-9-window-closing-when-only-pinned-tabs-are-left
-  defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Close Tab" "<string>@w</string></dict>"
+	defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Close Tab" "<string>@w</string></dict>"
 endif
 
 # temporary
