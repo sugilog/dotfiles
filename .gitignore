@@ -1,2 +1,4 @@
 .netrwhist
 go.*
+nvim/.DS_Store
+.DS_Store
